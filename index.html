@@ -2,6 +2,346 @@
 try{
 _._F_toggles_initialize=function(a){(typeof globalThis!=="undefined"?globalThis:typeof self!=="undefined"?self:this)._F_toggles=a||[]};(0,_._F_toggles_initialize)([]);
 /*
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aksh Chauhan | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A single-page, vertical scrolling portfolio design. The structure begins with a prominent header and a sticky navigation bar for easy access to all sections: a skills dashboard, a chronological experience timeline, and an interactive project gallery. This structure was chosen because it's intuitive and familiar to the target audience (recruiters), allowing them to quickly scan key information or dive deeper into specific areas like projects via modals. The flow is designed to first hook the viewer with a visual skills summary, then provide detailed proof through experience and projects, and finally offer clear calls to action. -->
+    <!-- Visualization & Content Choices: 
+        - Skills: Report Info -> Technical Skills list. Goal -> Compare strengths across domains. Viz -> Chart.js Polar Area Chart. Interaction -> Hover tooltips for categories. Justification -> Offers an immediate, engaging visual summary of capabilities, more impactful than a static list.
+        - Experience: Report Info -> Two internship roles. Goal -> Show career progression and impact. Viz -> HTML/Tailwind vertical timeline. Interaction -> None needed for clarity. Justification -> A timeline is the most logical and scannable way to present work history chronologically.
+        - Projects: Report Info -> Three project descriptions. Goal -> Organize and showcase practical work. Viz -> Grid of cards. Interaction -> Clicking a card opens a detailed modal view. Justification -> Keeps the main layout clean while encouraging user exploration and providing rich detail on demand.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* Warm off-white */
+            color: #4A4A4A; /* Dark Gray */
+        }
+        .nav-link {
+            transition: color 0.3s ease, border-color 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover {
+            color: #D97706; /* Amber */
+            border-bottom-color: #D97706;
+        }
+        .accent-bg { background-color: #D97706; }
+        .accent-text { color: #D97706; }
+        .secondary-bg { background-color: #F3F4F6; } /* Light Gray */
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Nav -->
+    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-800">Aksh Chauhan</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#skills" class="nav-link font-medium text-gray-600 pb-1">Skills</a>
+                <a href="#experience" class="nav-link font-medium text-gray-600 pb-1">Experience</a>
+                <a href="#projects" class="nav-link font-medium text-gray-600 pb-1">Projects</a>
+            </div>
+            <a href="mailto:akshrajesh9203@gmail.com" class="hidden md:inline-block bg-amber-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-amber-700 transition-colors">Contact Me</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        <!-- Hero Section -->
+        <section id="hero" class="text-center mb-20 md:mb-32">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">Software Engineer</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-600 mb-8">
+                A passionate software engineer with a focus on building robust backend systems and intuitive user interfaces. Currently pursuing a Master's at ASU and seeking impactful internship opportunities.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://www.linkedin.com/in/aksh-chauhan-01257b242/" target="_blank" class="accent-bg text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity">LinkedIn</a>
+                <a href="https://github.com/Aksh9203" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors">GitHub</a>
+            </div>
+        </section>
+
+        <!-- Skills Dashboard Section -->
+        <section id="skills" class="mb-20 md:mb-32">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Technical Skills Dashboard</h2>
+            <p class="text-lg text-center text-gray-600 max-w-2xl mx-auto mb-12">This dashboard provides a visual overview of my technical abilities, categorized by domain. It reflects the breadth and focus of my skills as detailed in my experience and projects.</p>
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experience" class="mb-20 md:mb-32">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">Professional Experience</h2>
+             <div class="relative max-w-3xl mx-auto">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gray-200"></div>
+                
+                <!-- Axisray Intern 1 -->
+                <div class="relative mb-12">
+                    <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-4 h-4 rounded-full accent-bg border-4 border-white"></div>
+                    <div class="md:ml-auto md:w-5/12 bg-white p-6 rounded-xl shadow-lg card">
+                        <h3 class="text-xl font-bold accent-text">Software Engineer Intern</h3>
+                        <p class="font-semibold text-gray-700 mb-1">Axisray | Ahmedabad, INDIA</p>
+                        <p class="text-sm text-gray-500 mb-4">Jan 2024 – June 2024</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>Engineered RESTful APIs with Java Spring Boot, reducing manual work by 25%.</li>
+                            <li>Developed a responsive UI with React, boosting interface smoothness by 20%.</li>
+                            <li>Deployed AWS backend services and integrated Alexa Skills.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Axisray Intern 2 -->
+                 <div class="relative mb-12">
+                    <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-4 h-4 rounded-full accent-bg border-4 border-white"></div>
+                    <div class="md:mr-auto md:w-5/12 bg-white p-6 rounded-xl shadow-lg card">
+                        <h3 class="text-xl font-bold accent-text">Summer Intern</h3>
+                        <p class="font-semibold text-gray-700 mb-1">Axisray | Ahmedabad, INDIA</p>
+                        <p class="text-sm text-gray-500 mb-4">May 2023 – Aug 2023</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-600">
+                            <li>Built a C#/.NET Core API for full CRUD expense management.</li>
+                            <li>Crafted a React front end with Material UI for data display and editing.</li>
+                            <li>Ensured end-to-end data flow with Axios and client-side validation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Gallery Section -->
+        <section id="projects" class="mb-12 md:mb-24">
+             <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Project Gallery</h2>
+            <p class="text-lg text-center text-gray-600 max-w-2xl mx-auto mb-12">Here are some of the key projects I've developed. Click on any project to see more details about its architecture and the technologies used.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="card bg-white p-6 rounded-xl shadow-lg cursor-pointer" onclick="showProjectModal(0)">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">NOAH: A Statically Typed Language</h3>
+                    <p class="text-gray-600 mb-4">A compiled language built from scratch with a focus on flexibility and resilience.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">Java</span>
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">ANTLR</span>
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">Compilers</span>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="card bg-white p-6 rounded-xl shadow-lg cursor-pointer" onclick="showProjectModal(1)">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Car Rental Management System</h3>
+                    <p class="text-gray-600 mb-4">A full-stack application with CRUD services for inventory and a streamlined booking UI.</p>
+                     <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">Spring Boot</span>
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">MySQL</span>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="card bg-white p-6 rounded-xl shadow-lg cursor-pointer" onclick="showProjectModal(2)">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Netflix Clone</h3>
+                    <p class="text-gray-600 mb-4">A responsive UI replica with dynamic content listings and secure user authentication.</p>
+                     <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">Firebase</span>
+                        <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">React Query</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <h2 class="text-2xl font-bold mb-2">Let's Connect</h2>
+            <p class="text-gray-300 mb-4">I'm actively looking for new opportunities. Feel free to reach out.</p>
+            <a href="mailto:akshrajesh9203@gmail.com" class="accent-bg text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity inline-block">akshrajesh9203@gmail.com</a>
+            <div class="mt-8 text-gray-400">
+                <p>&copy; <span id="year"></span> Aksh Chauhan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Project Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative" onclick="event.stopPropagation()">
+            <button onclick="hideProjectModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-4"></h3>
+            <div id="modalContent" class="text-gray-600 space-y-4"></div>
+            <div class="mt-6">
+                <h4 class="font-bold text-gray-700 mb-2">Key Technologies:</h4>
+                <div id="modalSkills" class="flex flex-wrap gap-2"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Skills Chart Data
+            const skillsData = {
+                labels: ['Backend (Java/C#)', 'Frontend (React)', 'Cloud & Databases', 'Languages', 'Tooling & CI/CD'],
+                datasets: [{
+                    label: 'Skill Focus',
+                    data: [85, 80, 75, 90, 70],
+                    backgroundColor: [
+                        'rgba(217, 119, 6, 0.6)',    // Amber 600
+                        'rgba(234, 179, 8, 0.6)',   // Yellow 500
+                        'rgba(59, 130, 246, 0.6)',  // Blue 500
+                        'rgba(16, 185, 129, 0.6)', // Emerald 500
+                        'rgba(107, 114, 128, 0.6)'  // Gray 500
+                    ],
+                    borderColor: [
+                        'rgba(217, 119, 6, 1)',
+                        'rgba(234, 179, 8, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(107, 114, 128, 1)'
+                    ],
+                    borderWidth: 2,
+                    hoverOffset: 4
+                }]
+            };
+
+            // Skills Chart Config
+            const skillsChartConfig = {
+                type: 'polarArea',
+                data: skillsData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            pointLabels: {
+                                display: true,
+                                centerPointLabels: true,
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            ticks: {
+                                display: false
+                            },
+                            grid: {
+                                circular: true
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return ` ${context.label}: Proficiency estimate ${context.raw}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Render Chart
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctx, skillsChartConfig);
+
+        });
+
+        // Project Data
+        const projects = [
+            {
+                title: 'NOAH: A Statically Typed Programming Language',
+                content: `<p>Authored "NOAH" (Notation for Optimized Algorithmic Handling), a complete compiled programming language designed from the ground up. The primary focus was on creating a language that is both flexible and resilient, suitable for handling complex algorithmic tasks.</p><p>Key technical achievements include implementing a sophisticated parser grammar using ANTLR and orchestrating a fully automated, cross-platform build pipeline with GitHub Actions to ensure robust continuous integration and deployment.</p>`,
+                skills: ['Java', 'ANTLR', 'Compiler Design', 'GitHub Actions', 'Continuous Integration']
+            },
+            {
+                title: 'Car Rental Management System',
+                content: `<p>This full-stack project involved engineering a complete car rental platform. The backend, powered by Spring Boot, provides robust CRUD microservices to manage car inventory, guaranteeing accurate listings and real-time availability tracking for administrators.</p><p>The frontend is an intuitive React interface with dynamic filtering and streamlined booking workflows. This design significantly accelerates the process for customers to discover vehicles and for administrators to approve reservations.</p>`,
+                skills: ['Java', 'Spring Boot', 'React', 'MySQL', 'CRUD Development', 'UI/UX Design', 'REST APIs']
+            },
+            {
+                title: 'Netflix Clone',
+                content: `<p>A detail-oriented project to construct a pixel-perfect, fully responsive replica of the Netflix user interface. It features dynamic population of movie and TV show listings, complete with detailed descriptions, mimicking the real user experience.</p><p>A critical component was the integration of Google Authentication via Firebase, React, and React Query. This ensures a secure, state-managed, and seamless login experience for users across the application.</p>`,
+                skills: ['React', 'React Query', 'Firebase Authentication', 'Responsive Design', 'API Integration']
+            }
+        ];
+
+        // Modal Logic
+        const modal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const modalSkills = document.getElementById('modalSkills');
+        
+        function showProjectModal(index) {
+            const project = projects[index];
+            modalTitle.textContent = project.title;
+            modalContent.innerHTML = project.content;
+            
+            modalSkills.innerHTML = '';
+            project.skills.forEach(skill => {
+                const skillTag = document.createElement('span');
+                skillTag.className = 'bg-amber-100 text-amber-800 text-sm font-semibold px-3 py-1.5 rounded-full';
+                skillTag.textContent = skill;
+                modalSkills.appendChild(skillTag);
+            });
+
+            modal.classList.remove('hidden');
+        }
+
+        function hideProjectModal() {
+            modal.classList.add('hidden');
+        }
+        
+        // Close modal on outside click
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                hideProjectModal();
+            }
+        });
+
+    </script>
+</body>
+</html>
 
  Copyright The Closure Library Authors.
  SPDX-License-Identifier: Apache-2.0
