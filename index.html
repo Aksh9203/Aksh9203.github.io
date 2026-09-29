@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aksh Chauhan — Software Engineer</title>
+<title>Aksh Chauhan — Software Engineer</title> <!--[cite: 1] -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -20,7 +20,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -89,6 +88,17 @@
     text-decoration: none;
   }
   .nav-logo span { color: var(--accent); }
+  
+  .nav-center {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 0.08em;
+    background: var(--surface);
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+  }
+  .nav-center span { color: var(--accent2); }
+
   .nav-links { display: flex; gap: 32px; }
   .nav-links a {
     color: var(--muted);
@@ -100,7 +110,6 @@
   }
   .nav-links a:hover { color: var(--accent); }
 
-  /* SECTIONS */
   section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
 
   /* HERO */
@@ -115,7 +124,7 @@
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 80px;
     align-items: center;
     max-width: 1200px;
@@ -140,10 +149,10 @@
   .hero-name {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: clamp(48px, 6vw, 88px);
+    font-size: clamp(40px, 5.5vw, 76px);
     line-height: 0.95;
-    letter-spacing: -3px;
-    margin-bottom: 8px;
+    letter-spacing: -2px;
+    margin-bottom: 12px;
   }
   .hero-name .italic {
     font-family: 'Instrument Serif', serif;
@@ -155,7 +164,7 @@
   .hero-title {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
-    font-size: 22px;
+    font-size: 24px;
     color: var(--muted);
     margin-bottom: 32px;
     letter-spacing: 0;
@@ -165,13 +174,11 @@
     color: #8a8680;
     font-size: 13px;
     line-height: 1.8;
-    max-width: 440px;
+    max-width: 460px;
     margin-bottom: 48px;
   }
 
-  .hero-cta {
-    display: flex; gap: 16px; flex-wrap: wrap;
-  }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn {
     padding: 14px 28px;
     font-family: 'DM Mono', monospace;
@@ -193,7 +200,6 @@
   .btn-ghost { color: var(--text); }
   .btn-ghost:hover { border-color: var(--text); transform: translateY(-2px); }
 
-  /* HERO RIGHT - STATS CARD */
   .hero-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -216,7 +222,6 @@
     gap: 32px;
     margin-bottom: 40px;
   }
-  .stat-item {}
   .stat-num {
     font-family: 'Syne', sans-serif;
     font-size: 36px;
@@ -254,9 +259,7 @@
     50% { opacity: 0.3; }
   }
 
-  .tech-cloud {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
+  .tech-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
   .tech-tag {
     padding: 4px 10px;
     border: 1px solid var(--border);
@@ -264,12 +267,8 @@
     color: var(--muted);
     transition: all 0.2s;
   }
-  .tech-tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
+  .tech-tag:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* SCROLL INDICATOR */
   .scroll-hint {
     position: absolute;
     bottom: 48px;
@@ -320,15 +319,13 @@
   }
 
   /* EXPERIENCE */
-  #experience { background: transparent; }
   .exp-list { display: flex; flex-direction: column; gap: 0; }
   .exp-item {
     display: grid;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 220px 1fr;
     gap: 48px;
     padding: 40px 0;
     border-bottom: 1px solid var(--border);
-    position: relative;
     transition: all 0.3s;
   }
   .exp-item:hover { background: rgba(255,255,255,0.01); }
@@ -372,90 +369,83 @@
     font-size: 11px;
   }
 
-  /* PROJECTS */
+  /* PROJECTS GRID */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
-  .project-card {
-    background: var(--bg);
-    padding: 40px;
+  .github-repo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s;
-    display: flex; flex-direction: column;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 4px;
   }
-  .project-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(232,201,122,0.04) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s;
+  
+  .github-repo-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.3);
   }
-  .project-card:hover::before { opacity: 1; }
-  .project-card:hover { background: #111; }
 
-  .project-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--muted);
-    margin-bottom: 32px;
+  .repo-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
   }
-  .project-title {
+  .repo-icon { color: var(--muted); }
+  .repo-title {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 16px;
-    line-height: 1.2;
+    font-size: 18px;
+    color: var(--accent2);
   }
-  .project-desc {
-    font-size: 12px;
-    color: #7a7570;
-    line-height: 1.8;
+  
+  .repo-desc {
+    font-size: 13px;
+    color: #8a8680;
+    line-height: 1.6;
     flex: 1;
-    margin-bottom: 28px;
-  }
-  .project-tags {
-    display: flex; flex-wrap: wrap; gap: 6px;
     margin-bottom: 24px;
   }
-  .project-tag {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    padding: 3px 8px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .project-arrow {
-    font-size: 20px;
-    color: var(--muted);
-    transition: all 0.3s;
-    align-self: flex-end;
-  }
-  .project-card:hover .project-arrow {
-    color: var(--accent);
-    transform: translate(4px, -4px);
-  }
 
-  /* SKILLS */
+  .repo-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  
+  .repo-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lang-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .dot-java { background: #b07219; }
+  .dot-ts { background: #3178c6; }
+  .dot-python { background: #3572A5; }
+
+  /* SKILLS & EDUCATION */
   .skills-layout {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 80px;
   }
-  .skills-intro {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.9;
-  }
+  .skills-intro { font-size: 13px; color: var(--muted); line-height: 1.9; }
   .skills-intro p { margin-bottom: 16px; }
 
   .skills-categories { display: flex; flex-direction: column; gap: 32px; }
@@ -466,9 +456,7 @@
     color: var(--accent);
     margin-bottom: 14px;
   }
-  .skill-items {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
+  .skill-items { display: flex; flex-wrap: wrap; gap: 8px; }
   .skill-chip {
     padding: 7px 14px;
     border: 1px solid var(--border);
@@ -484,7 +472,6 @@
     transform: translateY(-1px);
   }
 
-  /* EDUCATION */
   .edu-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -532,20 +519,13 @@
     display: flex; gap: 24px;
     font-size: 12px;
   }
-  .edu-gpa {
-    color: var(--accent);
-    font-weight: 500;
-  }
+  .edu-gpa { color: var(--accent); font-weight: 500; }
   .edu-year { color: var(--muted); }
 
   /* CONTACT */
-  #contact {
-    text-align: center;
-    position: relative;
-  }
+  #contact { text-align: center; position: relative; }
   .contact-bg {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: radial-gradient(ellipse at center, rgba(232,201,122,0.05) 0%, transparent 70%);
     pointer-events: none;
   }
@@ -584,41 +564,24 @@
     color: var(--accent);
     transform: translateY(-3px);
   }
-  .contact-link svg { width: 16px; height: 16px; }
 
-  /* FOOTER */
   footer {
     padding: 32px 48px;
     border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: var(--muted); letter-spacing: 0.06em;
   }
 
-  /* ANIMATIONS */
   .reveal {
-    opacity: 0;
-    transform: translateY(24px);
+    opacity: 0; transform: translateY(24px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* HORIZONTAL LINE DECORATION */
-  .h-line {
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--border), transparent);
-    margin: 0 -48px;
-  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .h-line { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); margin: 0 -48px; }
 
   @media (max-width: 900px) {
     nav { padding: 20px 24px; }
-    .nav-links { display: none; }
+    .nav-links, .nav-center { display: none; }
     #hero, section { padding-left: 24px; padding-right: 24px; }
     .hero-grid, .skills-layout, .edu-grid { grid-template-columns: 1fr; gap: 40px; }
     .projects-grid { grid-template-columns: 1fr; }
@@ -630,79 +593,67 @@
 </head>
 <body>
 
-<!-- Custom Cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">AC<span>.</span></a>
+  <a href="#" class="nav-logo">AC<span>.</span></a> <!--[cite: 1] -->
+  <div class="nav-center">
+    📍 Tempe, AZ &nbsp;—&nbsp; <span id="liveTime">--:--:--</span> <!--[cite: 1] -->
+  </div>
   <div class="nav-links">
     <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
+    <a href="#projects">Repositories</a>
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-grid">
     <div class="hero-left reveal">
       <div class="hero-tag">Software Engineer</div>
       <h1 class="hero-name">
-        Aksh<br><span class="italic">Chauhan</span>
+        Aksh<br><span class="italic">Chauhan</span> <!--[cite: 1] -->
       </h1>
-      <p class="hero-title">MS Software Engineering · ASU</p>
+      <p class="hero-title">MS in Software Engineering · Arizona State University</p> <!--[cite: 1] -->
       <p class="hero-bio">
-        I build scalable, cloud-native systems that solve real problems —
-        from serverless microservices to AI-powered tools. Currently pursuing
-        my master's at Arizona State University, expected May 2026.
+        Software engineer and M.S. Software Engineering graduate with experience building full-stack, cloud-native, and distributed applications using Java, C++, Python, React, and AWS. <!--[cite: 1] -->
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View Projects ↓</a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch →</a>
+        <a href="#projects" class="btn btn-primary">View Repositories ↓</a>
+        <a href="https://github.com/aksh9203" target="_blank" class="btn btn-ghost">GitHub Profile →</a> <!--[cite: 1] -->
       </div>
     </div>
     <div class="hero-right reveal" style="transition-delay:0.2s">
       <div class="hero-card">
         <div class="status-badge">
           <span class="status-dot"></span>
-          Open to Opportunities
+          Open to Full-Time Roles
         </div>
         <div class="stat-grid">
           <div class="stat-item">
-            <div class="stat-num">6+</div>
-            <div class="stat-label">Projects Built</div>
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Core Systems</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">2</div>
-            <div class="stat-label">Internships</div>
+            <div class="stat-label">Engineering Roles</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">3.74</div>
+            <div class="stat-num">3.73</div> <!--[cite: 1] -->
             <div class="stat-label">GPA</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">15+</div>
-            <div class="stat-label">Technologies</div>
+            <div class="stat-label">Tech Stack</div>
           </div>
-        </div>
-        <div class="tech-cloud">
-          <span class="tech-tag">Java</span>
-          <span class="tech-tag">Spring Boot</span>
-          <span class="tech-tag">AWS</span>
-          <span class="tech-tag">React</span>
-          <span class="tech-tag">GCP</span>
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Docker</span>
-          <span class="tech-tag">Kubernetes</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="scroll-hint">Scroll</div>
+  <div class="scroll-hint">Scroll to explore</div>
 </section>
 
 <div class="h-line"></div>
@@ -717,31 +668,33 @@
     <div class="section-num">02</div>
   </div>
   <div class="exp-list">
+    <!-- MindSpark[cite: 1] -->
     <div class="exp-item reveal">
       <div>
-        <div class="exp-date">Jan 2024 – Jun 2024</div>
-        <div class="exp-company">Axisray</div>
+        <div class="exp-date">June 2026 - Present</div> <!--[cite: 1] -->
+        <div class="exp-company">MindSpark</div> <!--[cite: 1] -->
       </div>
       <div>
-        <div class="exp-title">Software Engineer Intern</div>
+        <div class="exp-title">Software Developer</div> <!--[cite: 1] -->
         <ul class="exp-bullets">
-          <li>Enhanced Java Spring Boot services on AWS, contributing to a 25% increase in system reliability through targeted refactoring.</li>
-          <li>Integrated the Alexa Skills Kit for voice-based queries, cutting employee data access time by 50%.</li>
-          <li>Automated data processing workflows, reducing manual data entry by 30% and boosting operational efficiency.</li>
+          <li>Architected a 3-Lambda serverless onboarding pipeline with Stripe-hosted checkout, automating DynamoDB deduplication.</li> <!--[cite: 1] -->
+          <li>Engineered an asynchronous EventBridge reconciler across 4 billing states using DynamoDB conditional writes and SQS DLQs.</li> <!--[cite: 1] -->
+          <li>Deployed 2 serverless GenAI services querying across 3 DynamoDB tables to ground model outputs and mitigate hallucinations.</li> <!--[cite: 1] -->
         </ul>
       </div>
     </div>
+    <!-- Axisray[cite: 1] -->
     <div class="exp-item reveal">
       <div>
-        <div class="exp-date">May 2023 – Aug 2023</div>
-        <div class="exp-company">Axisray</div>
+        <div class="exp-date">Jun 2023 - Jun 2024</div> <!--[cite: 1] -->
+        <div class="exp-company">Axisray</div> <!--[cite: 1] -->
       </div>
       <div>
-        <div class="exp-title">Summer Intern</div>
+        <div class="exp-title">Software Engineer Intern</div> <!--[cite: 1] -->
         <ul class="exp-bullets">
-          <li>Developed a scalable REST API using ASP.NET Core managing 10,000+ expense records with 99.9% uptime.</li>
-          <li>Built a dynamic React dashboard with Axios for real-time data, automating financial summaries instantly.</li>
-          <li>Implemented client-side validation that eliminated 95% of data entry errors at the source.</li>
+          <li>Built a full-stack HR platform using Spring Boot, React, and MySQL, automating manual workflows for a 30+ person team.</li> <!--[cite: 1] -->
+          <li>Engineered a voice-controlled query interface using AWS Lambda and Alexa Skills Kit to access internal HR databases.</li> <!--[cite: 1] -->
+          <li>Custom-trained a YOLOv5 fire detection model on 10,000 images, achieving 95% accuracy on internal testing.</li> <!--[cite: 1] -->
         </ul>
       </div>
     </div>
@@ -750,96 +703,65 @@
 
 <div class="h-line"></div>
 
-<!-- PROJECTS -->
+<!-- REPOSITORIES (GITHUB STYLE) -->
 <section id="projects">
   <div class="section-header reveal">
     <div>
-      <div class="section-label">03 — Work</div>
-      <h2 class="section-title">Projects</h2>
+      <div class="section-label">03 — Open Source</div>
+      <h2 class="section-title">Repositories</h2>
     </div>
     <div class="section-num">03</div>
   </div>
+  
   <div class="projects-grid">
-
-    <div class="project-card reveal">
-      <div class="project-num">/ 01</div>
-      <div class="project-title">Travel Booking Platform</div>
-      <div class="project-desc">Serverless hybrid Saga model on AWS Step Functions + API Gateway + DynamoDB. Eliminated dual-write errors via Transactional Outbox pattern, Idempotency keys, and DLQs.</div>
-      <div class="project-tags">
-        <span class="project-tag">AWS</span>
-        <span class="project-tag">Spring Boot</span>
-        <span class="project-tag">DynamoDB</span>
-        <span class="project-tag">SES</span>
-        <span class="project-tag">Saga</span>
+    
+    <!-- Investor Intelligence[cite: 1] -->
+    <a href="https://github.com/aksh9203" target="_blank" class="github-repo-card reveal">
+      <div class="repo-header">
+        <svg class="repo-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+        <div class="repo-title">ai-investor-intelligence</div> <!--[cite: 1] -->
       </div>
-      <div class="project-arrow">↗</div>
-    </div>
-
-    <div class="project-card reveal" style="transition-delay:0.1s">
-      <div class="project-num">/ 02</div>
-      <div class="project-title">Movie Recommendation Engine</div>
-      <div class="project-desc">End-to-end scalable engine with Java microservices on Google Cloud Run. GCP pipeline processes a 50k-record dataset asynchronously via Pub/Sub into Cloud Spanner.</div>
-      <div class="project-tags">
-        <span class="project-tag">GCP</span>
-        <span class="project-tag">Java</span>
-        <span class="project-tag">Pub/Sub</span>
-        <span class="project-tag">Cloud Spanner</span>
+      <div class="repo-desc">Architected an autonomous research agent using Amazon Bedrock (Claude 3 Haiku) and Tool Calling to query official SEC EDGAR APIs across 5 years of 10-K filings.</div> <!--[cite: 1] -->
+      <div class="repo-meta">
+        <div class="repo-lang"><span class="lang-dot dot-python"></span>Python</div>
       </div>
-      <div class="project-arrow">↗</div>
-    </div>
+    </a>
 
-    <div class="project-card reveal" style="transition-delay:0.2s">
-      <div class="project-num">/ 03</div>
-      <div class="project-title">Smart Code Editor</div>
-      <div class="project-desc">AI-powered IDE with Flask & Google GenAI SDK. Secure multi-language execution (Python, Java, C++) with real-time syntax highlighting, AI mentor for code explanations and error resolution.</div>
-      <div class="project-tags">
-        <span class="project-tag">Flask</span>
-        <span class="project-tag">Gemini</span>
-        <span class="project-tag">Piston API</span>
-        <span class="project-tag">AI</span>
+    <!-- Travel Saga[cite: 1] -->
+    <a href="https://github.com/aksh9203" target="_blank" class="github-repo-card reveal" style="transition-delay:0.1s">
+      <div class="repo-header">
+        <svg class="repo-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+        <div class="repo-title">distributed-saga-booking</div> <!--[cite: 1] -->
       </div>
-      <div class="project-arrow">↗</div>
-    </div>
+      <div class="repo-desc">Serverless Saga orchestrator using AWS Step Functions, AWS Lambda, and DynamoDB to manage distributed transactions and execute automated compensating rollbacks.</div> <!--[cite: 1] -->
+      <div class="repo-meta">
+        <div class="repo-lang"><span class="lang-dot dot-java"></span>Java</div>
+      </div>
+    </a>
 
-    <div class="project-card reveal" style="transition-delay:0.1s">
-      <div class="project-num">/ 04</div>
-      <div class="project-title">Hybrid Edge-Cloud Face Recognition</div>
-      <div class="project-desc">Elastic face recognition on AWS EC2 + S3 + SQS with custom autoscaling up to 15 instances. IoT Greengrass + Lambda pipeline for local MTCNN detection, reducing cloud latency via MQTT messaging.</div>
-      <div class="project-tags">
-        <span class="project-tag">AWS</span>
-        <span class="project-tag">IoT Greengrass</span>
-        <span class="project-tag">MTCNN</span>
-        <span class="project-tag">SQS</span>
-        <span class="project-tag">Lambda</span>
+    <!-- SafeGuard[cite: 1] -->
+    <a href="https://github.com/aksh9203" target="_blank" class="github-repo-card reveal">
+      <div class="repo-header">
+        <svg class="repo-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+        <div class="repo-title">safeguard-sos-app</div> <!--[cite: 1] -->
       </div>
-      <div class="project-arrow">↗</div>
-    </div>
+      <div class="repo-desc">Accelerated emergency responder matching using an Uber H3 hexagonal search engine (res 9) with pipelined Redis caching and AWS Cognito authentication.</div> <!--[cite: 1] -->
+      <div class="repo-meta">
+        <div class="repo-lang"><span class="lang-dot dot-ts"></span>TypeScript</div>
+      </div>
+    </a>
 
-    <div class="project-card reveal" style="transition-delay:0.2s">
-      <div class="project-num">/ 05</div>
-      <div class="project-title">Netflix Clone</div>
-      <div class="project-desc">Netflix-style UI with dynamic movie listings and a fully responsive design. Google Auth via Firebase, React, and React Query for secure, seamless user authentication.</div>
-      <div class="project-tags">
-        <span class="project-tag">React</span>
-        <span class="project-tag">Firebase</span>
-        <span class="project-tag">React Query</span>
-        <span class="project-tag">Google Auth</span>
+    <!-- Face Recognition[cite: 1] -->
+    <a href="https://github.com/aksh9203" target="_blank" class="github-repo-card reveal" style="transition-delay:0.1s">
+      <div class="repo-header">
+        <svg class="repo-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>
+        <div class="repo-title">hybrid-face-recognition</div> <!--[cite: 1] -->
       </div>
-      <div class="project-arrow">↗</div>
-    </div>
-
-    <div class="project-card reveal" style="transition-delay:0.3s">
-      <div class="project-num">/ 06</div>
-      <div class="project-title">Car Rental Management System</div>
-      <div class="project-desc">Spring Boot CRUD services for real-time car inventory with accurate availability tracking. React interface with dynamic filters and streamlined booking workflows for customers and admins.</div>
-      <div class="project-tags">
-        <span class="project-tag">Spring Boot</span>
-        <span class="project-tag">React</span>
-        <span class="project-tag">Java</span>
-        <span class="project-tag">REST API</span>
+      <div class="repo-desc">Queue-depth autoscaling controller for EC2 and an AWS IoT Greengrass edge component running MTCNN for on-device detection with MQTT messaging.</div> <!--[cite: 1] -->
+      <div class="repo-meta">
+        <div class="repo-lang"><span class="lang-dot dot-python"></span>Python</div>
       </div>
-      <div class="project-arrow">↗</div>
-    </div>
+    </a>
 
   </div>
 </section>
@@ -857,60 +779,40 @@
   </div>
   <div class="skills-layout">
     <div class="skills-intro reveal">
-      <p>Full-stack engineer with a strong backend bias. I design distributed systems, build cloud-native pipelines, and ship production-ready products end to end.</p>
-      <p>Comfortable moving across Java microservices, React frontends, AWS/GCP infrastructure, and AI integrations in a single sprint.</p>
+      <p>Software engineer specializing in distributed backend systems, low-latency microservices, and reliable cloud-native infrastructure.</p>
+      <p>Experienced in writing production-grade code across Java, C++, and Python while scaling systems securely on AWS and GCP.</p> <!--[cite: 1] -->
     </div>
     <div class="skills-categories reveal" style="transition-delay:0.15s">
       <div>
         <div class="skill-cat-label">Languages</div>
         <div class="skill-items">
-          <span class="skill-chip">Java</span>
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">JavaScript</span>
-          <span class="skill-chip">C / C++</span>
-          <span class="skill-chip">C#</span>
-          <span class="skill-chip">PL/SQL</span>
-          <span class="skill-chip">HTML/CSS</span>
+          <span class="skill-chip">Java</span> <!--[cite: 1] -->
+          <span class="skill-chip">Python</span> <!--[cite: 1] -->
+          <span class="skill-chip">C/C++</span> <!--[cite: 1] -->
+          <span class="skill-chip">C#</span> <!--[cite: 1] -->
+          <span class="skill-chip">JavaScript</span> <!--[cite: 1] -->
+          <span class="skill-chip">TypeScript</span> <!--[cite: 1] -->
+          <span class="skill-chip">SQL</span> <!--[cite: 1] -->
         </div>
       </div>
       <div>
-        <div class="skill-cat-label">Frameworks & Libraries</div>
+        <div class="skill-cat-label">Cloud & Infrastructure</div>
         <div class="skill-items">
-          <span class="skill-chip">Spring Boot</span>
-          <span class="skill-chip">Spring MVC</span>
-          <span class="skill-chip">Spring Security</span>
-          <span class="skill-chip">.NET Core</span>
-          <span class="skill-chip">React</span>
-          <span class="skill-chip">Redux</span>
-          <span class="skill-chip">Flask</span>
-          <span class="skill-chip">Hibernate</span>
-          <span class="skill-chip">PyTorch</span>
-          <span class="skill-chip">React Query</span>
+          <span class="skill-chip">AWS (Lambda, SQS, Step Functions)</span> <!--[cite: 1] -->
+          <span class="skill-chip">GCP (Cloud Run, Pub/Sub)</span> <!--[cite: 1] -->
+          <span class="skill-chip">Terraform</span> <!--[cite: 1] -->
+          <span class="skill-chip">Docker</span> <!--[cite: 1] -->
         </div>
       </div>
       <div>
-        <div class="skill-cat-label">Cloud & Databases</div>
+        <div class="skill-cat-label">Databases & AI</div>
         <div class="skill-items">
-          <span class="skill-chip">AWS EC2/S3/Lambda</span>
-          <span class="skill-chip">AWS Step Functions</span>
-          <span class="skill-chip">Google Cloud Run</span>
-          <span class="skill-chip">Cloud Pub/Sub</span>
-          <span class="skill-chip">DynamoDB</span>
-          <span class="skill-chip">PostgreSQL</span>
-          <span class="skill-chip">MySQL</span>
-          <span class="skill-chip">Firebase</span>
-          <span class="skill-chip">Oracle</span>
-        </div>
-      </div>
-      <div>
-        <div class="skill-cat-label">Tools & Platforms</div>
-        <div class="skill-items">
-          <span class="skill-chip">Docker</span>
-          <span class="skill-chip">Kubernetes</span>
-          <span class="skill-chip">Git / GitHub</span>
-          <span class="skill-chip">Postman</span>
-          <span class="skill-chip">Swagger</span>
-          <span class="skill-chip">JIRA</span>
+          <span class="skill-chip">PostgreSQL</span> <!--[cite: 1] -->
+          <span class="skill-chip">DynamoDB</span> <!--[cite: 1] -->
+          <span class="skill-chip">MongoDB</span> <!--[cite: 1] -->
+          <span class="skill-chip">Redis</span> <!--[cite: 1] -->
+          <span class="skill-chip">Amazon Bedrock</span> <!--[cite: 1] -->
+          <span class="skill-chip">LangChain</span> <!--[cite: 1] -->
         </div>
       </div>
     </div>
@@ -929,22 +831,24 @@
     <div class="section-num">05</div>
   </div>
   <div class="edu-grid">
+    <!-- ASU[cite: 1] -->
     <div class="edu-card reveal" data-degree="MS">
-      <div class="edu-tag">Graduate · Current</div>
-      <div class="edu-degree">Master of Science in<br>Software Engineering</div>
-      <div class="edu-school">Arizona State University, Tempe, AZ</div>
+      <div class="edu-tag">Graduate · Completed</div>
+      <div class="edu-degree">Master of Science,<br>Software Engineering</div> <!--[cite: 1] -->
+      <div class="edu-school">Arizona State University</div> <!--[cite: 1] -->
       <div class="edu-meta">
-        <span class="edu-gpa">GPA: 3.74 / 4.00</span>
-        <span class="edu-year">Expected May 2026</span>
+        <span class="edu-gpa">GPA: 3.73 / 4.00</span> <!--[cite: 1] -->
+        <span class="edu-year">Aug 2024 - May 2026</span> <!--[cite: 1] -->
       </div>
     </div>
+    <!-- GTU[cite: 1] -->
     <div class="edu-card reveal" style="transition-delay:0.15s" data-degree="BE">
       <div class="edu-tag">Undergraduate · Completed</div>
-      <div class="edu-degree">Bachelor of Engineering in<br>Computer Engineering</div>
-      <div class="edu-school">Gujarat Technological University, India</div>
+      <div class="edu-degree">Bachelor of Engineering,<br>Computer Engineering</div> <!--[cite: 1] -->
+      <div class="edu-school">Gujarat Technological University</div> <!--[cite: 1] -->
       <div class="edu-meta">
-        <span class="edu-gpa">Score: 8.33 / 10</span>
-        <span class="edu-year">Aug 2020 – May 2024</span>
+        <span class="edu-gpa">Score: 8.33 / 10</span> <!--[cite: 1] -->
+        <span class="edu-year">Aug 2020 - May 2024</span> <!--[cite: 1] -->
       </div>
     </div>
   </div>
@@ -959,31 +863,40 @@
     <div class="contact-links">
       <a href="mailto:akshrajesh9203@gmail.com" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        akshrajesh9203@gmail.com
+        akshrajesh9203@gmail.com <!--[cite: 1] -->
       </a>
       <a href="https://linkedin.com/in/aksh9" target="_blank" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        linkedin.com/in/aksh9
+        linkedin.com/in/aksh9 <!--[cite: 1] -->
       </a>
-      <a href="https://github.com/Aksh9203" target="_blank" class="contact-link">
+      <a href="https://github.com/aksh9203" target="_blank" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        github.com/Aksh9203
+        github.com/aksh9203 <!--[cite: 1] -->
       </a>
       <a href="tel:6028072202" class="contact-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (602) 807-2202
+        (602) 807-2202 <!--[cite: 1] -->
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2025 Aksh Chauhan</span>
-  <span>Built with precision · Tempe, AZ</span>
+  <span>© 2026 Aksh Chauhan</span> <!--[cite: 1] -->
+  <span>Built with precision · Tempe, AZ</span> <!--[cite: 1] -->
 </footer>
 
 <script>
-  // Cursor
+  // Live Arizona Time Widget
+  function updateTime() {
+    const options = { timeZone: 'America/Phoenix', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    const timeString = new Intl.DateTimeFormat('en-US', options).format(new Date());
+    document.getElementById('liveTime').textContent = timeString;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+
+  // Custom Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1004,7 +917,7 @@
     el.addEventListener('mouseleave', () => { ring.style.opacity = '0.5'; });
   });
 
-  // Nav scroll
+  // Nav scroll behavior
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
   });
