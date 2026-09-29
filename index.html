@@ -1,711 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aksh Chauhan | Creative Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #050505;
-    --text: #EAEAEA;
-    --muted: #666666;
-    --accent: #D4AF37; /* Editorial Gold */
-    --line: rgba(255, 255, 255, 0.1);
-  }
-
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    background: var(--bg);
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    line-height: 1.6;
-    overflow-x: hidden;
-    cursor: none; /* Hide default cursor */
-  }
-
-  /* --- PRELOADER --- */
-  #preloader {
-    position: fixed;
-    inset: 0;
-    background: var(--bg);
-    z-index: 10000;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 40px;
-    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-  }
-  #preloader.hide {
-    transform: translateY(-100%);
-  }
-  .loader-text {
-    font-family: 'Syne', sans-serif;
-    font-size: 8vw;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--text);
-  }
-
-  /* --- CUSTOM CURSOR (DIFFERENCE BLEND) --- */
-  .cursor-dot {
-    position: fixed;
-    top: 0; left: 0;
-    width: 12px; height: 12px;
-    background: white;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s;
-  }
-  .cursor-follower {
-    position: fixed;
-    top: 0; left: 0;
-    width: 40px; height: 40px;
-    border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s linear, width 0.3s, height 0.3s, background 0.3s;
-  }
-  body:hover .cursor-dot { opacity: 1; }
-
-  /* --- NOISE --- */
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9000;
-  }
-
-  /* --- NAVIGATION --- */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    padding: 32px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    mix-blend-mode: difference;
-  }
-  .logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
-    text-decoration: none;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-  }
-  .nav-links {
-    display: flex;
-    gap: 40px;
-  }
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    position: relative;
-    overflow: hidden;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 1px;
-    background: white;
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .nav-links a:hover::after {
-    transform: translateX(0);
-  }
-
-  /* --- HERO SECTION --- */
-  header {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 48px;
-    position: relative;
-  }
-  .hero-meta {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--muted);
-    margin-bottom: 24px;
-    display: flex;
-    gap: 24px;
-    align-items: center;
-  }
-  .hero-meta span { display: flex; align-items: center; gap: 8px; }
-  .pulse-dot {
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); } 70% { box-shadow: 0 0 0 10px rgba(212,175,55,0); } 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); } }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aksh Chauhan | Software Engineer</title>
   
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(60px, 12vw, 180px);
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-  }
-  .hero-title .line-2 {
-    display: block;
-    margin-left: 10vw;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--text);
-    transition: color 0.5s;
-  }
-  .hero-title .line-2:hover { color: var(--text); }
-  .hero-title .italic {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-weight: 400;
-    text-transform: lowercase;
-    -webkit-text-stroke: 0;
-    color: var(--accent);
-  }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+    
+    body {
+      background-color: #0a0a0a;
+      color: #f0f0f0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
 
-  .hero-desc {
-    margin-top: 48px;
-    max-width: 480px;
-    font-size: 15px;
-    color: #999;
-    margin-left: 10vw;
-  }
+    h1, h2, h3, h4 {
+      font-family: 'Syncopate', sans-serif;
+      text-transform: uppercase;
+    }
 
-  /* --- INFINITE MARQUEE --- */
-  .marquee-wrapper {
-    padding: 40px 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    overflow: hidden;
-    background: var(--bg);
-    display: flex;
-    white-space: nowrap;
-  }
-  .marquee {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--muted);
-    display: flex;
-    animation: scrollText 25s linear infinite;
-  }
-  .marquee span { margin-right: 40px; }
-  .marquee span i {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    color: var(--text);
-    -webkit-text-stroke: 0;
-  }
-  @keyframes scrollText { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4500;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, background-color 0.3s;
+      mix-blend-mode: difference;
+    }
 
-  /* --- LAYOUT SECTIONS --- */
-  section {
-    padding: 160px 48px;
-    max-width: 1600px;
-    margin: 0 auto;
-  }
-  .section-header {
-    margin-bottom: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-  .sec-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(40px, 6vw, 80px);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -2px;
-  }
-  .sec-num {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 48px;
-    color: var(--accent);
-  }
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5vw;
+      position: relative;
+    }
+    
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 10rem);
+      line-height: 0.9;
+      font-weight: 700;
+      letter-spacing: -2px;
+      z-index: 2;
+    }
+    
+    .hero-title span {
+      display: block;
+      color: #ff4500;
+    }
 
-  /* --- EDITORIAL LISTS (EXPERIENCE & PROJECTS) --- */
-  .editorial-list {
-    border-top: 1px solid var(--line);
-  }
-  .list-item {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--line);
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 40px;
-    position: relative;
-    cursor: pointer;
-    transition: background 0.4s;
-    text-decoration: none;
-    color: inherit;
-  }
-  .list-item:hover {
-    background: rgba(255,255,255,0.02);
-  }
-  .item-meta {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-  }
-  .item-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    transition: transform 0.4s;
-  }
-  .list-item:hover .item-title {
-    transform: translateX(20px);
-    color: var(--accent);
-  }
-  .item-desc {
-    color: #888;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-top: 16px;
-    max-width: 500px;
-  }
-  .item-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: flex-start;
-    justify-content: flex-end;
-  }
-  .tag {
-    border: 1px solid var(--muted);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    text-transform: uppercase;
-  }
+    .hero-subtitle {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      max-width: 600px;
+      font-weight: 300;
+      line-height: 1.6;
+    }
 
-  /* --- BENTO SKILLS --- */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  .skill-box {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--line);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    aspect-ratio: 1;
-    transition: all 0.4s;
-  }
-  .skill-box:hover {
-    background: rgba(212,175,55,0.05);
-    border-color: rgba(212,175,55,0.3);
-  }
-  .skill-box h3 {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 32px;
-    font-weight: 400;
-    margin-bottom: 24px;
-    color: var(--text);
-  }
-  .skill-list {
-    list-style: none;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 2;
-  }
+    /* Marquee / Scrolling Banner */
+    .marquee {
+      width: 100%;
+      background: #ff4500;
+      color: #0a0a0a;
+      padding: 1rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      display: flex;
+      font-family: 'Syncopate', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 15s linear infinite;
+    }
 
-  /* --- FOOTER / CONTACT --- */
-  footer {
-    padding: 160px 48px 48px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .footer-cta {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(60px, 15vw, 240px);
-    line-height: 0.8;
-    letter-spacing: -0.05em;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--text);
-    margin-bottom: 80px;
-    transition: color 0.4s;
-    text-decoration: none;
-    display: inline-block;
-  }
-  .footer-cta:hover {
-    color: var(--text);
-  }
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid var(--line);
-    padding-top: 32px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-  }
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
 
-  /* --- REVEAL ANIMATIONS --- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    /* Projects Grid Section */
+    .projects-section {
+      padding: 0 5vw;
+      margin-bottom: 10rem;
+    }
 
-  /* --- RESPONSIVE --- */
-  @media (max-width: 1024px) {
-    .list-item { grid-template-columns: 1fr; gap: 16px; }
-    .item-tags { justify-content: flex-start; }
-    .hero-title .line-2 { margin-left: 0; }
-    .hero-desc { margin-left: 0; }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    nav { padding: 24px; }
-    header, section { padding: 100px 24px; }
-    .nav-links { display: none; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .skill-box { aspect-ratio: auto; min-height: 250px; }
-  }
-</style>
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 15px;
+      padding: 2.5rem;
+      position: relative;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 350px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      border-color: #ff4500;
+    }
+
+    .project-num {
+      font-family: 'Syncopate', sans-serif;
+      color: #ff4500;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .project-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-family: 'Syncopate', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .project-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #aaa;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-tag {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #444;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ddd;
+    }
+
+    .project-link {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: transparent;
+      color: #ff4500;
+      border: 1px solid #ff4500;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+      align-self: flex-start;
+    }
+
+    .project-card:hover .project-link {
+      background: #ff4500;
+      color: #000;
+    }
+
+    /* Footer */
+    .footer {
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      text-align: center;
+      border-top: 1px solid #222;
+    }
+
+    .footer h2 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer a {
+      color: #ff4500;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.3s;
+      margin: 0 1rem;
+    }
+
+    .footer a:hover {
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="loader-text" id="loaderText">0%</div>
-</div>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
 
-<!-- MAGNETIC CURSOR -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-follower" id="cursorFollower"></div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-title">
+      AKSH <span>CHAUHAN</span>
+    </div>
+    <div class="hero-subtitle">
+      Software engineer and M.S. Software Engineering graduate building full-stack, cloud-native, and distributed applications. Specializing in reliable backend systems and AI-enabled workflows.
+    </div>
+  </section>
 
-<!-- NAVIGATION -->
-<nav>
-  <a href="#" class="logo">AC.</a>
-  <div class="nav-links">
-    <a href="#work" class="magnetic" data-strength="20">Experience</a>
-    <a href="#projects" class="magnetic" data-strength="20">Projects</a>
-    <a href="#skills" class="magnetic" data-strength="20">Skills</a>
-    <a href="mailto:akshrajesh9203@gmail.com" class="magnetic" data-strength="20">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header id="hero">
-  <div class="hero-meta reveal">
-    <span><div class="pulse-dot"></div> Available for Roles</span>
-    <span>📍 Tempe, Arizona</span>
-  </div>
-  <h1 class="hero-title reveal" style="transition-delay: 0.1s;">
-    Aksh <br>
-    <span class="line-2"><span class="italic">Chauhan</span></span>
-  </h1>
-  <p class="hero-desc reveal" style="transition-delay: 0.2s;">
-    Software engineer and M.S. Software Engineering graduate focused on building full-stack, cloud-native, and distributed applications. Specializing in reliable backend systems and AI-enabled workflows.
-  </p>
-</header>
-
-<!-- INFINITE MARQUEE -->
-<div class="marquee-wrapper">
+  <!-- Marquee -->
   <div class="marquee">
-    <span>SOFTWARE ENGINEER <i>✦</i> CLOUD ARCHITECT <i>✦</i> DISTRIBUTED SYSTEMS <i>✦</i> AWS SPECIALIST <i>✦</i> AI PIPELINES <i>✦</i> SOFTWARE ENGINEER <i>✦</i> CLOUD ARCHITECT <i>✦</i> DISTRIBUTED SYSTEMS <i>✦</i> AWS SPECIALIST <i>✦</i> AI PIPELINES <i>✦</i></span>
+    <span>JAVA • PYTHON • C++ • AWS • DISTRIBUTED SYSTEMS • REACT • CLOUD ARCHITECTURE • EVENT-DRIVEN •</span>
   </div>
-</div>
 
-<!-- EXPERIENCE -->
-<section id="work">
-  <div class="section-header reveal">
-    <h2 class="sec-title">Experience</h2>
-    <div class="sec-num">01</div>
-  </div>
-  <div class="editorial-list">
-    
-    <div class="list-item reveal">
-      <div class="item-meta">
-        <div>MindSpark</div>
-        <div style="margin-top: 8px;">Jun 2026 — Present</div>
-      </div>
-      <div>
-        <h3 class="item-title">Software Developer</h3>
-        <p class="item-desc">
-          Architected a 3-Lambda serverless onboarding pipeline with Stripe checkout. Engineered an asynchronous EventBridge reconciler across 4 billing states using DynamoDB and SQS DLQs to prevent regression. Deployed 2 serverless GenAI services querying DynamoDB to ground model outputs.
-        </p>
-      </div>
-      <div class="item-tags">
-        <span class="tag">AWS Lambda</span>
-        <span class="tag">DynamoDB</span>
-        <span class="tag">EventBridge</span>
-        <span class="tag">GenAI</span>
-      </div>
+  <!-- Projects Grid -->
+  <section class="projects-section">
+    <div class="section-header">
+      <h2>Selected Works</h2>
+      <div class="project-num">/ 08</div>
     </div>
 
-    <div class="list-item reveal">
-      <div class="item-meta">
-        <div>Axisray</div>
-        <div style="margin-top: 8px;">Jun 2023 — Jun 2024</div>
-      </div>
-      <div>
-        <h3 class="item-title">Software Engineer Intern</h3>
-        <p class="item-desc">
-          Built a full-stack HR platform automating workflows for a 30+ team. Engineered a voice-controlled query interface using AWS Lambda and Alexa Skills Kit. Custom-trained a YOLOv5 fire detection model on 10,000 images achieving 95% accuracy.
-        </p>
-      </div>
-      <div class="item-tags">
-        <span class="tag">Spring Boot</span>
-        <span class="tag">React</span>
-        <span class="tag">AWS Lambda</span>
-        <span class="tag">YOLOv5</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-header reveal">
-    <h2 class="sec-title">Selected <br> Works</h2>
-    <div class="sec-num">02</div>
-  </div>
-  <div class="editorial-list">
-    
-    <a href="https://github.com/aksh9203" target="_blank" class="list-item reveal">
-      <div class="item-meta">AI / Data</div>
-      <div>
-        <h3 class="item-title">Investor Intelligence Platform</h3>
-        <p class="item-desc">Autonomous research agent using Amazon Bedrock and Tool Calling to query SEC EDGAR APIs. Hybrid RAG pipeline with pgvector.</p>
-      </div>
-      <div class="item-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Amazon Bedrock</span>
-        <span class="tag">PostgreSQL</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/aksh9203" target="_blank" class="list-item reveal">
-      <div class="item-meta">Distributed Systems</div>
-      <div>
-        <h3 class="item-title">Saga Travel Booking</h3>
-        <p class="item-desc">Serverless Saga orchestrator using AWS Step Functions, Lambda, and DynamoDB for automated compensating rollbacks across 3 microservices.</p>
-      </div>
-      <div class="item-tags">
-        <span class="tag">Java</span>
-        <span class="tag">Step Functions</span>
-        <span class="tag">DynamoDB</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/aksh9203" target="_blank" class="list-item reveal">
-      <div class="item-meta">Mobile / Architecture</div>
-      <div>
-        <h3 class="item-title">SafeGuard Mobile SOS</h3>
-        <p class="item-desc">Emergency responder matching using Uber H3 hexagonal search engine with pipelined Redis caching and AWS Cognito IaC.</p>
-      </div>
-      <div class="item-tags">
-        <span class="tag">TypeScript</span>
-        <span class="tag">Redis</span>
-        <span class="tag">Uber H3</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/aksh9203" target="_blank" class="list-item reveal">
-      <div class="item-meta">Edge Computing</div>
-      <div>
-        <h3 class="item-title">Hybrid Face Recognition</h3>
-        <p class="item-desc">Queue-depth autoscaling controller for EC2 and AWS IoT Greengrass edge component running MTCNN with MQTT messaging.</p>
-      </div>
-      <div class="item-tags">
-        <span class="tag">AWS EC2</span>
-        <span class="tag">IoT Greengrass</span>
-        <span class="tag">Python</span>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- SKILLS & EDUCATION (BENTO GRID) -->
-<section id="skills">
-  <div class="section-header reveal">
-    <h2 class="sec-title">Expertise & <br> Education</h2>
-    <div class="sec-num">03</div>
-  </div>
-  <div class="skills-grid">
-    
-    <div class="skill-box reveal">
-      <h3>Languages</h3>
-      <ul class="skill-list">
-        <li>Java</li>
-        <li>Python</li>
-        <li>C / C++ / C#</li>
-        <li>JavaScript / TypeScript</li>
-        <li>SQL</li>
-      </ul>
-    </div>
-
-    <div class="skill-box reveal" style="transition-delay: 0.1s;">
-      <h3>Cloud & Cloud-Native</h3>
-      <ul class="skill-list">
-        <li>AWS (Lambda, SQS, EC2, S3)</li>
-        <li>AWS Step Functions & EventBridge</li>
-        <li>GCP (Cloud Run, Spanner)</li>
-        <li>Docker & Terraform</li>
-      </ul>
-    </div>
-
-    <div class="skill-box reveal" style="transition-delay: 0.2s;">
-      <h3>Databases & AI</h3>
-      <ul class="skill-list">
-        <li>PostgreSQL / MySQL</li>
-        <li>DynamoDB / MongoDB</li>
-        <li>Redis / Oracle</li>
-        <li>Amazon Bedrock / RAG</li>
-      </ul>
-    </div>
-
-    <div class="skill-box reveal" style="transition-delay: 0.3s; background: rgba(212,175,55,0.05);">
-      <h3>Education</h3>
-      <ul class="skill-list">
-        <li style="color: var(--text); font-weight: bold; margin-bottom: 4px;">M.S. Software Engineering</li>
-        <li style="margin-bottom: 16px;">Arizona State University<br>GPA: 3.73/4.00</li>
-        <li style="color: var(--text); font-weight: bold; margin-bottom: 4px;">B.E. Computer Engineering</li>
-        <li>Gujarat Technological University<br>Score: 8.33/10</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <a href="mailto:akshrajesh9203@gmail.com" class="footer-cta magnetic" data-strength="40">SAY HELLO</a>
-  <div class="footer-bottom">
-    <div>© 2026 Aksh Chauhan</div>
-    <div style="display: flex; gap: 24px;">
-      <a href="https://linkedin.com/in/aksh9" target="_blank" style="color: var(--muted); text-decoration: none;">LinkedIn</a>
-      <a href="https://github.com/aksh9203" target="_blank" style="color: var(--muted); text-decoration: none;">GitHub</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // Preloader Logic
-  const loaderText = document.getElementById('loaderText');
-  const preloader = document.getElementById('preloader');
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 10) + 5;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      setTimeout(() => {
-        preloader.classList.add('hide');
-      }, 300);
-    }
-    loaderText.innerText = progress + '%';
-  }, 50);
-
-  // Custom Cursor Logic
-  const cursorDot = document.getElementById('cursorDot');
-  const cursorFollower = document.getElementById('cursorFollower');
-  let mouseX = 0, mouseY = 0;
-  let followerX = 0, followerY = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top = mouseY + 'px';
-  });
-
-  // Follower ease loop
-  function animateCursor() {
-    followerX += (mouseX - followerX) * 0.15;
-    followerY += (mouseY - followerY) * 0.15;
-    cursorFollower.style.left = followerX + 'px';
-    cursorFollower.style.top = followerY + 'px';
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
-
-  // Magnetic Hover Effects
-  const magnetics = document.querySelectorAll('.magnetic, .list-item');
-  magnetics.forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-      const rect = btn.getBoundingClientRect();
-      const h = rect.width / 2;
-      const v = rect.height / 2;
-      const x = e.clientX - rect.left - h;
-      const y = e.clientY - rect.top - v;
-      const strength = btn.dataset.strength || 10;
+    <div class="projects-grid">
       
-      btn.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
-      cursorFollower.style.width = '60px';
-      cursorFollower.style.height = '60px';
-      cursorFollower.style.background = 'rgba(255,255,255,0.1)';
+      <!-- Project 1 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 01</div>
+        <div class="project-title">AI-Powered Investor Intelligence</div>
+        <div class="project-desc">Autonomous research agent using Amazon Bedrock and Tool Calling, fetching SEC EDGAR APIs. Engineered a hybrid RAG pipeline using pgvector and time-series metrics for real-time WebSocket analysis.</div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Amazon Bedrock</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">FastAPI</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 02</div>
+        <div class="project-title">SafeGuard Mobile SOS</div>
+        <div class="project-desc">Real-time emergency responder matching. Built using Uber's H3 geospatial hexagonal indexing, WebSockets for live proximity tracking, and pipelined Redis caching.</div>
+        <div class="project-tags">
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Redis</span>
+          <span class="project-tag">Uber H3</span>
+          <span class="project-tag">Terraform</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 03</div>
+        <div class="project-title">Travel Booking Platform</div>
+        <div class="project-desc">Serverless hybrid Saga model on AWS Step Functions + API Gateway + DynamoDB. Eliminated dual-write errors via Transactional Outbox pattern, Idempotency keys, and DLQs.</div>
+        <div class="project-tags">
+          <span class="project-tag">AWS</span>
+          <span class="project-tag">Spring Boot</span>
+          <span class="project-tag">DynamoDB</span>
+          <span class="project-tag">SES</span>
+          <span class="project-tag">Saga</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 04</div>
+        <div class="project-title">Hybrid Edge-Cloud Face Recognition</div>
+        <div class="project-desc">Elastic face recognition on AWS EC2 + S3 + SQS with custom autoscaling up to 15 instances. IoT Greengrass + Lambda pipeline for local MTCNN detection, reducing cloud latency via MQTT messaging.</div>
+        <div class="project-tags">
+          <span class="project-tag">AWS</span>
+          <span class="project-tag">IoT Greengrass</span>
+          <span class="project-tag">MTCNN</span>
+          <span class="project-tag">SQS</span>
+          <span class="project-tag">Lambda</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 05</div>
+        <div class="project-title">Movie Recommendation Engine</div>
+        <div class="project-desc">End-to-end scalable engine with Java microservices on Google Cloud Run. GCP pipeline processes a 50k-record dataset asynchronously via Pub/Sub into Cloud Spanner.</div>
+        <div class="project-tags">
+          <span class="project-tag">GCP</span>
+          <span class="project-tag">Java</span>
+          <span class="project-tag">Pub/Sub</span>
+          <span class="project-tag">Cloud Spanner</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 06</div>
+        <div class="project-title">Smart Code Editor</div>
+        <div class="project-desc">AI-powered IDE with Flask & Google GenAI SDK. Secure multi-language execution (Python, Java, C++) with real-time syntax highlighting, AI mentor for code explanations and error resolution.</div>
+        <div class="project-tags">
+          <span class="project-tag">Flask</span>
+          <span class="project-tag">Gemini</span>
+          <span class="project-tag">Piston API</span>
+          <span class="project-tag">AI</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+      <!-- Project 7 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 07</div>
+        <div class="project-title">Netflix Clone</div>
+        <div class="project-desc">Netflix-style UI with dynamic movie listings and a fully responsive design. Google Auth via Firebase, React, and React Query for secure, seamless user authentication.</div>
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Firebase</span>
+          <span class="project-tag">React Query</span>
+          <span class="project-tag">Google Auth</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+      <!-- Project 8 -->
+      <div class="project-card hover-target">
+        <div class="project-num">/ 08</div>
+        <div class="project-title">Car Rental Management System</div>
+        <div class="project-desc">Spring Boot CRUD services for real-time car inventory with accurate availability tracking. React interface with dynamic filters and streamlined booking workflows for customers and admins.</div>
+        <div class="project-tags">
+          <span class="project-tag">Spring Boot</span>
+          <span class="project-tag">React</span>
+          <span class="project-tag">Java</span>
+          <span class="project-tag">REST API</span>
+        </div>
+        <a href="https://github.com/Aksh9203?tab=repositories" target="_blank" class="project-link">View Code ↗</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <h2>Let's Connect</h2>
+    <div>
+      <a href="mailto:akshrajesh9203@gmail.com" class="hover-target">Email</a>
+      <a href="https://linkedin.com/in/aksh9" target="_blank" class="hover-target">LinkedIn</a>
+      <a href="https://github.com/aksh9203" target="_blank" class="hover-target">GitHub</a>
+    </div>
+  </footer>
+
+  <!-- Scripts: Lenis (Smooth Scrolling) & GSAP (Animations) -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    // 1. Initialize Lenis for Smooth Scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true
     });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // 2. Custom Cursor Logic
+    const cursor = document.getElementById('cursor');
+    const hoverTargets = document.querySelectorAll('.hover-target, a');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    hoverTargets.forEach(target => {
+      target.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(4)';
+        cursor.style.backgroundColor = '#ffffff';
+      });
+      target.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        cursor.style.backgroundColor = '#ff4500';
+      });
+    });
+
+    // 3. Staggered Reveal Animation for Project Cards
+    gsap.registerPlugin(ScrollTrigger);
     
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = `translate(0px, 0px)`;
-      cursorFollower.style.width = '40px';
-      cursorFollower.style.height = '40px';
-      cursorFollower.style.background = 'transparent';
+    gsap.utils.toArray('.project-card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%", 
+          toggleActions: "play none none reverse"
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        delay: (i % 2) * 0.1 // Slight stagger for adjacent cards
+      });
     });
-  });
-
-  // Scroll Reveal Observer
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-</script>
+  </script>
 </body>
 </html>
