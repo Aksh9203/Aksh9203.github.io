@@ -4,7 +4,6 @@
  */
 
 import { PORTFOLIO } from './data.js';
-import { initSystemsWorkbench } from './workbench.js';
 
 const THEME_KEY = 'aksh_theme';
 
@@ -446,7 +445,6 @@ function initQuickJump() {
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initClock();
-  initSystemsWorkbench();
   initProjects();
   initExperience();
   initAbout();

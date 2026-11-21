@@ -116,80 +116,27 @@
             </div>
           </div>
 
-          <!-- Playable Interactive Systems Workbench -->
-          <div class="workbench-card" id="systems-workbench" aria-label="Interactive backend systems playground">
-            <div class="workbench-header">
-              <span class="workbench-title">Live Systems Playground</span>
-              <span>Click to test real patterns I built</span>
-            </div>
-
-            <div class="workbench-tabs" role="tablist" aria-label="Choose a system simulation">
-              <button type="button" class="sim-tab is-active" role="tab" aria-selected="true" data-sim-tab="saga">01 Saga Rollback</button>
-              <button type="button" class="sim-tab" role="tab" aria-selected="false" data-sim-tab="eventbridge">02 EventBridge</button>
-              <button type="button" class="sim-tab" role="tab" aria-selected="false" data-sim-tab="h3">03 Uber H3 O(1)</button>
-            </div>
-
-            <!-- Sim 1: Distributed Saga Travel Booking -->
-            <div class="sim-panel" role="tabpanel" data-sim-panel="saga">
-              <p class="sim-caption">
-                From my AWS Step Functions Saga project: inject a Payment failure to watch compensating rollbacks cleanly release Hotel &amp; Flight.
-              </p>
-              <div class="sim-controls">
-                <button type="button" class="sim-btn is-accent" id="saga-run-fail">Inject Payment Failure</button>
-                <button type="button" class="sim-btn" id="saga-run-ok">Run Happy Path</button>
+          <!-- Editorial Quick Facts Ledger -->
+          <aside class="hero-facts" aria-label="At a glance">
+            <dl class="facts-list">
+              <div class="fact-row">
+                <dt>Currently</dt>
+                <dd>Software Developer at <strong>MindSpark</strong> (AWS Serverless &amp; GenAI)</dd>
               </div>
-              <div class="saga-track">
-                <div class="sim-node" id="saga-node-flight" data-state="idle">
-                  <span class="sim-node-name">1. Flight</span>
-                  <span class="sim-node-state">IDLE</span>
-                </div>
-                <div class="sim-node" id="saga-node-hotel" data-state="idle">
-                  <span class="sim-node-name">2. Hotel</span>
-                  <span class="sim-node-state">IDLE</span>
-                </div>
-                <div class="sim-node" id="saga-node-payment" data-state="idle">
-                  <span class="sim-node-name">3. Payment</span>
-                  <span class="sim-node-state">IDLE</span>
-                </div>
+              <div class="fact-row">
+                <dt>Previously</dt>
+                <dd>Software Engineer Intern at <strong>Axisray</strong> (Spring Boot, React, CI/CD)</dd>
               </div>
-              <div class="sim-log" id="saga-log" aria-live="polite">
-                <div class="sim-log-line tone-info">Ready. Click "Inject Payment Failure" to watch automated rollback.</div>
+              <div class="fact-row">
+                <dt>Education</dt>
+                <dd>M.S. Software Engineering, <strong>Arizona State University</strong> (May 2026 · 3.73 GPA)</dd>
               </div>
-            </div>
-
-            <!-- Sim 2: MindSpark EventBridge 4-State Reconciler -->
-            <div class="sim-panel" role="tabpanel" data-sim-panel="eventbridge" hidden>
-              <p class="sim-caption">
-                From MindSpark: DynamoDB conditional writes + a 7-day TTL dedupe cache block out-of-order regressions and duplicate Stripe webhooks.
-              </p>
-              <div class="sim-controls">
-                <button type="button" class="sim-btn is-accent" id="eb-advance">Advance State</button>
-                <button type="button" class="sim-btn" id="eb-stale">Send Stale Event</button>
-                <button type="button" class="sim-btn" id="eb-dup">Send Duplicate</button>
-                <button type="button" class="sim-btn" id="eb-reset">Reset</button>
+              <div class="fact-row">
+                <dt>Focus</dt>
+                <dd>Backend Systems · Event-Driven Cloud · Grounded GenAI</dd>
               </div>
-              <div class="eb-track">
-                <div class="eb-step" data-eb-step="0" data-state="done">CHECKOUT</div>
-                <div class="eb-step" data-eb-step="1" data-state="active">PENDING</div>
-                <div class="eb-step" data-eb-step="2" data-state="idle">ACTIVE</div>
-                <div class="eb-step" data-eb-step="3" data-state="idle">SETTLED</div>
-              </div>
-              <div class="sim-log" id="eb-log" aria-live="polite">
-                <div class="sim-log-line tone-info">State: PENDING · Try sending a stale or duplicate event.</div>
-              </div>
-            </div>
-
-            <!-- Sim 3: SafeGuard Uber H3 Hexagonal Lookup -->
-            <div class="sim-panel" role="tabpanel" data-sim-panel="h3" hidden>
-              <p class="sim-caption">
-                From SafeGuard SOS: click any hexagon to trigger an SOS and watch O(1) Redis k-ring lookup lock onto the nearest responder (blue dots).
-              </p>
-              <div class="h3-stage">
-                <svg class="h3-svg" id="h3-grid-svg" viewBox="0 0 330 208" aria-label="Interactive Uber H3 hexagonal grid"></svg>
-                <div class="h3-readout" id="h3-readout" aria-live="polite"></div>
-              </div>
-            </div>
-          </div>
+            </dl>
+          </aside>
         </div>
       </div>
     </section>
