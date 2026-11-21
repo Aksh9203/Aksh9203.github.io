@@ -46,9 +46,15 @@ export function setTheme(mode, { persist = true, announce = false } = {}) {
   }
 
   if (announce) {
+    if (!prefersReducedMotion()) {
+      document.body.classList.remove('theme-hijack');
+      void document.body.offsetWidth;
+      document.body.classList.add('theme-hijack');
+      setTimeout(() => document.body.classList.remove('theme-hijack'), 360);
+    }
     showToast(
       normalized === 'ultron'
-        ? 'ULTRON PROTOCOL ENGAGED // Crimson Tactical Mode'
+        ? 'ULTRON PROTOCOL ENGAGED // Crimson Tactical Override'
         : 'VISION PROTOCOL RESTORED // Synthetic Default Mode'
     );
   }
@@ -187,7 +193,7 @@ export function initAiStatusObserver() {
 
   const statusText = document.getElementById('hud-ai-status-text');
   const statusPill = document.getElementById('hud-ai-status');
-  const navLinks = document.querySelectorAll('.hud-nav-links a[href^="#"]');
+  const navLinks = document.querySelectorAll('.hud-nav-links a[href^="#"], .mind-rail a[href^="#"]');
 
   const setActiveHost = (sectionId) => {
     const host = SITE_DATA.aiHosts[sectionId] || SITE_DATA.aiHosts.hero;

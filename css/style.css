@@ -1,7 +1,12 @@
 /* ==========================================================================
-   AKSH CHAUHAN — VISIONQUEST HUD DESIGN SYSTEM
-   Dark HUD base · Thin-line geometry · Monospace telemetry · Subtle scanlines
-   Animations strictly use transform and opacity for 60fps mobile performance.
+   AKSH CHAUHAN — VISIONQUEST BESPOKE SYNTHETIC NETWORK HUD
+   5 Distinct AI Chambers:
+     01 J.A.R.V.I.S. (Holographic Workshop & Live 3D Neural Sphere)
+     02 VISION       (Warm Synthezoid Chamber · Mind Stone Altar · Editorial Serif)
+     03 F.R.I.D.A.Y. (Tactical Flight HUD · Powered Circuit Conduit)
+     04 E.D.I.T.H.   (AR Visor Optics · Live Crosshair · Inline Schematic Strips)
+     05 ULTRON       (Vibranium Forge · Interactive Neural Constellation SVG)
+     06 COMMS        (Encrypted Stark Uplink Console & Signal Waveform)
    ========================================================================== */
 
 *,
@@ -37,7 +42,7 @@ body {
   position: relative;
 }
 
-/* Subtle tactical grid + scanline atmosphere (pure CSS, zero repaints) */
+/* Precision holographic coordinate grid + subtle CRT optical scanlines */
 body::before {
   content: '';
   position: fixed;
@@ -54,7 +59,23 @@ body::before {
       var(--scanline) 3px,
       var(--scanline) 4px
     );
-  background-size: 48px 48px, 48px 48px, 100% 4px;
+  background-size: 56px 56px, 56px 56px, 100% 4px;
+}
+
+/* Brief Ultron hijack pulse when toggling themes */
+body.theme-hijack::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 4800;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.34), rgba(5, 8, 16, 0.72));
+  animation: hijack-flash 320ms var(--ease-out) forwards;
+}
+
+@keyframes hijack-flash {
+  0% { opacity: 0.9; }
+  100% { opacity: 0; }
 }
 
 img {
@@ -63,18 +84,20 @@ img {
   height: auto;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 a {
   color: inherit;
 }
 
-/* Accessible Focus States (WCAG 2.1 AA) */
 :focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
-/* Skip Link */
 .skip-link {
   position: fixed;
   top: -100px;
@@ -86,9 +109,8 @@ a {
   font-weight: 700;
   font-size: 0.85rem;
   padding: 10px 16px;
-  border-radius: var(--radius-sm);
+  clip-path: var(--chamfer-sm);
   text-decoration: none;
-  transition: transform var(--dur-fast) var(--ease-out);
 }
 
 .skip-link:focus {
@@ -107,34 +129,52 @@ a {
   border: 0;
 }
 
-/* Container */
 .hud-container {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
   position: relative;
   z-index: 2;
 }
 
 /* ==========================================================================
-   1. PERSISTENT GLOBAL HUD HEADER & NAVIGATION
+   1. PERSISTENT GLOBAL HUD HEADER & RIGHT-EDGE MIND-CHANNEL RAIL
    ========================================================================== */
 .hud-header {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: var(--bg-glass);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Thin energetic accent hairline across top edge */
+.hud-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ai-jarvis),
+    var(--ai-vision-gold),
+    var(--ai-ultron),
+    transparent
+  );
+  opacity: 0.72;
 }
 
 .hud-nav-inner {
   max-width: var(--max-width);
   margin: 0 auto;
   min-height: var(--nav-height);
-  padding: 8px 24px;
+  padding: 8px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -146,31 +186,32 @@ a {
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   flex-shrink: 0;
 }
 
 .brand-hex {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--ai-jarvis-border);
-  background: var(--ai-jarvis-soft);
-  color: var(--accent-primary);
+  width: 34px;
+  height: 34px;
+  clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  background: linear-gradient(135deg, var(--ai-jarvis), var(--ai-vision-gold));
+  color: #050810;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
 }
 
 .hud-nav-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   list-style: none;
 }
 
@@ -178,19 +219,35 @@ a {
   text-decoration: none;
   color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   padding: 7px 11px;
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+  position: relative;
+  transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+
+.hud-nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  right: 11px;
+  bottom: 2px;
+  height: 2px;
+  background: var(--accent-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 
 .hud-nav-links a:hover,
 .hud-nav-links a.is-active {
   color: var(--text-primary);
-  background: rgba(var(--accent-primary-rgb), 0.12);
-  border-color: rgba(var(--accent-primary-rgb), 0.32);
+}
+
+.hud-nav-links a.is-active::after,
+.hud-nav-links a:hover::after {
+  transform: scaleX(1);
 }
 
 .hud-controls {
@@ -200,19 +257,18 @@ a {
   flex-shrink: 0;
 }
 
-/* Active AI Host Status Pill */
 .hud-ai-status {
   --host-accent: var(--ai-jarvis);
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 5px 10px;
-  border-radius: var(--radius-pill);
+  padding: 5px 11px;
+  clip-path: var(--chamfer-sm);
   border: 1px solid var(--border-strong);
   background: var(--bg-elevated);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+  font-size: 0.69rem;
+  letter-spacing: 0.08em;
   color: var(--text-primary);
   white-space: nowrap;
 }
@@ -222,13 +278,13 @@ a {
   height: 7px;
   border-radius: 50%;
   background: var(--host-accent);
-  box-shadow: 0 0 10px var(--host-accent);
-  animation: pulse-opacity 2.2s ease-in-out infinite;
+  box-shadow: 0 0 12px var(--host-accent);
+  animation: pulse-opacity 2s ease-in-out infinite;
 }
 
 @keyframes pulse-opacity {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.45; transform: scale(0.85); }
+  50% { opacity: 0.4; transform: scale(0.8); }
 }
 
 .hud-icon-btn {
@@ -236,12 +292,13 @@ a {
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   border: 1px solid var(--border-strong);
   background: var(--bg-elevated);
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
   cursor: pointer;
   text-decoration: none;
   transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease, transform var(--dur-fast) ease;
@@ -255,9 +312,9 @@ a {
 
 .hud-icon-btn kbd {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   padding: 1px 5px;
-  border-radius: 4px;
+  border-radius: 3px;
   background: rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
 }
@@ -266,15 +323,17 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 12px;
-  border-radius: var(--radius-sm);
+  padding: 7px 14px;
+  clip-path: var(--chamfer-sm);
   background: var(--accent-primary);
-  color: #050911;
+  color: #050810;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid transparent;
+  border: none;
   transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease;
 }
 
@@ -284,7 +343,7 @@ a {
 }
 
 .hud-stones-btn {
-  border-color: rgba(245, 192, 74, 0.45);
+  border-color: rgba(246, 196, 83, 0.5);
   color: var(--ai-vision-gold);
 }
 
@@ -295,7 +354,7 @@ a {
 .mobile-nav-drawer {
   border-top: 1px solid var(--border-subtle);
   background: var(--bg-elevated);
-  padding: 14px 20px 18px;
+  padding: 14px 18px 18px;
 }
 
 .mobile-nav-drawer ul {
@@ -308,12 +367,11 @@ a {
 
 .mobile-nav-drawer a {
   display: block;
-  padding: 9px 12px;
-  border-radius: var(--radius-sm);
+  padding: 9px 11px;
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   text-decoration: none;
   color: var(--text-primary);
 }
@@ -324,6 +382,65 @@ a {
   flex-wrap: wrap;
 }
 
+/* Right-Edge Neural Mind-Channel Rail (Desktop Telemetry HUD) */
+.mind-rail {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.mind-rail a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  padding: 3px 4px;
+  transition: color var(--dur-fast) ease;
+}
+
+.mind-rail-label {
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity var(--dur-fast) ease, transform var(--dur-fast) ease;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  padding: 2px 7px;
+}
+
+.mind-rail a:hover .mind-rail-label,
+.mind-rail a:focus-visible .mind-rail-label,
+.mind-rail a.is-active .mind-rail-label {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--text-primary);
+}
+
+.mind-rail-pip {
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-base);
+  transform: rotate(45deg);
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+
+.mind-rail a.is-active .mind-rail-pip {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: rotate(45deg) scale(1.25);
+  box-shadow: 0 0 12px var(--accent-primary);
+}
+
 /* ==========================================================================
    2. BOOT OVERLAY (First Visit Only, Non-Blocking, <= 1.8s)
    ========================================================================== */
@@ -331,8 +448,8 @@ a {
   position: fixed;
   inset: 0;
   z-index: 4000;
-  background: rgba(5, 9, 17, 0.92);
-  backdrop-filter: blur(8px);
+  background: rgba(4, 7, 14, 0.94);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -351,12 +468,12 @@ a {
 }
 
 .boot-panel {
-  max-width: 460px;
+  max-width: 480px;
   width: 100%;
   border: 1px solid var(--ai-jarvis-border);
   background: var(--bg-elevated);
-  border-radius: var(--radius-md);
-  padding: 28px;
+  clip-path: var(--chamfer-md);
+  padding: 30px;
   box-shadow: var(--shadow-hud), var(--shadow-glow);
   font-family: var(--font-mono);
 }
@@ -364,8 +481,8 @@ a {
 .boot-kicker {
   color: var(--ai-jarvis);
   font-size: 0.74rem;
-  letter-spacing: 0.14em;
-  margin-bottom: 12px;
+  letter-spacing: 0.16em;
+  margin-bottom: 14px;
 }
 
 .boot-lines {
@@ -373,20 +490,19 @@ a {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .boot-lines li::before {
-  content: '> ';
+  content: '[OK] ';
   color: var(--ai-jarvis);
 }
 
 .boot-bar {
   height: 3px;
   background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-pill);
   overflow: hidden;
   margin-bottom: 18px;
 }
@@ -394,7 +510,7 @@ a {
 .boot-bar-fill {
   height: 100%;
   width: 100%;
-  background: var(--ai-jarvis);
+  background: linear-gradient(90deg, var(--ai-jarvis), var(--ai-vision-gold));
   transform-origin: left center;
   animation: boot-progress 1.65s var(--ease-out) forwards;
 }
@@ -405,20 +521,38 @@ a {
 }
 
 /* ==========================================================================
-   3. SHARED SECTION SCAFFOLDING & AI HOST HEADERS
+   3. SHARED SECTION SCAFFOLDING & TACTICAL BUTTONS
    ========================================================================== */
 .hud-section {
-  padding: 84px 0;
+  padding: 96px 0;
   border-bottom: 1px solid var(--border-subtle);
   position: relative;
+}
+
+/* Dramatic section-top coordinate divider */
+.section-coord-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.section-coord-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--section-border, var(--border-strong)), transparent);
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 18px;
+  margin-bottom: 44px;
   flex-wrap: wrap;
 }
 
@@ -427,46 +561,50 @@ a {
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.11em;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--section-border, var(--border-strong));
+  padding: 5px 14px;
+  clip-path: var(--chamfer-sm);
+  border-left: 3px solid var(--section-accent, var(--accent-primary));
   background: var(--section-soft, var(--bg-surface));
   color: var(--section-accent, var(--accent-primary));
   margin-bottom: 12px;
 }
 
 .section-title {
-  font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.1rem);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   color: var(--text-primary);
 }
 
 .section-desc {
-  margin-top: 8px;
+  margin-top: 10px;
   color: var(--text-secondary);
-  max-width: 660px;
+  max-width: 650px;
   font-size: 1rem;
 }
 
-/* Buttons */
+/* Chamfered Stark-Tech Buttons */
 .btn-hud-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 20px;
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
+  padding: 11px 18px;
+  clip-path: var(--chamfer-sm);
+  border: none;
   background: var(--accent-primary);
-  color: #050911;
+  color: #050810;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease;
@@ -482,14 +620,15 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 20px;
-  border-radius: var(--radius-sm);
+  padding: 10px 16px;
   border: 1px solid var(--border-strong);
-  background: var(--bg-surface);
+  background: rgba(15, 23, 38, 0.85);
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease, transform var(--dur-fast) ease;
@@ -506,14 +645,14 @@ a {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 16px;
-  border-radius: var(--radius-sm);
+  padding: 10px 14px;
   border: 1px solid var(--border-subtle);
   background: transparent;
   color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
   cursor: pointer;
   transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
@@ -533,12 +672,11 @@ a {
 
 .tech-tag {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.71rem;
   color: var(--text-secondary);
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid var(--border-subtle);
-  padding: 4px 9px;
-  border-radius: var(--radius-xs);
+  padding: 3px 9px;
 }
 
 /* Subtle Hidden Infinity Stone Triggers */
@@ -552,7 +690,7 @@ a {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: 0.52;
+  opacity: 0.56;
   transition: opacity var(--dur-fast) ease, transform var(--dur-fast) ease, border-color var(--dur-fast) ease;
 }
 
@@ -560,12 +698,12 @@ a {
 .stone-trigger:focus-visible,
 .stone-trigger.is-collected {
   opacity: 1;
-  transform: scale(1.16);
+  transform: scale(1.2);
 }
 
 .stone-trigger.is-collected {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .stone-trigger svg {
@@ -574,30 +712,33 @@ a {
 }
 
 /* ==========================================================================
-   4. HERO SECTION — J.A.R.V.I.S.
+   4. CHAMBER 01: HERO — J.A.R.V.I.S. (Holographic Workshop + 3D Neural Orb)
    ========================================================================== */
 .hero-section {
   --section-accent: var(--ai-jarvis);
   --section-soft: var(--ai-jarvis-soft);
   --section-border: var(--ai-jarvis-border);
-  padding: 64px 0 84px;
+  padding: 52px 0 88px;
+  background:
+    radial-gradient(ellipse 60% 55% at 78% 36%, rgba(var(--accent-primary-rgb), 0.14), transparent 70%),
+    radial-gradient(ellipse 40% 40% at 15% 80%, rgba(var(--accent-secondary-rgb), 0.06), transparent 65%);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 44px;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: 36px;
   align-items: center;
 }
 
 .hero-telemetry {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 18px;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   color: var(--text-secondary);
 }
 
@@ -606,9 +747,10 @@ a {
   align-items: center;
   gap: 7px;
   padding: 5px 11px;
-  border-radius: var(--radius-pill);
   border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
+  border-left: 2px solid var(--ai-jarvis);
+  background: rgba(10, 16, 28, 0.88);
+  white-space: nowrap;
 }
 
 .telemetry-chip .clock-val {
@@ -618,25 +760,32 @@ a {
 
 .jarvis-greeting {
   font-family: var(--font-mono);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--ai-jarvis);
-  min-height: 1.5em;
-  margin-bottom: 14px;
-  letter-spacing: 0.02em;
+  height: 1.65em;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  overflow: hidden;
 }
 
 .hero-name {
-  font-size: clamp(2.5rem, 5.4vw, 4.25rem);
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5.4vw, 4.7rem);
   font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.03em;
+  line-height: 1.04;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 32px rgba(var(--accent-primary-rgb), 0.18);
 }
 
 .hero-role {
-  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
-  font-weight: 500;
+  font-family: var(--font-mono);
+  font-size: clamp(0.84rem, 1.6vw, 1.12rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--ai-vision-gold);
   margin-bottom: 18px;
 }
@@ -644,7 +793,7 @@ a {
 .hero-summary {
   font-size: 1.06rem;
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: 580px;
   margin-bottom: 28px;
 }
 
@@ -652,16 +801,16 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .hero-quick-links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-secondary);
 }
 
@@ -677,11 +826,11 @@ a {
   border-color: var(--accent-primary);
 }
 
-/* J.A.R.V.I.S. Concentric HUD Rings Visual */
+/* Interactive 3D Neural Sphere + Gimbal Rings Stage */
 .jarvis-ring-stage {
   position: relative;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   display: flex;
@@ -689,21 +838,31 @@ a {
   justify-content: center;
 }
 
+.jarvis-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
 .jarvis-rings-svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .ring-spin-slow {
-  transform-origin: 180px 180px;
-  animation: spin-cw 36s linear infinite;
+  transform-origin: 200px 200px;
+  animation: spin-cw 42s linear infinite;
 }
 
 .ring-spin-reverse {
-  transform-origin: 180px 180px;
-  animation: spin-ccw 24s linear infinite;
+  transform-origin: 200px 200px;
+  animation: spin-ccw 26s linear infinite;
 }
 
 @keyframes spin-cw {
@@ -714,164 +873,135 @@ a {
   to { transform: rotate(-360deg); }
 }
 
-.jarvis-core-readout {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 20px;
-  border-radius: 50%;
-  width: 62%;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(7, 11, 18, 0.88) 72%);
-  border: 1px solid var(--ai-jarvis-border);
-}
-
-.core-label {
+.jarvis-stage-tag {
+  position: absolute;
+  z-index: 3;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.14em;
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
   color: var(--ai-jarvis);
-  margin-bottom: 6px;
+  background: rgba(5, 8, 16, 0.84);
+  border: 1px solid var(--ai-jarvis-border);
+  padding: 3px 8px;
+  pointer-events: none;
 }
 
-.core-stat {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.25;
-}
+.tag-top-left { top: 8px; left: 4px; }
+.tag-bottom-right { bottom: 8px; right: 4px; color: var(--ai-vision-gold); border-color: var(--ai-vision-border); }
 
-.core-sub {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  margin-top: 6px;
-}
-
+/* Chamfered Proof Telemetry Strip */
 .hero-metrics-strip {
-  margin-top: 48px;
+  margin-top: 52px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 
 .hero-stat-card {
-  padding: 16px 18px;
-  border-radius: var(--radius-md);
+  position: relative;
+  padding: 18px 20px;
+  background: linear-gradient(155deg, rgba(15, 23, 38, 0.92), rgba(7, 11, 20, 0.95));
   border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
+  border-top: 2px solid var(--ai-jarvis);
+  clip-path: var(--chamfer-sm);
 }
 
 .hero-stat-value {
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ai-jarvis);
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .hero-stat-label {
   font-size: 0.82rem;
   color: var(--text-secondary);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 /* ==========================================================================
-   5. ABOUT SECTION — VISION (Crimson · Synth Emerald · Mind Stone Gold)
+   5. CHAMBER 02: ABOUT — VISION (Warm Synthezoid Chamber & Mind Stone Altar)
    ========================================================================== */
 .vision-section {
   --section-accent: var(--ai-vision-gold);
   --section-soft: var(--ai-vision-soft);
   --section-border: var(--ai-vision-border);
   background:
-    radial-gradient(circle at 12% 20%, rgba(224, 90, 109, 0.08), transparent 45%),
-    radial-gradient(circle at 88% 78%, rgba(45, 212, 160, 0.07), transparent 45%);
+    radial-gradient(ellipse 55% 55% at 80% 35%, rgba(246, 196, 83, 0.11), transparent 65%),
+    radial-gradient(ellipse 55% 55% at 12% 22%, rgba(232, 93, 117, 0.12), transparent 60%),
+    radial-gradient(ellipse 45% 45% at 24% 88%, rgba(45, 212, 160, 0.08), transparent 60%),
+    var(--ai-vision-bg);
 }
 
 .vision-layout {
   display: grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: 36px;
+  grid-template-columns: 1.28fr 0.72fr;
+  gap: 40px;
   align-items: start;
 }
 
-.vision-story-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--ai-vision-border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
+.vision-editorial-block {
   position: relative;
-}
-
-.vision-story-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 28px;
-  right: 28px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--ai-vision-crimson),
-    var(--ai-vision-gold),
-    var(--ai-vision-emerald)
-  );
+  padding-left: 26px;
+  border-left: 2px solid var(--ai-vision-crimson);
 }
 
 .vision-lead {
-  font-size: clamp(1.3rem, 2.2vw, 1.65rem);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  line-height: 1.3;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.55rem, 2.8vw, 2.25rem);
+  font-weight: 400;
+  color: var(--ai-vision-gold);
+  margin-bottom: 24px;
+  line-height: 1.25;
 }
 
 .vision-para {
   color: var(--text-secondary);
-  margin-bottom: 16px;
-  font-size: 1rem;
+  margin-bottom: 18px;
+  font-size: 1.03rem;
 }
 
 .vision-looking-for {
-  margin-top: 20px;
-  padding: 16px 18px;
+  margin-top: 22px;
+  padding: 18px 20px;
   border-left: 3px solid var(--ai-vision-emerald);
-  background: rgba(45, 212, 160, 0.08);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: linear-gradient(90deg, rgba(45, 212, 160, 0.12), rgba(45, 212, 160, 0.02));
   color: var(--text-primary);
-  font-size: 0.96rem;
+  font-size: 0.98rem;
 }
 
-.vision-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.vision-gem-panel {
-  background: var(--bg-elevated);
+/* Sculptural Mind Stone Altar */
+.vision-altar {
+  position: relative;
+  background: linear-gradient(165deg, rgba(32, 14, 24, 0.92), rgba(10, 18, 22, 0.95));
   border: 1px solid var(--ai-vision-border);
-  border-radius: var(--radius-lg);
-  padding: 24px;
+  clip-path: var(--chamfer-lg);
+  padding: 32px 24px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
-/* Interactive Mind Stone Gem (Easter Egg #1) */
+.vision-altar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 24%, rgba(246, 196, 83, 0.16), transparent 55%);
+}
+
 .mind-stone-btn {
+  position: relative;
+  z-index: 2;
   background: transparent;
   border: none;
   padding: 6px;
   cursor: pointer;
   border-radius: 50%;
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -883,28 +1013,47 @@ a {
 }
 
 .mind-stone-btn.is-pulsing {
-  animation: gem-pulse 360ms var(--ease-out);
+  animation: gem-pulse 380ms var(--ease-out);
 }
 
 @keyframes gem-pulse {
   0% { transform: scale(1); }
-  45% { transform: scale(1.18); }
+  45% { transform: scale(1.22); }
   100% { transform: scale(1); }
 }
 
 .mind-stone-svg {
-  width: 78px;
-  height: 78px;
-  filter: drop-shadow(0 0 18px rgba(245, 192, 74, 0.42));
+  width: 112px;
+  height: 112px;
+  filter: drop-shadow(0 0 22px rgba(246, 196, 83, 0.48));
+}
+
+.mind-resonance-dots {
+  display: flex;
+  gap: 7px;
+  z-index: 2;
+}
+
+.resonance-pip {
+  width: 18px;
+  height: 3px;
+  background: rgba(246, 196, 83, 0.22);
+  transition: background-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
+
+.resonance-pip.is-lit {
+  background: var(--ai-vision-gold);
+  box-shadow: 0 0 8px var(--ai-vision-gold);
 }
 
 .vision-portrait-wrap {
-  width: 120px;
-  height: 120px;
+  width: 116px;
+  height: 116px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--ai-vision-gold);
-  box-shadow: 0 0 24px rgba(245, 192, 74, 0.2);
+  box-shadow: 0 0 28px rgba(246, 196, 83, 0.24);
+  z-index: 2;
 }
 
 .vision-portrait-wrap img {
@@ -915,22 +1064,25 @@ a {
 
 .vision-gem-caption {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--ai-vision-gold);
+  z-index: 2;
 }
 
 .edu-stack {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin-top: 24px;
+  margin-top: 28px;
 }
 
 .edu-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 20px;
+  background: rgba(18, 12, 20, 0.86);
+  border: 1px solid rgba(246, 196, 83, 0.24);
+  border-top: 2px solid var(--ai-vision-emerald);
+  clip-path: var(--chamfer-sm);
+  padding: 18px 20px;
 }
 
 .edu-top {
@@ -946,11 +1098,12 @@ a {
 
 .edu-gpa {
   color: var(--ai-vision-emerald);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .edu-school {
-  font-size: 1.05rem;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 4px;
@@ -965,33 +1118,35 @@ a {
   display: block;
   margin-top: 6px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.71rem;
   color: var(--text-muted);
 }
 
 /* ==========================================================================
-   6. EXPERIENCE SECTION — F.R.I.D.A.Y. (Tactical Mission Logs)
+   6. CHAMBER 03: EXPERIENCE — F.R.I.D.A.Y. (Tactical Flight Debrief Conduit)
    ========================================================================== */
 .friday-section {
   --section-accent: var(--ai-friday);
   --section-soft: var(--ai-friday-soft);
   --section-border: var(--ai-friday-border);
+  background: radial-gradient(ellipse 50% 45% at 15% 50%, rgba(251, 191, 36, 0.06), transparent 65%);
 }
 
 .friday-timeline {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  padding-left: 34px;
+  gap: 32px;
+  padding-left: 42px;
 }
 
+/* Energized vertical telemetry conduit */
 .friday-timeline::before {
   content: '';
   position: absolute;
-  top: 12px;
-  bottom: 12px;
-  left: 11px;
+  top: 10px;
+  bottom: 10px;
+  left: 14px;
   width: 2px;
   background: linear-gradient(180deg, var(--ai-friday), var(--ai-friday-teal), var(--border-subtle));
 }
@@ -1008,47 +1163,49 @@ a {
 
 .timeline-node {
   position: absolute;
-  left: -34px;
-  top: 22px;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--bg-base);
+  left: -42px;
+  top: 24px;
+  width: 28px;
+  height: 28px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: var(--bg-elevated);
   border: 2px solid var(--border-strong);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color var(--dur-base) ease;
+  transition: background-color var(--dur-base) ease;
 }
 
 .timeline-node-core {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  width: 9px;
+  height: 9px;
   background: var(--text-muted);
+  transform: rotate(45deg);
   transition: background-color var(--dur-base) ease, transform var(--dur-base) ease;
 }
 
 .mission-card.is-powered .timeline-node {
-  border-color: var(--ai-friday);
+  background: rgba(251, 191, 36, 0.22);
 }
 
 .mission-card.is-powered .timeline-node-core {
   background: var(--ai-friday);
-  transform: scale(1.15);
-  box-shadow: 0 0 12px var(--ai-friday);
+  transform: rotate(45deg) scale(1.2);
+  box-shadow: 0 0 14px var(--ai-friday);
 }
 
 .mission-panel {
-  background: var(--bg-elevated);
+  background: linear-gradient(145deg, rgba(12, 18, 30, 0.94), rgba(8, 12, 22, 0.96));
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  padding: 28px;
+  border-left: 3px solid var(--ai-friday);
+  clip-path: var(--chamfer-md);
+  padding: 28px 30px;
   transition: border-color var(--dur-base) ease;
 }
 
 .mission-card.is-powered .mission-panel {
   border-color: var(--ai-friday-border);
+  border-left-color: var(--ai-friday);
 }
 
 .mission-meta {
@@ -1058,7 +1215,10 @@ a {
   flex-wrap: wrap;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  margin-bottom: 12px;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border-subtle);
 }
 
 .mission-code {
@@ -1067,10 +1227,9 @@ a {
 }
 
 .mission-status {
-  padding: 3px 9px;
-  border-radius: var(--radius-pill);
-  background: rgba(45, 212, 191, 0.12);
-  border: 1px solid rgba(45, 212, 191, 0.34);
+  padding: 3px 10px;
+  background: rgba(45, 212, 191, 0.14);
+  border: 1px solid rgba(45, 212, 191, 0.38);
   color: var(--ai-friday-teal);
 }
 
@@ -1080,7 +1239,8 @@ a {
 }
 
 .mission-role {
-  font-size: 1.35rem;
+  font-family: var(--font-display);
+  font-size: 1.48rem;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -1091,28 +1251,28 @@ a {
 
 .mission-loc {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   margin-top: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .mission-metrics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .mission-metric {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.73rem;
   font-weight: 600;
   color: var(--text-primary);
   background: var(--ai-friday-soft);
   border: 1px solid var(--ai-friday-border);
-  padding: 4px 10px;
-  border-radius: var(--radius-xs);
+  padding: 8px 10px;
+  text-align: center;
 }
 
 .mission-bullets {
@@ -1126,26 +1286,89 @@ a {
 }
 
 /* ==========================================================================
-   7. PROJECTS SECTION — E.D.I.T.H. (AR Targeting Overlay)
+   7. CHAMBER 04: PROJECTS — E.D.I.T.H. (AR Visor Optics + Live Reticles)
    ========================================================================== */
 .edith-section {
   --section-accent: var(--ai-edith-reticle);
   --section-soft: var(--ai-edith-soft);
   --section-border: var(--ai-edith-border);
+  background:
+    radial-gradient(ellipse 65% 45% at 50% 0%, rgba(34, 211, 238, 0.08), transparent 65%),
+    radial-gradient(ellipse 50% 45% at 90% 90%, rgba(96, 165, 250, 0.07), transparent 65%);
+}
+
+/* AR Visor Frame around E.D.I.T.H. Workspace */
+.edith-visor-shell {
+  position: relative;
+  padding: 26px;
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  background: rgba(5, 11, 22, 0.72);
+  overflow: hidden;
+}
+
+.edith-visor-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--ai-edith-reticle);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.18);
+}
+
+/* Live Mouse-Following AR Target Crosshair inside Visor */
+.edith-cursor-reticle {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(34, 211, 238, 0.55);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 140ms ease;
+}
+
+.edith-cursor-reticle::before,
+.edith-cursor-reticle::after {
+  content: '';
+  position: absolute;
+  background: var(--ai-edith-reticle);
+}
+
+.edith-cursor-reticle::before {
+  top: 50%;
+  left: -6px;
+  right: -6px;
+  height: 1px;
+}
+
+.edith-cursor-reticle::after {
+  left: 50%;
+  top: -6px;
+  bottom: -6px;
+  width: 1px;
 }
 
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .filter-chip {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   padding: 8px 14px;
-  border-radius: var(--radius-sm);
   border: 1px solid var(--border-strong);
   background: var(--bg-elevated);
   color: var(--text-secondary);
@@ -1168,43 +1391,67 @@ a {
 .edith-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 22px;
 }
 
 .target-card {
   position: relative;
-  background: var(--bg-elevated);
+  background: linear-gradient(160deg, rgba(11, 19, 34, 0.95), rgba(6, 11, 20, 0.98));
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
   padding: 26px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 13px;
+  overflow: hidden;
   transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) ease;
 }
 
-/* E.D.I.T.H. Corner Targeting Reticles */
+/* Optical scan sweep on lock-on */
+.target-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(34, 211, 238, 0.09) 50%, transparent 100%);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease;
+}
+
+.target-card:hover::after,
+.target-card:focus-within::after,
+.target-card.is-locked::after {
+  opacity: 1;
+  animation: edith-scan 1.6s linear infinite;
+}
+
+@keyframes edith-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Corner Targeting Reticles */
 .reticle {
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-color: var(--ai-edith-reticle);
   border-style: solid;
   border-width: 0;
-  opacity: 0;
+  opacity: 0.25;
   transition: opacity var(--dur-fast) ease, transform var(--dur-base) var(--ease-out);
   pointer-events: none;
 }
 
-.reticle-tl { top: 8px; left: 8px; border-top-width: 2px; border-left-width: 2px; transform: translate(-4px, -4px); }
-.reticle-tr { top: 8px; right: 8px; border-top-width: 2px; border-right-width: 2px; transform: translate(4px, -4px); }
-.reticle-bl { bottom: 8px; left: 8px; border-bottom-width: 2px; border-left-width: 2px; transform: translate(-4px, 4px); }
-.reticle-br { bottom: 8px; right: 8px; border-bottom-width: 2px; border-right-width: 2px; transform: translate(4px, 4px); }
+.reticle-tl { top: 8px; left: 8px; border-top-width: 2px; border-left-width: 2px; transform: translate(-3px, -3px); }
+.reticle-tr { top: 8px; right: 8px; border-top-width: 2px; border-right-width: 2px; transform: translate(3px, -3px); }
+.reticle-bl { bottom: 8px; left: 8px; border-bottom-width: 2px; border-left-width: 2px; transform: translate(-3px, 3px); }
+.reticle-br { bottom: 8px; right: 8px; border-bottom-width: 2px; border-right-width: 2px; transform: translate(3px, 3px); }
 
 .target-card:hover,
 .target-card:focus-within,
 .target-card.is-locked {
-  border-color: var(--ai-edith-border);
+  border-color: var(--ai-edith-reticle);
   transform: translateY(-3px);
 }
 
@@ -1220,7 +1467,8 @@ a {
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.71rem;
+  letter-spacing: 0.08em;
 }
 
 .target-code {
@@ -1230,7 +1478,6 @@ a {
 
 .target-lock-label {
   color: var(--ai-edith-reticle);
-  letter-spacing: 0.1em;
   opacity: 0;
   transition: opacity var(--dur-fast) ease;
 }
@@ -1242,22 +1489,40 @@ a {
 }
 
 .target-title {
-  font-size: 1.28rem;
+  font-family: var(--font-display);
+  font-size: 1.32rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.25;
+  line-height: 1.22;
 }
 
 .target-metric {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: var(--ai-edith-reticle);
   background: var(--ai-edith-soft);
-  border: 1px solid rgba(34, 211, 238, 0.25);
+  border-left: 2px solid var(--ai-edith-reticle);
   padding: 5px 10px;
-  border-radius: var(--radius-xs);
   align-self: flex-start;
+}
+
+/* Inline Schematic Pipeline Strip */
+.target-pipeline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 9px 11px;
+  background: var(--bg-code);
+  border: 1px solid rgba(34, 211, 238, 0.16);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #cfe8ff;
+}
+
+.pipeline-arrow {
+  color: var(--ai-edith-reticle);
 }
 
 .target-summary {
@@ -1269,15 +1534,14 @@ a {
   display: grid;
   gap: 8px;
   padding: 12px 14px;
-  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--border-subtle);
+  border-left: 2px solid var(--border-strong);
   font-size: 0.85rem;
 }
 
 .target-brief dt {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.67rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ai-edith);
@@ -1297,33 +1561,63 @@ a {
 }
 
 /* ==========================================================================
-   8. SKILLS SECTION — ULTRON (Upgrade Lab & Node Network)
+   8. CHAMBER 05: SKILLS — ULTRON (Vibranium Forge & Interactive Neural Web)
    ========================================================================== */
 .ultron-section {
   --section-accent: var(--ai-ultron);
   --section-soft: var(--ai-ultron-soft);
   --section-border: var(--ai-ultron-border);
-  background: radial-gradient(circle at 85% 15%, rgba(244, 63, 94, 0.08), transparent 45%);
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 18%, rgba(244, 63, 94, 0.11), transparent 65%),
+    linear-gradient(180deg, rgba(16, 7, 11, 0.72), var(--bg-base));
 }
 
-.ultron-topology {
-  background: var(--bg-elevated);
+.ultron-network-panel {
+  background: linear-gradient(155deg, rgba(20, 9, 14, 0.94), rgba(8, 10, 16, 0.96));
   border: 1px solid var(--ai-ultron-border);
-  border-radius: var(--radius-md);
-  padding: 18px 20px;
-  margin-bottom: 24px;
+  clip-path: var(--chamfer-md);
+  padding: 20px 24px 24px;
+  margin-bottom: 28px;
+}
+
+.ultron-network-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 
 .topology-label {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--ai-ultron-silver);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
+}
+
+.ultron-svg-wrap {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.ultron-constellation {
+  width: 100%;
+  height: auto;
+  max-height: 210px;
+  display: block;
+}
+
+.constellation-edge {
+  stroke: rgba(244, 63, 94, 0.28);
+  stroke-width: 1.5;
+  transition: stroke var(--dur-fast) ease, stroke-width var(--dur-fast) ease;
+}
+
+.constellation-edge.is-active {
+  stroke: var(--ai-ultron);
+  stroke-width: 2.6;
 }
 
 .ultron-node-nav {
@@ -1334,12 +1628,13 @@ a {
 
 .node-btn {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: var(--radius-xs);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 7px 13px;
+  clip-path: var(--chamfer-sm);
   border: 1px solid var(--border-strong);
-  background: var(--bg-surface);
+  background: rgba(24, 14, 19, 0.9);
   color: var(--ai-ultron-silver);
   cursor: pointer;
   transition: border-color var(--dur-fast) ease, background-color var(--dur-fast) ease, color var(--dur-fast) ease;
@@ -1359,17 +1654,24 @@ a {
 }
 
 .skill-module {
-  background: var(--bg-elevated);
+  background: linear-gradient(155deg, rgba(19, 12, 18, 0.94), rgba(10, 12, 18, 0.96));
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  border-top: 2px solid rgba(212, 220, 232, 0.3);
+  clip-path: var(--chamfer-sm);
   padding: 22px;
-  transition: border-color var(--dur-base) ease, transform var(--dur-base) var(--ease-out);
+  transition: border-color var(--dur-base) ease, transform var(--dur-base) var(--ease-out), opacity var(--dur-base) ease;
+}
+
+.skill-module.is-dimmed {
+  opacity: 0.62;
 }
 
 .skill-module:hover,
 .skill-module.is-highlighted {
   border-color: var(--ai-ultron);
-  transform: translateY(-2px);
+  border-top-color: var(--ai-ultron);
+  transform: translateY(-3px);
+  opacity: 1;
 }
 
 .skill-module-head {
@@ -1381,14 +1683,15 @@ a {
 .skill-module-code {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.67rem;
   color: var(--ai-ultron);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   margin-bottom: 4px;
 }
 
 .skill-module-title {
-  font-size: 1.05rem;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -1414,29 +1717,30 @@ a {
 
 .skill-tier {
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   padding: 2px 7px;
-  border-radius: var(--radius-xs);
   border: 1px solid var(--border-subtle);
   flex-shrink: 0;
 }
 
 .tier-primary {
   color: #fecdd3;
-  background: rgba(244, 63, 94, 0.16);
-  border-color: rgba(244, 63, 94, 0.42);
+  background: rgba(244, 63, 94, 0.18);
+  border-color: rgba(244, 63, 94, 0.45);
 }
 
 .tier-production {
   color: #e2e8f0;
-  background: rgba(203, 213, 225, 0.12);
-  border-color: rgba(203, 213, 225, 0.3);
+  background: rgba(212, 220, 232, 0.14);
+  border-color: rgba(212, 220, 232, 0.34);
 }
 
 .tier-strong {
   color: #bae6fd;
-  background: rgba(56, 189, 248, 0.12);
-  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.14);
+  border-color: rgba(56, 189, 248, 0.34);
 }
 
 .tier-familiar {
@@ -1445,7 +1749,7 @@ a {
 }
 
 /* ==========================================================================
-   9. CONTACT & FOOTER — J.A.R.V.I.S. COMMS CONSOLE
+   9. CHAMBER 06: CONTACT & FOOTER — J.A.R.V.I.S. UPLINK CONSOLE
    ========================================================================== */
 .contact-section {
   --section-accent: var(--ai-jarvis);
@@ -1456,28 +1760,60 @@ a {
 }
 
 .contact-console {
-  background: var(--bg-elevated);
+  background: linear-gradient(155deg, rgba(10, 17, 30, 0.95), rgba(5, 9, 18, 0.98));
   border: 1px solid var(--ai-jarvis-border);
-  border-radius: var(--radius-lg);
-  padding: 36px;
+  clip-path: var(--chamfer-lg);
+  padding: 38px;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 32px;
+  gap: 34px;
   align-items: center;
+}
+
+.uplink-wave-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.signal-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.signal-bars span {
+  width: 3px;
+  height: 100%;
+  background: var(--ai-jarvis);
+  transform-origin: bottom;
+  animation: signal-wave 1.2s ease-in-out infinite alternate;
+}
+
+.signal-bars span:nth-child(2) { animation-delay: 0.2s; }
+.signal-bars span:nth-child(3) { animation-delay: 0.45s; }
+.signal-bars span:nth-child(4) { animation-delay: 0.15s; }
+.signal-bars span:nth-child(5) { animation-delay: 0.35s; }
+
+@keyframes signal-wave {
+  from { transform: scaleY(0.28); }
+  to { transform: scaleY(1); }
 }
 
 .console-eyebrow {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--ai-jarvis);
-  letter-spacing: 0.1em;
-  margin-bottom: 10px;
+  letter-spacing: 0.12em;
 }
 
 .console-title {
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
   margin-bottom: 12px;
 }
 
@@ -1491,12 +1827,12 @@ a {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  padding: 12px 14px;
-  border-radius: var(--radius-sm);
+  padding: 13px 16px;
   border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--ai-jarvis);
   background: var(--bg-code);
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
 .email-console-row code {
@@ -1514,20 +1850,20 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 14px 16px;
-  border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
   color: var(--text-primary);
   text-decoration: none;
   font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   width: 100%;
-  transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+  transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
 
 .console-link-card:hover {
   border-color: var(--accent-primary);
-  transform: translateX(3px);
+  background: var(--bg-surface-hover);
+  transform: translateX(4px);
 }
 
 .console-link-meta {
@@ -1535,11 +1871,10 @@ a {
   color: var(--text-muted);
 }
 
-/* Post-Credits & Footer Meta */
+/* Post-Credits Cinema Strip */
 .post-credits-banner {
   margin-top: 24px;
   padding: 14px 18px;
-  border-radius: var(--radius-sm);
   border: 1px dashed var(--ai-vision-border);
   background: var(--ai-vision-soft);
   display: flex;
@@ -1548,7 +1883,7 @@ a {
   gap: 12px;
   flex-wrap: wrap;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity var(--dur-base) ease, transform var(--dur-base) ease;
@@ -1609,14 +1944,14 @@ a {
 }
 
 /* ==========================================================================
-   10. ACCESSIBLE MODALS & J.A.R.V.I.S. COMMAND PALETTE
+   10. MODALS & J.A.R.V.I.S. COMMAND TERMINAL
    ========================================================================== */
 .hud-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 3000;
-  background: rgba(4, 7, 13, 0.8);
-  backdrop-filter: blur(8px);
+  background: rgba(3, 6, 12, 0.84);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1636,8 +1971,8 @@ a {
   overflow-y: auto;
   background: var(--bg-elevated);
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-lg);
-  padding: 28px;
+  clip-path: var(--chamfer-md);
+  padding: 30px;
   box-shadow: var(--shadow-hud);
   position: relative;
   transform: translateY(14px) scale(0.98);
@@ -1654,7 +1989,6 @@ a {
   right: 18px;
   width: 36px;
   height: 36px;
-  border-radius: var(--radius-sm);
   border: 1px solid var(--border-strong);
   background: var(--bg-surface);
   color: var(--text-primary);
@@ -1669,14 +2003,15 @@ a {
 
 .modal-kicker {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: 0.71rem;
+  letter-spacing: 0.12em;
   color: var(--accent-primary);
   margin-bottom: 6px;
 }
 
 .modal-heading {
-  font-size: 1.55rem;
+  font-family: var(--font-display);
+  font-size: 1.65rem;
   font-weight: 700;
   padding-right: 44px;
   margin-bottom: 12px;
@@ -1684,8 +2019,8 @@ a {
 
 .modal-block-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: 0.71rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ai-edith-reticle);
   margin: 18px 0 6px;
@@ -1699,7 +2034,6 @@ a {
 .modal-arch-pre {
   background: var(--bg-code);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
   padding: 16px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -1719,10 +2053,10 @@ a {
   flex-wrap: wrap;
 }
 
-/* Command Palette Specific */
+/* Command Palette */
 .palette-dialog {
   max-width: 640px;
-  padding: 20px;
+  padding: 22px;
   border-color: var(--ai-jarvis-border);
 }
 
@@ -1731,7 +2065,8 @@ a {
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.71rem;
+  letter-spacing: 0.1em;
   color: var(--ai-jarvis);
   margin-bottom: 12px;
   padding-right: 40px;
@@ -1741,8 +2076,7 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
+  padding: 11px 14px;
   border: 1px solid var(--ai-jarvis-border);
   background: var(--bg-code);
   margin-bottom: 12px;
@@ -1781,7 +2115,6 @@ a {
   gap: 12px;
   text-align: left;
   padding: 10px 12px;
-  border-radius: var(--radius-sm);
   border: 1px solid transparent;
   background: transparent;
   color: var(--text-primary);
@@ -1816,7 +2149,6 @@ a {
 .palette-output {
   margin-top: 12px;
   padding: 14px;
-  border-radius: var(--radius-sm);
   border: 1px solid var(--border-strong);
   background: var(--bg-code);
   font-family: var(--font-mono);
@@ -1845,8 +2177,7 @@ a {
 .hud-chip-btn {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  padding: 5px 10px;
-  border-radius: var(--radius-xs);
+  padding: 6px 11px;
   border: 1px solid var(--border-strong);
   background: var(--bg-surface);
   color: var(--text-primary);
@@ -1859,11 +2190,12 @@ a {
 
 /* Classified Easter Egg Modal */
 .classified-quote {
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: 1.04rem;
   color: var(--ai-vision-gold);
   border-left: 2px solid var(--ai-vision-gold);
-  padding-left: 12px;
+  padding-left: 14px;
   margin-bottom: 16px;
 }
 
@@ -1890,14 +2222,13 @@ a {
 
 .stone-dossier-card {
   padding: 12px;
-  border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
   font-size: 0.83rem;
 }
 
 .stone-dossier-card.is-collected {
-  border-color: rgba(245, 192, 74, 0.36);
+  border-color: rgba(246, 196, 83, 0.42);
 }
 
 .stone-dossier-head {
@@ -1922,12 +2253,11 @@ a {
   font-size: 0.66rem;
 }
 
-/* Snap Flash Animation */
 .snap-flash-overlay {
   position: fixed;
   inset: 0;
   z-index: 4500;
-  background: radial-gradient(circle, #fef9c3 0%, #f5b942 40%, #070b12 100%);
+  background: radial-gradient(circle, #fef9c3 0%, #f6c453 40%, #050810 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 320ms var(--ease-out);
@@ -1937,7 +2267,6 @@ a {
   opacity: 0.92;
 }
 
-/* Toast Notification */
 .hud-toast {
   position: fixed;
   bottom: 22px;
@@ -1950,9 +2279,9 @@ a {
   border: 1px solid var(--accent-primary);
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   padding: 10px 18px;
-  border-radius: var(--radius-pill);
+  clip-path: var(--chamfer-sm);
   box-shadow: var(--shadow-hud);
   max-width: calc(100vw - 32px);
   text-align: center;
@@ -1978,19 +2307,19 @@ a {
 }
 
 .ultron-404-card {
-  max-width: 620px;
+  max-width: 640px;
   width: 100%;
   text-align: center;
-  padding: 44px 32px;
-  border-radius: var(--radius-lg);
+  padding: 46px 34px;
   border: 1px solid var(--ai-ultron-border);
+  clip-path: var(--chamfer-lg);
   background: var(--bg-elevated);
   box-shadow: var(--shadow-hud);
 }
 
 .glitch-code {
-  font-family: var(--font-mono);
-  font-size: clamp(3.8rem, 11vw, 6.5rem);
+  font-family: var(--font-display);
+  font-size: clamp(4.2rem, 12vw, 7rem);
   font-weight: 700;
   color: var(--ai-ultron);
   line-height: 1;
@@ -2035,14 +2364,16 @@ a {
   .ring-spin-slow,
   .ring-spin-reverse,
   .boot-bar-fill,
+  .signal-bars span,
+  .target-card::after,
   .glitch-code::before,
   .glitch-code::after,
-  .mind-stone-btn.is-pulsing {
+  .mind-stone-btn.is-pulsing,
+  body.theme-hijack::after {
     animation: none !important;
   }
 
   .mission-card {
-    opacity: 1;
     transform: none;
   }
 }
@@ -2050,6 +2381,12 @@ a {
 /* ==========================================================================
    13. RESPONSIVE BREAKPOINTS (360px · 768px · 1280px · 1920px)
    ========================================================================== */
+@media (max-width: 1280px) {
+  .mind-rail {
+    display: none;
+  }
+}
+
 @media (max-width: 1080px) {
   .hud-nav-links {
     display: none;
@@ -2060,12 +2397,21 @@ a {
   .ultron-skills-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .hero-metrics-strip {
+  .hero-metrics-strip,
+  .mission-metrics {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 860px) {
+  .hud-nav-inner {
+    padding: 8px 16px;
+  }
+
+  .hud-icon-btn kbd {
+    display: none;
+  }
+
   .hero-grid,
   .vision-layout,
   .edith-grid,
@@ -2074,13 +2420,17 @@ a {
   }
 
   .jarvis-ring-stage {
-    max-width: 260px;
+    max-width: 280px;
   }
 
   .edu-stack,
   .ultron-skills-grid,
   .stones-dossier-grid {
     grid-template-columns: 1fr;
+  }
+
+  .edith-visor-shell {
+    padding: 18px;
   }
 }
 
@@ -2111,22 +2461,26 @@ a {
   }
 
   .hud-section {
-    padding: 56px 0;
+    padding: 60px 0;
   }
 
   .hero-section {
-    padding: 36px 0 56px;
+    padding: 36px 0 60px;
   }
 
   .jarvis-greeting {
-    min-height: 3.1em;
+    height: 3.2em;
   }
 
-  .hero-metrics-strip {
+  .hero-metrics-strip,
+  .mission-metrics {
     grid-template-columns: 1fr;
   }
 
-  .vision-story-card,
+  .vision-editorial-block {
+    padding-left: 16px;
+  }
+
   .mission-panel,
   .target-card,
   .contact-console,
@@ -2135,17 +2489,17 @@ a {
   }
 
   .friday-timeline {
-    padding-left: 24px;
+    padding-left: 26px;
   }
 
   .timeline-node {
-    left: -24px;
-    width: 20px;
-    height: 20px;
+    left: -26px;
+    width: 22px;
+    height: 22px;
   }
 
   .friday-timeline::before {
-    left: 9px;
+    left: 10px;
   }
 
   .mission-dates {

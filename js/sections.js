@@ -1,10 +1,10 @@
 /**
  * Dynamic Section Renderers & Interactions:
- * - F.R.I.D.A.Y. Experience Mission Logs + scroll-powered timeline
- * - E.D.I.T.H. Filterable Projects + AR targeting reticles + Target Analysis modal
- * - Ultron Skills Upgrade Lab (interactive SVG node topology + grouped proficiency modules)
- * - Vision About narrative & Education
- * - J.A.R.V.I.S. Contact Console (email copy + mailto hook for Shawarma egg)
+ * - Vision: Warm editorial narrative & education plaques
+ * - F.R.I.D.A.Y.: Mission debrief logs + scroll-powered vertical conduit
+ * - E.D.I.T.H.: AR visor targeting reticles, live mouse crosshair, inline schematic pipeline & Target Analysis modal
+ * - Ultron: Interactive SVG Neural Constellation synced with machined skill modules
+ * - J.A.R.V.I.S. Comms: Direct uplink email copy/mailto + Shawarma hook
  */
 
 import { SITE_DATA } from './data.js';
@@ -29,8 +29,7 @@ export function initAboutSection() {
     SITE_DATA.about.paragraphs.forEach((para) => {
       storyContainer.appendChild(createEl('p', 'vision-para', para));
     });
-    const looking = createEl('p', 'vision-looking-for', SITE_DATA.about.lookingFor);
-    storyContainer.appendChild(looking);
+    storyContainer.appendChild(createEl('p', 'vision-looking-for', SITE_DATA.about.lookingFor));
   }
 
   if (eduContainer) {
@@ -52,7 +51,7 @@ export function initAboutSection() {
 }
 
 /* ==========================================================================
-   2. F.R.I.D.A.Y. // EXPERIENCE TIMELINE
+   2. F.R.I.D.A.Y. // EXPERIENCE MISSION LOGS
    ========================================================================== */
 export function initExperienceSection() {
   const container = document.getElementById('friday-timeline');
@@ -91,7 +90,6 @@ export function initExperienceSection() {
     container.appendChild(item);
   });
 
-  // Power on timeline nodes as the user scrolls
   const cards = container.querySelectorAll('.mission-card');
   if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
     cards.forEach((c) => c.classList.add('is-powered'));
@@ -101,9 +99,7 @@ export function initExperienceSection() {
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-powered');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('is-powered');
       });
     },
     { threshold: 0.2 }
@@ -112,15 +108,44 @@ export function initExperienceSection() {
 }
 
 /* ==========================================================================
-   3. E.D.I.T.H. // PROJECTS & TARGET ANALYSIS MODAL
+   3. E.D.I.T.H. // AR VISOR PROJECTS, INLINE SCHEMATICS & TARGET MODAL
    ========================================================================== */
 export function initProjectsSection() {
   const filterWrap = document.getElementById('edith-filters');
   const grid = document.getElementById('edith-grid');
+  const visor = document.getElementById('edith-visor-shell');
+  const cursorEl = document.getElementById('edith-cursor-reticle');
   const modal = document.getElementById('project-modal');
   const closeBtn = document.getElementById('project-modal-close');
 
   if (!grid) return;
+
+  // Live AR crosshair inside E.D.I.T.H. visor on desktop fine pointers
+  if (
+    visor &&
+    cursorEl &&
+    !prefersReducedMotion() &&
+    window.matchMedia &&
+    window.matchMedia('(pointer: fine)').matches
+  ) {
+    visor.addEventListener(
+      'pointermove',
+      (e) => {
+        const rect = visor.getBoundingClientRect();
+        cursorEl.style.left = `${e.clientX - rect.left}px`;
+        cursorEl.style.top = `${e.clientY - rect.top}px`;
+        cursorEl.style.opacity = '1';
+      },
+      { passive: true }
+    );
+    visor.addEventListener(
+      'pointerleave',
+      () => {
+        cursorEl.style.opacity = '0';
+      },
+      { passive: true }
+    );
+  }
 
   let activeFilter = 'all';
 
@@ -168,6 +193,14 @@ export function initProjectsSection() {
         .map((t) => `<span class="tech-tag">${t}</span>`)
         .join('');
 
+      const pipelineHtml = (project.pipeline || [])
+        .map((step, i, arr) =>
+          i < arr.length - 1
+            ? `<span>${step}</span><span class="pipeline-arrow" aria-hidden="true">→</span>`
+            : `<span>${step}</span>`
+        )
+        .join('');
+
       card.innerHTML = `
         <span class="reticle reticle-tl" aria-hidden="true"></span>
         <span class="reticle reticle-tr" aria-hidden="true"></span>
@@ -175,10 +208,11 @@ export function initProjectsSection() {
         <span class="reticle reticle-br" aria-hidden="true"></span>
         <div class="target-top">
           <span class="target-code">${project.code}</span>
-          <span class="target-lock-label" aria-hidden="true">LOCK ACQUIRED</span>
+          <span class="target-lock-label" aria-hidden="true">[ TARGET LOCKED ]</span>
         </div>
         <h3 class="target-title">${project.title}</h3>
         <div class="target-metric">${project.metric}</div>
+        ${pipelineHtml ? `<div class="target-pipeline" aria-label="Architecture pipeline">${pipelineHtml}</div>` : ''}
         <p class="target-summary">${project.summary}</p>
         <dl class="target-brief">
           <div><dt>Problem</dt><dd>${project.problem}</dd></div>
@@ -191,7 +225,6 @@ export function initProjectsSection() {
         </div>
       `;
 
-      // Touch tap locks reticle visibly without blocking button taps
       card.addEventListener('click', (e) => {
         if (e.target.closest('a, button')) return;
         grid.querySelectorAll('.target-card.is-locked').forEach((c) => {
@@ -236,21 +269,89 @@ export function initProjectsSection() {
 }
 
 /* ==========================================================================
-   4. ULTRON // SKILLS UPGRADE LAB & NODE TOPOLOGY
+   4. ULTRON // INTERACTIVE SVG NEURAL CONSTELLATION & SKILL MODULES
    ========================================================================== */
 export function initSkillsSection() {
   const grid = document.getElementById('ultron-skills-grid');
   const nav = document.getElementById('ultron-node-nav');
+  const svgWrap = document.getElementById('ultron-svg-wrap');
   if (!grid) return;
 
   let focusedModule = 'all';
 
+  // Coordinates for 6 satellite nodes orbiting central ULTRON CORE (viewBox 960 x 210)
+  const nodePositions = [
+    { id: 'languages', x: 120, y: 54 },
+    { id: 'cloud', x: 295, y: 156 },
+    { id: 'frameworks', x: 350, y: 46 },
+    { id: 'databases', x: 610, y: 46 },
+    { id: 'aiml', x: 665, y: 156 },
+    { id: 'concepts', x: 840, y: 54 }
+  ];
+
+  const renderConstellation = () => {
+    if (!svgWrap) return;
+    const cx = 480;
+    const cy = 108;
+
+    const edgesMarkup = nodePositions
+      .map((pos) => {
+        const active = focusedModule === 'all' || focusedModule === pos.id;
+        return `<line class="constellation-edge${active ? ' is-active' : ''}" x1="${cx}" y1="${cy}" x2="${pos.x}" y2="${pos.y}" />`;
+      })
+      .join('');
+
+    const crossLinks = `
+      <line class="constellation-edge" x1="120" y1="54" x2="350" y2="46" stroke-dasharray="4 6" />
+      <line class="constellation-edge" x1="295" y1="156" x2="665" y2="156" stroke-dasharray="4 6" />
+      <line class="constellation-edge" x1="610" y1="46" x2="840" y2="54" stroke-dasharray="4 6" />
+    `;
+
+    const nodesMarkup = nodePositions
+      .map((pos) => {
+        const group = SITE_DATA.skills.find((s) => s.id === pos.id);
+        const active = focusedModule === pos.id;
+        const fill = active ? '#35101c' : '#120a10';
+        const stroke = active ? '#f43f5e' : 'rgba(212,220,232,0.48)';
+        return `
+          <g class="constellation-node" data-node-id="${pos.id}" style="cursor:pointer;">
+            <polygon points="${pos.x},${pos.y - 24} ${pos.x + 28},${pos.y - 10} ${pos.x + 28},${pos.y + 10} ${pos.x},${pos.y + 24} ${pos.x - 28},${pos.y + 10} ${pos.x - 28},${pos.y - 10}" fill="${fill}" stroke="${stroke}" stroke-width="${active ? 2.2 : 1.4}" />
+            <text x="${pos.x}" y="${pos.y + 4}" text-anchor="middle" fill="#f1f6ff" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">${group ? group.nodeLabel : pos.id}</text>
+          </g>
+        `;
+      })
+      .join('');
+
+    svgWrap.innerHTML = `
+      <svg class="ultron-constellation" viewBox="0 0 960 210" aria-hidden="true">
+        ${crossLinks}
+        ${edgesMarkup}
+        <g>
+          <polygon points="${cx},${cy - 36} ${cx + 42},${cy - 17} ${cx + 42},${cy + 17} ${cx},${cy + 36} ${cx - 42},${cy + 17} ${cx - 42},${cy - 17}" fill="#1a090f" stroke="#f43f5e" stroke-width="2.2" />
+          <polygon points="${cx},${cy - 30} ${cx + 35},${cy - 14} ${cx + 35},${cy + 14} ${cx},${cy + 30} ${cx - 35},${cy + 14} ${cx - 35},${cy - 14}" fill="rgba(244,63,94,0.18)" stroke="rgba(253,164,175,0.4)" stroke-width="1" />
+          <text x="${cx}" y="${cy - 2}" text-anchor="middle" fill="#fda4af" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700">ULTRON</text>
+          <text x="${cx}" y="${cy + 12}" text-anchor="middle" fill="#f1f6ff" font-family="JetBrains Mono, monospace" font-size="9">CORE</text>
+        </g>
+        ${nodesMarkup}
+      </svg>
+    `;
+
+    svgWrap.querySelectorAll('.constellation-node').forEach((g) => {
+      g.addEventListener('click', () => {
+        const id = g.dataset.nodeId;
+        selectModule(focusedModule === id ? 'all' : id);
+      });
+    });
+  };
+
   const renderModules = () => {
     grid.innerHTML = '';
     SITE_DATA.skills.forEach((group, idx) => {
+      const isHighlighted = focusedModule === group.id;
+      const isDimmed = focusedModule !== 'all' && !isHighlighted;
       const card = createEl(
         'article',
-        `skill-module${focusedModule === group.id ? ' is-highlighted' : ''}`
+        `skill-module${isHighlighted ? ' is-highlighted' : ''}${isDimmed ? ' is-dimmed' : ''}`
       );
       card.dataset.moduleId = group.id;
 
@@ -275,27 +376,36 @@ export function initSkillsSection() {
     });
   };
 
+  const selectModule = (moduleId) => {
+    focusedModule = moduleId;
+    if (nav) {
+      nav.querySelectorAll('.node-btn').forEach((b) => {
+        const active = b.dataset.moduleTarget === moduleId;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', String(active));
+      });
+    }
+    renderConstellation();
+    renderModules();
+  };
+
   if (nav) {
     nav.innerHTML = '';
     const allBtn = createEl('button', 'node-btn is-active', 'ALL NODES');
     allBtn.type = 'button';
+    allBtn.dataset.moduleTarget = 'all';
     allBtn.setAttribute('aria-pressed', 'true');
-    allBtn.addEventListener('click', () => {
-      focusedModule = 'all';
-      syncNodes(allBtn);
-      renderModules();
-    });
+    allBtn.addEventListener('click', () => selectModule('all'));
     nav.appendChild(allBtn);
 
     SITE_DATA.skills.forEach((group) => {
       const btn = createEl('button', 'node-btn', group.nodeLabel);
       btn.type = 'button';
+      btn.dataset.moduleTarget = group.id;
       btn.setAttribute('aria-pressed', 'false');
       btn.setAttribute('aria-label', `${group.nodeLabel} — ${group.title}`);
       btn.addEventListener('click', () => {
-        focusedModule = group.id;
-        syncNodes(btn);
-        renderModules();
+        selectModule(group.id);
         const targetCard = grid.querySelector(`[data-module-id="${group.id}"]`);
         if (targetCard && window.innerWidth < 900) {
           targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -303,16 +413,9 @@ export function initSkillsSection() {
       });
       nav.appendChild(btn);
     });
-
-    function syncNodes(activeBtn) {
-      nav.querySelectorAll('.node-btn').forEach((b) => {
-        const isActive = b === activeBtn;
-        b.classList.toggle('is-active', isActive);
-        b.setAttribute('aria-pressed', String(isActive));
-      });
-    }
   }
 
+  renderConstellation();
   renderModules();
 }
 

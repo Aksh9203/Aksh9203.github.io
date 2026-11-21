@@ -1,70 +1,71 @@
 /* ==========================================================================
    VISIONQUEST DESIGN TOKENS & DUAL-THEME SYSTEM
-   Modes: Vision (default) | Ultron (red/dark override via [data-theme="ultron"])
-   All foreground/background pairings calibrated for WCAG 2.1 AA (>= 4.5:1)
+   Modes: Vision (default) | Ultron (red/dark tactical override)
+   High-contrast dark HUD calibrated for WCAG 2.1 AA/AAA (>= 4.5:1)
    ========================================================================== */
 
 :root {
   /* Core Dark HUD Surfaces */
-  --bg-base: #070b12;
-  --bg-elevated: #0c121d;
-  --bg-surface: #111927;
-  --bg-surface-hover: #172235;
-  --bg-glass: rgba(10, 16, 28, 0.84);
-  --bg-code: #05080f;
+  --bg-base: #050810;
+  --bg-elevated: #0a101c;
+  --bg-surface: #0f1726;
+  --bg-surface-hover: #162238;
+  --bg-glass: rgba(6, 10, 20, 0.82);
+  --bg-code: #04070d;
 
-  /* Typography & High-Contrast Foregrounds (WCAG AA/AAA on dark HUD) */
-  --text-primary: #eef4ff;
-  --text-secondary: #b4c2d9;
-  --text-muted: #8b9bb6;
+  /* High-Contrast Foregrounds */
+  --text-primary: #f1f6ff;
+  --text-secondary: #b8c7e0;
+  --text-muted: #8b9db9;
 
   /* Borders & HUD Hairlines */
-  --border-subtle: rgba(148, 178, 222, 0.14);
-  --border-strong: rgba(148, 178, 222, 0.28);
-  --grid-line: rgba(56, 189, 248, 0.045);
-  --scanline: rgba(255, 255, 255, 0.018);
+  --border-subtle: rgba(125, 178, 232, 0.16);
+  --border-strong: rgba(125, 178, 232, 0.34);
+  --grid-line: rgba(56, 189, 248, 0.048);
+  --scanline: rgba(255, 255, 255, 0.02);
 
-  /* Global Active Theme Accent (Vision Mode default) */
+  /* Global Active Theme Accent */
   --accent-primary: #38bdf8;
   --accent-primary-rgb: 56, 189, 248;
-  --accent-secondary: #f5b942;
-  --accent-secondary-rgb: 245, 185, 66;
-  --accent-danger: #f87171;
+  --accent-secondary: #f6c453;
+  --accent-secondary-rgb: 246, 196, 83;
+  --accent-danger: #fb7185;
   --accent-success: #34d399;
   --focus-ring: #7dd3fc;
 
-  /* Section AI Narrator Palettes */
-  /* 1. J.A.R.V.I.S. — Cool Arc Cyan / Holographic Blue */
+  /* 5 Distinct Synthetic Mind Atmospheres */
+  /* 1. J.A.R.V.I.S. — Holographic Arc Cyan & Workshop Gold */
   --ai-jarvis: #38bdf8;
   --ai-jarvis-soft: rgba(56, 189, 248, 0.14);
-  --ai-jarvis-border: rgba(56, 189, 248, 0.36);
+  --ai-jarvis-border: rgba(56, 189, 248, 0.42);
 
-  /* 2. Vision — Deep Crimson / Synth Emerald / Mind Stone Gold */
-  --ai-vision-crimson: #e05a6d;
+  /* 2. Vision — Vibranium Crimson, Synth Emerald & Mind Stone Gold */
+  --ai-vision-bg: #120910;
+  --ai-vision-crimson: #e85d75;
   --ai-vision-emerald: #2dd4a0;
-  --ai-vision-gold: #f5c04a;
-  --ai-vision-soft: rgba(245, 192, 74, 0.12);
-  --ai-vision-border: rgba(245, 192, 74, 0.34);
+  --ai-vision-gold: #f6c453;
+  --ai-vision-soft: rgba(246, 196, 83, 0.13);
+  --ai-vision-border: rgba(246, 196, 83, 0.38);
 
-  /* 3. F.R.I.D.A.Y. — Tactical Amber / Operations Teal */
+  /* 3. F.R.I.D.A.Y. — Tactical Flight Amber & Ops Teal */
   --ai-friday: #fbbf24;
   --ai-friday-teal: #2dd4bf;
   --ai-friday-soft: rgba(251, 191, 36, 0.13);
-  --ai-friday-border: rgba(251, 191, 36, 0.34);
+  --ai-friday-border: rgba(251, 191, 36, 0.4);
 
-  /* 4. E.D.I.T.H. — AR Targeting Cyan / Cobalt */
+  /* 4. E.D.I.T.H. — AR Visor Electric Cyan & Cobalt */
   --ai-edith: #60a5fa;
   --ai-edith-reticle: #22d3ee;
-  --ai-edith-soft: rgba(34, 211, 238, 0.12);
-  --ai-edith-border: rgba(96, 165, 250, 0.36);
+  --ai-edith-soft: rgba(34, 211, 238, 0.13);
+  --ai-edith-border: rgba(34, 211, 238, 0.42);
 
-  /* 5. Ultron — Crimson / Machined Silver */
+  /* 5. Ultron — Molten Crimson & Machined Chrome */
   --ai-ultron: #f43f5e;
-  --ai-ultron-silver: #cbd5e1;
-  --ai-ultron-soft: rgba(244, 63, 94, 0.13);
-  --ai-ultron-border: rgba(244, 63, 94, 0.38);
+  --ai-ultron-silver: #d4dce8;
+  --ai-ultron-soft: rgba(244, 63, 94, 0.14);
+  --ai-ultron-border: rgba(244, 63, 94, 0.44);
 
-  /* Infinity Stone Accents (Original Geometric SVG) */
+  /* Infinity Stones */
   --stone-space: #38bdf8;
   --stone-mind: #facc15;
   --stone-reality: #f43f5e;
@@ -72,22 +73,29 @@
   --stone-time: #34d399;
   --stone-soul: #fb923c;
 
-  /* Fonts */
+  /* Typography */
+  --font-display: 'Chakra Petch', 'Space Grotesk', system-ui, sans-serif;
   --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-editorial: Georgia, 'Times New Roman', serif;
+
+  /* Geometry */
+  --chamfer-sm: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  --chamfer-md: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  --chamfer-lg: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 26px 100%, 0 calc(100% - 26px));
 
   /* Radii & Spacing */
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-pill: 9999px;
-  --max-width: 1180px;
-  --nav-height: 68px;
+  --max-width: 1200px;
+  --nav-height: 66px;
 
   /* Elevation & Motion */
-  --shadow-hud: 0 20px 50px -15px rgba(0, 0, 0, 0.65);
-  --shadow-glow: 0 0 28px rgba(var(--accent-primary-rgb), 0.18);
+  --shadow-hud: 0 24px 60px -18px rgba(0, 0, 0, 0.78);
+  --shadow-glow: 0 0 36px rgba(var(--accent-primary-rgb), 0.22);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --dur-fast: 160ms;
   --dur-base: 260ms;
@@ -95,23 +103,23 @@
 }
 
 /* ==========================================================================
-   ULTRON MODE OVERRIDE (Red / Dark Tactical Variant)
+   ULTRON PROTOCOL OVERRIDE (Crimson / Obsidian Chrome Hijack)
    ========================================================================== */
 [data-theme="ultron"] {
-  --bg-base: #0b0709;
-  --bg-elevated: #140b0e;
-  --bg-surface: #1b1014;
-  --bg-surface-hover: #25151b;
-  --bg-glass: rgba(18, 9, 13, 0.88);
-  --bg-code: #080406;
+  --bg-base: #090407;
+  --bg-elevated: #13080d;
+  --bg-surface: #1b0c12;
+  --bg-surface-hover: #27111a;
+  --bg-glass: rgba(16, 6, 10, 0.88);
+  --bg-code: #060204;
 
-  --text-primary: #fdf2f4;
-  --text-secondary: #d6bec4;
-  --text-muted: #aa8e96;
+  --text-primary: #fff1f3;
+  --text-secondary: #dabfc6;
+  --text-muted: #ac8e97;
 
-  --border-subtle: rgba(244, 63, 94, 0.18);
-  --border-strong: rgba(244, 63, 94, 0.38);
-  --grid-line: rgba(244, 63, 94, 0.055);
+  --border-subtle: rgba(244, 63, 94, 0.2);
+  --border-strong: rgba(244, 63, 94, 0.44);
+  --grid-line: rgba(244, 63, 94, 0.065);
 
   --accent-primary: #fb7185;
   --accent-primary-rgb: 251, 113, 133;
@@ -121,26 +129,26 @@
 
   --ai-jarvis: #fb7185;
   --ai-jarvis-soft: rgba(251, 113, 133, 0.14);
-  --ai-jarvis-border: rgba(251, 113, 133, 0.4);
+  --ai-jarvis-border: rgba(251, 113, 133, 0.45);
 
+  --ai-vision-bg: #15070c;
   --ai-vision-crimson: #f43f5e;
   --ai-vision-emerald: #cbd5e1;
   --ai-vision-gold: #fda4af;
-  --ai-vision-soft: rgba(244, 63, 94, 0.14);
-  --ai-vision-border: rgba(244, 63, 94, 0.4);
+  --ai-vision-soft: rgba(244, 63, 94, 0.15);
+  --ai-vision-border: rgba(244, 63, 94, 0.45);
 
   --ai-friday: #fb7185;
   --ai-friday-teal: #e2e8f0;
   --ai-friday-soft: rgba(251, 113, 133, 0.14);
-  --ai-friday-border: rgba(251, 113, 133, 0.36);
+  --ai-friday-border: rgba(251, 113, 133, 0.42);
 
   --ai-edith: #fda4af;
   --ai-edith-reticle: #f43f5e;
-  --ai-edith-soft: rgba(244, 63, 94, 0.14);
-  --ai-edith-border: rgba(244, 63, 94, 0.42);
+  --ai-edith-soft: rgba(244, 63, 94, 0.15);
+  --ai-edith-border: rgba(244, 63, 94, 0.46);
 }
 
-/* Reduced Motion Respect */
 @media (prefers-reduced-motion: reduce) {
   :root {
     --dur-fast: 0ms;

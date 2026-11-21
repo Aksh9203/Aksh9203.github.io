@@ -153,23 +153,30 @@ export function initEasterEggs() {
   };
 
   const gemBtn = document.getElementById('mind-stone-btn');
+  const resonancePips = document.querySelectorAll('.resonance-pip');
   if (gemBtn) {
     let clicks = 0;
     let resetTimer = null;
+    const syncPips = (count) => {
+      resonancePips.forEach((pip, idx) => pip.classList.toggle('is-lit', idx < count));
+    };
     gemBtn.addEventListener('click', () => {
       clicks += 1;
       clearTimeout(resetTimer);
       gemBtn.classList.remove('is-pulsing');
       void gemBtn.offsetWidth;
       gemBtn.classList.add('is-pulsing');
+      syncPips(clicks);
 
       if (clicks < 5) {
         showToast(`Mind Stone resonance: ${clicks}/5…`);
         resetTimer = setTimeout(() => {
           clicks = 0;
-        }, 4000);
+          syncPips(0);
+        }, 4200);
       } else {
         clicks = 0;
+        setTimeout(() => syncPips(0), 1200);
         openMindStone();
       }
     });

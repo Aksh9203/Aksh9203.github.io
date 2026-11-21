@@ -214,6 +214,7 @@ export const SITE_DATA = {
         'WebSockets',
         'Python'
       ],
+      pipeline: ['SEC EDGAR 10-K', 'Titan 1536d', 'RDS pgvector', 'Bedrock Haiku', 'FastAPI WS'],
       repoUrl: 'https://github.com/Aksh9203',
       repoLabel: 'GitHub Profile',
       // TODO: Replace repoUrl with the dedicated repository URL if made public
@@ -248,6 +249,7 @@ export const SITE_DATA = {
                  ▼
 [ MongoDB (Strict BSON Schemas) ] ──> Persistent Incident Log`,
       stack: ['Uber H3', 'Redis', 'Terraform', 'AWS Cognito', 'JWT', 'MongoDB'],
+      pipeline: ['Cognito SRP/JWT', 'Uber H3 (Res 9)', '11-Ring Redis', 'O(1) Match', 'MongoDB BSON'],
       repoUrl: 'https://github.com/Aksh9203',
       repoLabel: 'GitHub Profile',
       // TODO: Replace repoUrl with the dedicated repository URL if made public
@@ -285,6 +287,7 @@ export const SITE_DATA = {
         'Idempotency',
         'SQS DLQ'
       ],
+      pipeline: ['Step Functions', 'Flight · Hotel · Pay', 'Outbox + Idempotency', 'Auto Rollback', 'SQS DLQ'],
       repoUrl: 'https://github.com/Aksh9203/Distributed-Travel-Booking-Saga',
       repoLabel: 'View Repository',
       repoTodo: false
@@ -320,6 +323,7 @@ export const SITE_DATA = {
         'Amazon SQS',
         'AWS Lambda'
       ],
+      pipeline: ['Greengrass MTCNN', 'MQTT', 'SQS Queue', 'EC2 0→15 Scale', 'Lambda FaceNet'],
       repoUrl: 'https://github.com/Aksh9203',
       repoLabel: 'GitHub Profile',
       // TODO: Replace repoUrl with the dedicated repository URL if made public
@@ -348,6 +352,7 @@ export const SITE_DATA = {
                                     ▼
                          [ Google Cloud Spanner ]`,
       stack: ['Java', 'GCP Cloud Run', 'GCP Pub/Sub', 'Cloud Spanner', 'Docker'],
+      pipeline: ['Java Cloud Run', 'GCP Pub/Sub', '900k+ Async Events', 'Cloud Spanner'],
       repoUrl: 'https://github.com/Aksh9203',
       repoLabel: 'GitHub Profile',
       // TODO: Replace repoUrl with the dedicated repository URL if made public
@@ -369,6 +374,7 @@ export const SITE_DATA = {
         'Built an interactive browser code editor backed by a Python web service. Explore the source code directly on GitHub.',
       architecture: `[ Browser Editor Client ] ──> [ Python Web Backend ] ──> [ Execution & Output Feed ]`,
       stack: ['Python', 'JavaScript', 'Flask'],
+      pipeline: ['Browser Editor', 'Flask Backend', 'Execution Output'],
       repoUrl: 'https://github.com/Aksh9203/Smart-Code-Editor',
       repoLabel: 'View Repository',
       repoTodo: false
