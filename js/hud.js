@@ -39,7 +39,7 @@ export function setTheme(mode, { persist = true, announce = false } = {}) {
     toggleBtn.setAttribute('aria-pressed', String(isUltron));
     toggleBtn.setAttribute(
       'aria-label',
-      isUltron ? 'Switch to Vision Mode' : 'Switch to Ultron Mode'
+      isUltron ? 'ULTRON mode — switch to Vision mode' : 'VISION mode — switch to Ultron mode'
     );
     const labelEl = toggleBtn.querySelector('.theme-label');
     if (labelEl) labelEl.textContent = isUltron ? 'ULTRON' : 'VISION';

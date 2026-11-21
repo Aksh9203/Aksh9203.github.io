@@ -62,10 +62,6 @@ export function initEasterEggs() {
       if (foundStones.size > 0) {
         hudStoneBtn.hidden = false;
         hudStoneCount.textContent = `${foundStones.size}/6`;
-        hudStoneBtn.setAttribute(
-          'aria-label',
-          `Infinity Stones collected: ${foundStones.size} of 6. Open dossier.`
-        );
       }
     }
   };

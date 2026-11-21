@@ -998,13 +998,11 @@ a {
 
 .mission-card {
   position: relative;
-  opacity: 0.45;
-  transform: translateY(14px);
-  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+  transform: translateY(10px);
+  transition: transform var(--dur-slow) var(--ease-out);
 }
 
 .mission-card.is-powered {
-  opacity: 1;
   transform: translateY(0);
 }
 
@@ -1519,9 +1517,11 @@ a {
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
+  color: var(--text-primary);
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: 0.84rem;
+  width: 100%;
   transition: border-color var(--dur-fast) ease, transform var(--dur-fast) ease;
 }
 
@@ -2086,11 +2086,22 @@ a {
 
 @media (max-width: 600px) {
   .hud-container {
-    padding: 0 16px;
+    padding: 0 14px;
   }
 
   .hud-nav-inner {
-    padding: 8px 14px;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .hud-controls {
+    gap: 5px;
+  }
+
+  .hud-icon-btn,
+  .hud-resume-btn {
+    padding: 6px 8px;
+    font-size: 0.7rem;
   }
 
   .hud-brand-name,
@@ -2105,6 +2116,10 @@ a {
 
   .hero-section {
     padding: 36px 0 56px;
+  }
+
+  .jarvis-greeting {
+    min-height: 3.1em;
   }
 
   .hero-metrics-strip {

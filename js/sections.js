@@ -291,7 +291,7 @@ export function initSkillsSection() {
       const btn = createEl('button', 'node-btn', group.nodeLabel);
       btn.type = 'button';
       btn.setAttribute('aria-pressed', 'false');
-      btn.setAttribute('aria-label', `Highlight ${group.title} module`);
+      btn.setAttribute('aria-label', `${group.nodeLabel} — ${group.title}`);
       btn.addEventListener('click', () => {
         focusedModule = group.id;
         syncNodes(btn);

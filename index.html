@@ -28,7 +28,7 @@
   <!-- Pre-paint theme sync (prevents flash in Ultron Mode) -->
   <script>try{if(localStorage.getItem('vq_theme')==='ultron')document.documentElement.dataset.theme='ultron';}catch(e){}</script>
 
-  <!-- Fonts: trimmed to 2 families for fast mobile LCP -->
+  <!-- Fonts: trimmed to 2 families for fast mobile LCP and zero font-swap CLS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
   <!-- Persistent Global HUD Header -->
   <header class="hud-header">
     <nav class="hud-nav-inner" aria-label="Primary navigation">
-      <a href="#hero" class="hud-brand">
+      <a href="#hero" class="hud-brand" aria-label="Aksh Chauhan — Home">
         <span class="brand-hex" aria-hidden="true">AC</span>
         <span class="hud-brand-name">Aksh Chauhan</span>
       </a>
@@ -77,17 +77,18 @@
           <span id="hud-ai-status-text">J.A.R.V.I.S. ONLINE</span>
         </div>
 
-        <button type="button" class="hud-icon-btn hud-stones-btn" id="hud-stones-btn" hidden aria-label="Infinity Stones collected">
+        <button type="button" class="hud-icon-btn hud-stones-btn" id="hud-stones-btn" hidden>
           <span aria-hidden="true">◆</span>
           <span id="hud-stones-count">0/6</span>
+          <span class="sr-only"> Infinity Stones collected</span>
         </button>
 
-        <button type="button" class="hud-icon-btn" data-open-palette aria-label="Open J.A.R.V.I.S. Command Terminal">
+        <button type="button" class="hud-icon-btn" data-open-palette aria-label="CMD — Open J.A.R.V.I.S. Command Terminal">
           <span>CMD</span>
           <kbd aria-hidden="true">⌘K</kbd>
         </button>
 
-        <button type="button" class="hud-icon-btn" id="theme-toggle-btn" aria-pressed="false" aria-label="Switch to Ultron Mode">
+        <button type="button" class="hud-icon-btn" id="theme-toggle-btn" aria-pressed="false" aria-label="VISION mode — switch to Ultron mode">
           <span class="theme-label">VISION</span>
         </button>
 
