@@ -1,0 +1,150 @@
+/* ==========================================================================
+   VISIONQUEST DESIGN TOKENS & DUAL-THEME SYSTEM
+   Modes: Vision (default) | Ultron (red/dark override via [data-theme="ultron"])
+   All foreground/background pairings calibrated for WCAG 2.1 AA (>= 4.5:1)
+   ========================================================================== */
+
+:root {
+  /* Core Dark HUD Surfaces */
+  --bg-base: #070b12;
+  --bg-elevated: #0c121d;
+  --bg-surface: #111927;
+  --bg-surface-hover: #172235;
+  --bg-glass: rgba(10, 16, 28, 0.84);
+  --bg-code: #05080f;
+
+  /* Typography & High-Contrast Foregrounds (WCAG AA/AAA on dark HUD) */
+  --text-primary: #eef4ff;
+  --text-secondary: #b4c2d9;
+  --text-muted: #8b9bb6;
+
+  /* Borders & HUD Hairlines */
+  --border-subtle: rgba(148, 178, 222, 0.14);
+  --border-strong: rgba(148, 178, 222, 0.28);
+  --grid-line: rgba(56, 189, 248, 0.045);
+  --scanline: rgba(255, 255, 255, 0.018);
+
+  /* Global Active Theme Accent (Vision Mode default) */
+  --accent-primary: #38bdf8;
+  --accent-primary-rgb: 56, 189, 248;
+  --accent-secondary: #f5b942;
+  --accent-secondary-rgb: 245, 185, 66;
+  --accent-danger: #f87171;
+  --accent-success: #34d399;
+  --focus-ring: #7dd3fc;
+
+  /* Section AI Narrator Palettes */
+  /* 1. J.A.R.V.I.S. — Cool Arc Cyan / Holographic Blue */
+  --ai-jarvis: #38bdf8;
+  --ai-jarvis-soft: rgba(56, 189, 248, 0.14);
+  --ai-jarvis-border: rgba(56, 189, 248, 0.36);
+
+  /* 2. Vision — Deep Crimson / Synth Emerald / Mind Stone Gold */
+  --ai-vision-crimson: #e05a6d;
+  --ai-vision-emerald: #2dd4a0;
+  --ai-vision-gold: #f5c04a;
+  --ai-vision-soft: rgba(245, 192, 74, 0.12);
+  --ai-vision-border: rgba(245, 192, 74, 0.34);
+
+  /* 3. F.R.I.D.A.Y. — Tactical Amber / Operations Teal */
+  --ai-friday: #fbbf24;
+  --ai-friday-teal: #2dd4bf;
+  --ai-friday-soft: rgba(251, 191, 36, 0.13);
+  --ai-friday-border: rgba(251, 191, 36, 0.34);
+
+  /* 4. E.D.I.T.H. — AR Targeting Cyan / Cobalt */
+  --ai-edith: #60a5fa;
+  --ai-edith-reticle: #22d3ee;
+  --ai-edith-soft: rgba(34, 211, 238, 0.12);
+  --ai-edith-border: rgba(96, 165, 250, 0.36);
+
+  /* 5. Ultron — Crimson / Machined Silver */
+  --ai-ultron: #f43f5e;
+  --ai-ultron-silver: #cbd5e1;
+  --ai-ultron-soft: rgba(244, 63, 94, 0.13);
+  --ai-ultron-border: rgba(244, 63, 94, 0.38);
+
+  /* Infinity Stone Accents (Original Geometric SVG) */
+  --stone-space: #38bdf8;
+  --stone-mind: #facc15;
+  --stone-reality: #f43f5e;
+  --stone-power: #c084fc;
+  --stone-time: #34d399;
+  --stone-soul: #fb923c;
+
+  /* Fonts */
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Radii & Spacing */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --max-width: 1180px;
+  --nav-height: 68px;
+
+  /* Elevation & Motion */
+  --shadow-hud: 0 20px 50px -15px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 28px rgba(var(--accent-primary-rgb), 0.18);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur-base: 260ms;
+  --dur-slow: 480ms;
+}
+
+/* ==========================================================================
+   ULTRON MODE OVERRIDE (Red / Dark Tactical Variant)
+   ========================================================================== */
+[data-theme="ultron"] {
+  --bg-base: #0b0709;
+  --bg-elevated: #140b0e;
+  --bg-surface: #1b1014;
+  --bg-surface-hover: #25151b;
+  --bg-glass: rgba(18, 9, 13, 0.88);
+  --bg-code: #080406;
+
+  --text-primary: #fdf2f4;
+  --text-secondary: #d6bec4;
+  --text-muted: #aa8e96;
+
+  --border-subtle: rgba(244, 63, 94, 0.18);
+  --border-strong: rgba(244, 63, 94, 0.38);
+  --grid-line: rgba(244, 63, 94, 0.055);
+
+  --accent-primary: #fb7185;
+  --accent-primary-rgb: 251, 113, 133;
+  --accent-secondary: #e2e8f0;
+  --accent-secondary-rgb: 226, 232, 240;
+  --focus-ring: #fda4af;
+
+  --ai-jarvis: #fb7185;
+  --ai-jarvis-soft: rgba(251, 113, 133, 0.14);
+  --ai-jarvis-border: rgba(251, 113, 133, 0.4);
+
+  --ai-vision-crimson: #f43f5e;
+  --ai-vision-emerald: #cbd5e1;
+  --ai-vision-gold: #fda4af;
+  --ai-vision-soft: rgba(244, 63, 94, 0.14);
+  --ai-vision-border: rgba(244, 63, 94, 0.4);
+
+  --ai-friday: #fb7185;
+  --ai-friday-teal: #e2e8f0;
+  --ai-friday-soft: rgba(251, 113, 133, 0.14);
+  --ai-friday-border: rgba(251, 113, 133, 0.36);
+
+  --ai-edith: #fda4af;
+  --ai-edith-reticle: #f43f5e;
+  --ai-edith-soft: rgba(244, 63, 94, 0.14);
+  --ai-edith-border: rgba(244, 63, 94, 0.42);
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}
