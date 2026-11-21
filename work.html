@@ -1,226 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="vision">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Works & Case Studies | Aksh Chauhan</title>
-  <meta name="description" content="Detailed engineering retrospectives, distributed system architecture breakdowns, and side quests by Aksh Chauhan.">
-  
+  <title>Case Studies | Aksh Chauhan — E.D.I.T.H. Target Analysis</title>
+  <meta name="description" content="System architecture breakdowns and engineering case studies by Aksh Chauhan.">
+  <meta name="theme-color" content="#070b12">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <script>try{if(localStorage.getItem('vq_theme')==='ultron')document.documentElement.dataset.theme='ultron';}catch(e){}</script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <div class="cutting-mat-wrapper">
-
-    <!-- Mat Rulers -->
-    <div class="mat-ruler-top">
-      <span>00</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span>
-      <span>60</span><span>70</span><span>80</span><span>90</span><span>100</span>
-    </div>
-    <div class="mat-ruler-bottom">
-      <span>00</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span>
-      <span>60</span><span>70</span><span>80</span><span>90</span><span>100</span>
-    </div>
-
-    <!-- Floating Navigation Pill -->
-    <header class="nav-container">
-      <nav class="nav-pill">
-        <a href="index.html" class="nav-brand">
-          <span class="brand-stamp">AC</span>
-          <span>Aksh Chauhan</span>
-        </a>
-        <ul class="nav-links">
-          <li class="nav-item"><a href="index.html">Start</a></li>
-          <li class="nav-item active"><a href="work.html">Work</a></li>
-          <li class="nav-item"><a href="about.html">About</a></li>
-          <li class="nav-item"><a href="index.html#stack">Stack</a></li>
-          <li class="nav-item"><a href="index.html#connect">Connect</a></li>
-        </ul>
-        <div class="nav-status">
-          <span class="status-dot"></span>
-          <span>Available for Roles</span>
+  <header class="hud-header">
+    <nav class="hud-nav-inner" aria-label="Primary navigation">
+      <a href="index.html" class="hud-brand">
+        <span class="brand-hex" aria-hidden="true">AC</span>
+        <span class="hud-brand-name">Aksh Chauhan</span>
+      </a>
+      <ul class="hud-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html" class="is-active" aria-current="page">Case Studies</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="hud-controls">
+        <div class="hud-ai-status" style="--host-accent:var(--ai-edith-reticle);">
+          <span class="ai-pulse-dot" aria-hidden="true"></span>
+          <span>E.D.I.T.H. ONLINE</span>
         </div>
-      </nav>
-    </header>
+        <button type="button" class="hud-icon-btn" id="theme-toggle-btn" aria-pressed="false" aria-label="Switch to Ultron Mode">
+          <span class="theme-label">VISION</span>
+        </button>
+        <a href="assets/Aksh_Chauhan_Resume.pdf" class="hud-resume-btn" target="_blank" rel="noopener noreferrer" download>Resume ↓</a>
+      </div>
+    </nav>
+  </header>
 
-    <main class="paper-deck">
-      <div class="paper-undersheet-2"></div>
-      <div class="paper-undersheet-1"></div>
-
-      <article class="paper-page">
-        <div class="washi-tape washi-tape-left"></div>
-        <div class="washi-tape washi-tape-right"></div>
-
-        <!-- Header Banner -->
-        <section class="hero-section" style="padding-bottom: 40px;">
-          <div class="hero-meta-bar">
-            <div class="location-badge">
-              <a href="index.html" style="text-decoration: none; color: inherit;">← Back to Workbench</a>
-            </div>
-            <div class="edition-stamp">
-              <span>Deep-Dive Retrospectives // 2026</span>
-            </div>
+  <main id="main-content">
+    <section class="hud-section edith-section" aria-labelledby="work-page-heading">
+      <div class="hud-container">
+        <div class="section-header">
+          <div>
+            <div class="ai-badge">HOST // E.D.I.T.H. · COMPLETE TARGET ARCHIVE</div>
+            <h1 class="section-title" id="work-page-heading">Engineering Case Studies</h1>
+            <p class="section-desc">Filter by domain and open any target card for problem statements, architecture dataflows, and verified results.</p>
           </div>
+          <a href="index.html" class="btn-hud-ghost">← Back to Main HUD</a>
+        </div>
 
-          <h1 class="hero-statement">
-            Systems I've built,<br>
-            lessons I've <span class="serif-italic highlight-red">learned.</span>
-          </h1>
+        <div class="filter-bar" id="edith-filters" role="group" aria-label="Filter projects by technology domain"></div>
+        <div class="edith-grid" id="edith-grid"></div>
+      </div>
+    </section>
+  </main>
 
-          <p class="hero-bio">
-            Behind every performant system is a set of hard-won engineering principles. Here is an honest retrospective on distributed architectures, production tradeoffs, and experimental side quests.
-          </p>
-        </section>
+  <!-- Target Analysis Modal -->
+  <div class="hud-modal-overlay" id="project-modal" hidden role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pm-title">
+    <div class="hud-modal-dialog">
+      <button type="button" class="modal-close-x" id="project-modal-close" aria-label="Close target analysis">✕</button>
+      <div class="modal-kicker" id="pm-code">TGT // TARGET ANALYSIS</div>
+      <h2 class="modal-heading" id="pm-title">Project Title</h2>
+      <div class="target-metric" id="pm-metric">Metric</div>
 
-        <!-- Flagship Case Studies -->
-        <section class="section-wrapper" style="padding-top: 40px;">
-          
-          <!-- Case 1 -->
-          <div class="principle-card" style="margin-bottom: 36px; padding: 36px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-              <span class="principle-num">CASE STUDY // 01</span>
-              <span class="project-metric-badge">Sub-Second RAG // 99.4% Extraction</span>
-            </div>
-            <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 12px;">AI-Powered Investor Intelligence Platform</h2>
-            <p style="font-family: var(--font-hand); font-size: 1.4rem; color: var(--brand-red); margin-bottom: 16px;">
-              "Learned that autonomous agents thrive when grounded in strict schema tool calling and hybrid vector retrieval."
-            </p>
-            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-              Building an automated financial analysis pipeline that reads SEC 10-K and 10-Q filings required overcoming high document length and hallucinations. By implementing a hybrid retrieval pipeline—combining pgvector cosine similarity with BM25 full-text indexing—we achieved deterministic financial data extraction streamed over low-latency WebSockets.
-            </p>
-            <div class="project-tags-list">
-              <span class="project-tag-pill">Python</span>
-              <span class="project-tag-pill">Amazon Bedrock</span>
-              <span class="project-tag-pill">PostgreSQL</span>
-              <span class="project-tag-pill">pgvector</span>
-              <span class="project-tag-pill">FastAPI</span>
-              <span class="project-tag-pill">WebSockets</span>
-            </div>
-            <div style="margin-top: 20px;">
-              <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-github">View Code on GitHub ↗</a>
-            </div>
-          </div>
+      <div class="modal-block-label">01 // Problem</div>
+      <p class="modal-text" id="pm-problem"></p>
 
-          <!-- Case 2 -->
-          <div class="principle-card" style="margin-bottom: 36px; padding: 36px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-              <span class="principle-num">CASE STUDY // 02</span>
-              <span class="project-metric-badge">&lt; 50ms Emergency Dispatch</span>
-            </div>
-            <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 12px;">SafeGuard Mobile SOS Responder Matching</h2>
-            <p style="font-family: var(--font-hand); font-size: 1.4rem; color: var(--brand-red); margin-bottom: 16px;">
-              "Learned that spatial partitioning algorithms beat standard SQL geo-queries by orders of magnitude."
-            </p>
-            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-              Traditional Haversine radius queries on relational databases crumble under high-frequency mobile GPS telemetry. We replaced polygon calculations with Uber's H3 hexagonal indexing system, quantizing coordinates into resolution-8 hexagons directly inside in-memory Redis pipelines. Emergency responder discovery latency plummeted to under 50ms.
-            </p>
-            <div class="project-tags-list">
-              <span class="project-tag-pill">TypeScript</span>
-              <span class="project-tag-pill">Uber H3</span>
-              <span class="project-tag-pill">Redis Spatial</span>
-              <span class="project-tag-pill">WebSockets</span>
-              <span class="project-tag-pill">Terraform</span>
-            </div>
-            <div style="margin-top: 20px;">
-              <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-github">View Code on GitHub ↗</a>
-            </div>
-          </div>
+      <div class="modal-block-label">02 // My Role</div>
+      <p class="modal-text" id="pm-role"></p>
 
-          <!-- Case 3 -->
-          <div class="principle-card" style="margin-bottom: 36px; padding: 36px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-              <span class="principle-num">CASE STUDY // 03</span>
-              <span class="project-metric-badge">Zero Dual-Write Errors</span>
-            </div>
-            <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 12px;">Serverless Travel Booking Platform</h2>
-            <p style="font-family: var(--font-hand); font-size: 1.4rem; color: var(--brand-red); margin-bottom: 16px;">
-              "Learned that distributed transactions must always have idempotency keys and compensating transactions."
-            </p>
-            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 20px;">
-              When coordinating bookings across flights, hotels, and payment gateways, partial failures are inevitable. Rather than relying on fragile two-phase commit protocols, we designed an event-driven Saga state machine on AWS Step Functions. We enforced the Transactional Outbox pattern and Idempotency tokens, guaranteeing zero duplicate payments and zero orphaned reservations.
-            </p>
-            <div class="project-tags-list">
-              <span class="project-tag-pill">AWS Step Functions</span>
-              <span class="project-tag-pill">DynamoDB</span>
-              <span class="project-tag-pill">Spring Boot</span>
-              <span class="project-tag-pill">Transactional Outbox</span>
-              <span class="project-tag-pill">SES</span>
-            </div>
-            <div style="margin-top: 20px;">
-              <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-github">View Code on GitHub ↗</a>
-            </div>
-          </div>
+      <div class="modal-block-label">03 // Architecture &amp; Implementation</div>
+      <p class="modal-text" id="pm-solution"></p>
 
-          <!-- Side Quests Section -->
-          <div class="section-divider"></div>
-          
-          <div class="section-head">
-            <div class="section-title-group">
-              <h2>Side Quests & Experiments</h2>
-              <p class="section-subtitle">Developer tools, exploratory prototypes, and weekend builds</p>
-            </div>
-            <div class="section-count">Experiments</div>
-          </div>
+      <div class="modal-block-label">04 // Result</div>
+      <p class="modal-text" id="pm-result"></p>
 
-          <div class="projects-grid">
-            <div class="project-card">
-              <div class="project-card-header">
-                <span class="project-index">SIDE QUEST // A</span>
-                <span class="project-metric-badge">AI Developer Tool</span>
-              </div>
-              <h3 class="project-card-title">Smart Code Editor & AI Mentor</h3>
-              <p class="project-card-desc">
-                AI-powered code compiler in the browser supporting Python, Java, and C++ with real-time semantic mentor guidance powered by Google GenAI (Gemini) and Piston API sandbox.
-              </p>
-              <div class="project-tags-list">
-                <span class="project-tag-pill">Flask</span>
-                <span class="project-tag-pill">Gemini SDK</span>
-                <span class="project-tag-pill">Piston API</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-github">GitHub ↗</a>
-              </div>
-            </div>
+      <div class="modal-block-label">05 // System Dataflow</div>
+      <pre class="modal-arch-pre" id="pm-arch"></pre>
 
-            <div class="project-card">
-              <div class="project-card-header">
-                <span class="project-index">SIDE QUEST // B</span>
-                <span class="project-metric-badge">Frontend Architecture</span>
-              </div>
-              <h3 class="project-card-title">Netflix Modern Streaming Experience</h3>
-              <p class="project-card-desc">
-                Pixel-perfect streaming application featuring optimistic UI updates, Firebase Auth session management, and React Query cache invalidation.
-              </p>
-              <div class="project-tags-list">
-                <span class="project-tag-pill">React</span>
-                <span class="project-tag-pill">Firebase</span>
-                <span class="project-tag-pill">React Query</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-github">GitHub ↗</a>
-              </div>
-            </div>
-          </div>
+      <div class="modal-block-label">06 // Technology Stack</div>
+      <div class="tech-tag-row" id="pm-stack"></div>
 
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer-section">
-          <div class="footer-signature-note">
-            "Everything you build, build it with care." — Aksh
-          </div>
-          <div class="footer-copyright">
-            <a href="index.html" style="color: var(--brand-red); text-decoration: none;">← Return to Main Page</a>
-          </div>
-        </footer>
-
-      </article>
-    </main>
-
+      <div class="modal-footer-bar">
+        <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-hud-primary" id="pm-repo-link">View Repository ↗</a>
+      </div>
+    </div>
   </div>
 
+  <footer class="hud-section contact-section">
+    <div class="hud-container">
+      <div class="hud-footer-meta" style="margin-top:0;border-top:none;padding-top:0;">
+        <div class="footer-bottom-row">
+          <span>© 2026 Aksh Chauhan · Fan-inspired design. Not affiliated with Marvel or Disney.</span>
+          <div class="footer-route-links">
+            <a href="index.html">Main HUD</a>
+            <a href="about.html">About Page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="hud-toast" id="hud-toast" role="status" aria-live="polite"></div>
+
+  <script type="module">
+    import { initTheme } from './js/hud.js';
+    import { initProjectsSection } from './js/sections.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initProjectsSection();
+    });
+  </script>
 </body>
 </html>
