@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="vision">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Studies | Aksh Chauhan — E.D.I.T.H. Target Analysis</title>
-  <meta name="description" content="System architecture breakdowns and engineering case studies by Aksh Chauhan.">
-  <meta name="theme-color" content="#070b12">
+  <title>Projects Archive — Aksh Chauhan</title>
+  <meta name="description" content="Engineering projects, system architecture diagrams, and verified outcomes by Aksh Chauhan.">
+  <meta name="theme-color" content="#f4f1ea">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <script>try{if(localStorage.getItem('vq_theme')==='ultron')document.documentElement.dataset.theme='ultron';}catch(e){}</script>
+  <script>try{if(localStorage.getItem('aksh_theme')==='dark')document.documentElement.dataset.theme='dark';}catch(e){}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
@@ -19,112 +19,56 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="hud-header">
-    <nav class="hud-nav-inner" aria-label="Primary navigation">
-      <a href="index.html" class="hud-brand" aria-label="Aksh Chauhan — Home">
-        <span class="brand-hex" aria-hidden="true">AC</span>
-        <span class="hud-brand-name">Aksh Chauhan</span>
+  <header class="site-header">
+    <nav class="nav-bar" aria-label="Primary navigation">
+      <a href="index.html" class="brand-link">
+        <span class="brand-monogram" aria-hidden="true">AC</span>
+        <span class="brand-name">Aksh Chauhan</span>
       </a>
-      <ul class="hud-nav-links">
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
+        <li><a href="work.html" class="is-active" aria-current="page">Projects</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="work.html" class="is-active" aria-current="page">Case Studies</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
-      <div class="hud-controls">
-        <div class="hud-ai-status" style="--host-accent:var(--ai-edith-reticle);">
-          <span class="ai-pulse-dot" aria-hidden="true"></span>
-          <span>E.D.I.T.H. ONLINE</span>
-        </div>
-        <button type="button" class="hud-icon-btn" id="theme-toggle-btn" aria-pressed="false" aria-label="VISION mode — switch to Ultron mode">
-          <span class="theme-label">VISION</span>
-        </button>
-        <a href="assets/Aksh_Chauhan_Resume.pdf" class="hud-resume-btn" target="_blank" rel="noopener noreferrer" download>Resume ↓</a>
+      <div class="nav-actions">
+        <button type="button" class="btn-nav-subtle" id="theme-toggle" aria-pressed="false" aria-label="Dark — switch to dark obsidian theme">Dark</button>
+        <a href="assets/Aksh_Chauhan_Resume.pdf" class="btn-nav-resume" target="_blank" rel="noopener noreferrer" download>Resume ↓</a>
       </div>
     </nav>
   </header>
 
   <main id="main-content">
-    <section class="hud-section edith-section" aria-labelledby="work-page-heading">
-      <div class="hud-container">
-        <div class="section-header">
+    <section class="section" aria-labelledby="work-heading">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <div class="ai-badge">HOST // E.D.I.T.H. · COMPLETE TARGET ARCHIVE</div>
-            <h1 class="section-title" id="work-page-heading">Engineering Case Studies</h1>
-            <p class="section-desc">Filter by domain and open any target card for problem statements, architecture dataflows, and verified results.</p>
+            <p class="section-kicker">Architecture Index</p>
+            <h1 class="section-title" id="work-heading">Engineering Projects</h1>
           </div>
-          <a href="index.html" class="btn-hud-ghost">← Back to Main HUD</a>
+          <a href="index.html" class="btn-secondary">← Back to Main Page</a>
         </div>
 
-        <div class="edith-visor-shell" id="edith-visor-shell">
-          <div class="edith-cursor-reticle" id="edith-cursor-reticle" aria-hidden="true"></div>
-          <div class="edith-visor-topbar" aria-hidden="true">
-            <span>E.D.I.T.H. OPTICAL OVERLAY // FULL ARCHIVE</span>
-            <span>6 VERIFIED TARGETS</span>
-          </div>
-          <div class="filter-bar" id="edith-filters" role="group" aria-label="Filter projects by technology domain"></div>
-          <div class="edith-grid" id="edith-grid"></div>
-        </div>
+        <div class="filter-row" id="project-filters" role="group" aria-label="Filter projects by domain"></div>
+        <div class="project-ledger" id="project-ledger"></div>
       </div>
     </section>
   </main>
 
-  <!-- Target Analysis Modal -->
-  <div class="hud-modal-overlay" id="project-modal" hidden role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pm-title">
-    <div class="hud-modal-dialog">
-      <button type="button" class="modal-close-x" id="project-modal-close" aria-label="Close target analysis">✕</button>
-      <div class="modal-kicker" id="pm-code">TGT // TARGET ANALYSIS</div>
-      <h2 class="modal-heading" id="pm-title">Project Title</h2>
-      <div class="target-metric" id="pm-metric">Metric</div>
-
-      <div class="modal-block-label">01 // Problem</div>
-      <p class="modal-text" id="pm-problem"></p>
-
-      <div class="modal-block-label">02 // My Role</div>
-      <p class="modal-text" id="pm-role"></p>
-
-      <div class="modal-block-label">03 // Architecture &amp; Implementation</div>
-      <p class="modal-text" id="pm-solution"></p>
-
-      <div class="modal-block-label">04 // Result</div>
-      <p class="modal-text" id="pm-result"></p>
-
-      <div class="modal-block-label">05 // System Dataflow</div>
-      <pre class="modal-arch-pre" id="pm-arch"></pre>
-
-      <div class="modal-block-label">06 // Technology Stack</div>
-      <div class="tech-tag-row" id="pm-stack"></div>
-
-      <div class="modal-footer-bar">
-        <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-hud-primary" id="pm-repo-link">View Repository ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <footer class="hud-section contact-section">
-    <div class="hud-container">
-      <div class="hud-footer-meta" style="margin-top:0;border-top:none;padding-top:0;">
-        <div class="footer-bottom-row">
-          <span>© 2026 Aksh Chauhan · Fan-inspired design. Not affiliated with Marvel or Disney.</span>
-          <div class="footer-route-links">
-            <a href="index.html">Main HUD</a>
-            <a href="about.html">About Page</a>
-          </div>
-        </div>
+  <footer class="contact-section" style="padding-top:32px;">
+    <div class="wrap">
+      <div class="footer-bar" style="padding-top:0;">
+        <span>© 2026 Aksh Chauhan</span>
+        <nav class="footer-nav" aria-label="Site links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="assets/Aksh_Chauhan_Resume.pdf" target="_blank" rel="noopener noreferrer" download>Resume</a>
+        </nav>
       </div>
     </div>
   </footer>
 
-  <div class="hud-toast" id="hud-toast" role="status" aria-live="polite"></div>
-
-  <script type="module">
-    import { initTheme } from './js/hud.js';
-    import { initProjectsSection } from './js/sections.js';
-    document.addEventListener('DOMContentLoaded', () => {
-      initTheme();
-      initProjectsSection();
-    });
-  </script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,158 +1,88 @@
 /* ==========================================================================
-   VISIONQUEST DESIGN TOKENS & DUAL-THEME SYSTEM
-   Modes: Vision (default) | Ultron (red/dark tactical override)
-   High-contrast dark HUD calibrated for WCAG 2.1 AA/AAA (>= 4.5:1)
+   AKSH CHAUHAN — EDITORIAL SYSTEMS DESIGN TOKENS
+   Warm archival paper (default) + Warm obsidian night mode ([data-theme="dark"])
+   All text/surface pairings verified for WCAG 2.1 AA/AAA (>= 4.5:1)
    ========================================================================== */
 
 :root {
-  /* Core Dark HUD Surfaces */
-  --bg-base: #050810;
-  --bg-elevated: #0a101c;
-  --bg-surface: #0f1726;
-  --bg-surface-hover: #162238;
-  --bg-glass: rgba(6, 10, 20, 0.82);
-  --bg-code: #04070d;
+  /* Surfaces — Warm Archival Paper */
+  --bg: #f4f1ea;
+  --bg-elevated: #fbf9f4;
+  --bg-subtle: #eae5da;
+  --bg-code: #181715;
+  --bg-code-soft: #22201d;
 
-  /* High-Contrast Foregrounds */
-  --text-primary: #f1f6ff;
-  --text-secondary: #b8c7e0;
-  --text-muted: #8b9db9;
+  /* Ink & Typography */
+  --ink: #161513;
+  --ink-secondary: #4a4740;
+  --ink-muted: #676359;
+  --ink-on-dark: #f2efe8;
+  --ink-code-muted: #a6a095;
 
-  /* Borders & HUD Hairlines */
-  --border-subtle: rgba(125, 178, 232, 0.16);
-  --border-strong: rgba(125, 178, 232, 0.34);
-  --grid-line: rgba(56, 189, 248, 0.048);
-  --scanline: rgba(255, 255, 255, 0.02);
+  /* Hairlines & Structure */
+  --line: #d9d3c6;
+  --line-strong: #b9b1a1;
 
-  /* Global Active Theme Accent */
-  --accent-primary: #38bdf8;
-  --accent-primary-rgb: 56, 189, 248;
-  --accent-secondary: #f6c453;
-  --accent-secondary-rgb: 246, 196, 83;
-  --accent-danger: #fb7185;
-  --accent-success: #34d399;
-  --focus-ring: #7dd3fc;
-
-  /* 5 Distinct Synthetic Mind Atmospheres */
-  /* 1. J.A.R.V.I.S. — Holographic Arc Cyan & Workshop Gold */
-  --ai-jarvis: #38bdf8;
-  --ai-jarvis-soft: rgba(56, 189, 248, 0.14);
-  --ai-jarvis-border: rgba(56, 189, 248, 0.42);
-
-  /* 2. Vision — Vibranium Crimson, Synth Emerald & Mind Stone Gold */
-  --ai-vision-bg: #120910;
-  --ai-vision-crimson: #e85d75;
-  --ai-vision-emerald: #2dd4a0;
-  --ai-vision-gold: #f6c453;
-  --ai-vision-soft: rgba(246, 196, 83, 0.13);
-  --ai-vision-border: rgba(246, 196, 83, 0.38);
-
-  /* 3. F.R.I.D.A.Y. — Tactical Flight Amber & Ops Teal */
-  --ai-friday: #fbbf24;
-  --ai-friday-teal: #2dd4bf;
-  --ai-friday-soft: rgba(251, 191, 36, 0.13);
-  --ai-friday-border: rgba(251, 191, 36, 0.4);
-
-  /* 4. E.D.I.T.H. — AR Visor Electric Cyan & Cobalt */
-  --ai-edith: #60a5fa;
-  --ai-edith-reticle: #22d3ee;
-  --ai-edith-soft: rgba(34, 211, 238, 0.13);
-  --ai-edith-border: rgba(34, 211, 238, 0.42);
-
-  /* 5. Ultron — Molten Crimson & Machined Chrome */
-  --ai-ultron: #f43f5e;
-  --ai-ultron-silver: #d4dce8;
-  --ai-ultron-soft: rgba(244, 63, 94, 0.14);
-  --ai-ultron-border: rgba(244, 63, 94, 0.44);
-
-  /* Infinity Stones */
-  --stone-space: #38bdf8;
-  --stone-mind: #facc15;
-  --stone-reality: #f43f5e;
-  --stone-power: #c084fc;
-  --stone-time: #34d399;
-  --stone-soul: #fb923c;
+  /* Real Technical Accents */
+  --accent: #a93412;         /* Deep Signal Vermilion — >= 5.0:1 AA on paper */
+  --accent-hover: #8d290c;
+  --accent-soft: rgba(169, 52, 18, 0.09);
+  --cobalt: #1d4ed8;         /* Architectural Blueprint Blue */
+  --cobalt-soft: rgba(29, 78, 216, 0.09);
+  --ok: #116932;             /* Deep Forest Emerald — >= 5.7:1 AA on paper */
+  --ok-soft: rgba(17, 105, 50, 0.11);
+  --warn: #b45309;
+  --warn-soft: rgba(180, 83, 9, 0.11);
 
   /* Typography */
-  --font-display: 'Chakra Petch', 'Space Grotesk', system-ui, sans-serif;
-  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --font-editorial: Georgia, 'Times New Roman', serif;
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  /* Geometry */
-  --chamfer-sm: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-  --chamfer-md: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
-  --chamfer-lg: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 26px 100%, 0 calc(100% - 26px));
-
-  /* Radii & Spacing */
-  --radius-xs: 3px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  /* Layout & Radii */
+  --max-w: 1160px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
   --radius-pill: 9999px;
-  --max-width: 1200px;
-  --nav-height: 66px;
 
-  /* Elevation & Motion */
-  --shadow-hud: 0 24px 60px -18px rgba(0, 0, 0, 0.78);
-  --shadow-glow: 0 0 36px rgba(var(--accent-primary-rgb), 0.22);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 160ms;
-  --dur-base: 260ms;
-  --dur-slow: 480ms;
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 150ms;
+  --dur-base: 240ms;
 }
 
-/* ==========================================================================
-   ULTRON PROTOCOL OVERRIDE (Crimson / Obsidian Chrome Hijack)
-   ========================================================================== */
-[data-theme="ultron"] {
-  --bg-base: #090407;
-  --bg-elevated: #13080d;
-  --bg-surface: #1b0c12;
-  --bg-surface-hover: #27111a;
-  --bg-glass: rgba(16, 6, 10, 0.88);
-  --bg-code: #060204;
+/* Warm Obsidian Night Mode (Editorial Dark — zero neon clichés) */
+[data-theme="dark"] {
+  --bg: #131210;
+  --bg-elevated: #1b1a17;
+  --bg-subtle: #24221e;
+  --bg-code: #0c0b0a;
+  --bg-code-soft: #181714;
 
-  --text-primary: #fff1f3;
-  --text-secondary: #dabfc6;
-  --text-muted: #ac8e97;
+  --ink: #f0ece3;
+  --ink-secondary: #bcb6aa;
+  --ink-muted: #938d82;
+  --ink-on-dark: #f0ece3;
+  --ink-code-muted: #9a9488;
 
-  --border-subtle: rgba(244, 63, 94, 0.2);
-  --border-strong: rgba(244, 63, 94, 0.44);
-  --grid-line: rgba(244, 63, 94, 0.065);
+  --line: #2d2b26;
+  --line-strong: #434039;
 
-  --accent-primary: #fb7185;
-  --accent-primary-rgb: 251, 113, 133;
-  --accent-secondary: #e2e8f0;
-  --accent-secondary-rgb: 226, 232, 240;
-  --focus-ring: #fda4af;
-
-  --ai-jarvis: #fb7185;
-  --ai-jarvis-soft: rgba(251, 113, 133, 0.14);
-  --ai-jarvis-border: rgba(251, 113, 133, 0.45);
-
-  --ai-vision-bg: #15070c;
-  --ai-vision-crimson: #f43f5e;
-  --ai-vision-emerald: #cbd5e1;
-  --ai-vision-gold: #fda4af;
-  --ai-vision-soft: rgba(244, 63, 94, 0.15);
-  --ai-vision-border: rgba(244, 63, 94, 0.45);
-
-  --ai-friday: #fb7185;
-  --ai-friday-teal: #e2e8f0;
-  --ai-friday-soft: rgba(251, 113, 133, 0.14);
-  --ai-friday-border: rgba(251, 113, 133, 0.42);
-
-  --ai-edith: #fda4af;
-  --ai-edith-reticle: #f43f5e;
-  --ai-edith-soft: rgba(244, 63, 94, 0.15);
-  --ai-edith-border: rgba(244, 63, 94, 0.46);
+  --accent: #eb6a44;
+  --accent-hover: #f3815f;
+  --accent-soft: rgba(235, 106, 68, 0.14);
+  --cobalt: #60a5fa;
+  --cobalt-soft: rgba(96, 165, 250, 0.14);
+  --ok: #4ade80;
+  --ok-soft: rgba(74, 222, 128, 0.13);
+  --warn: #fbbf24;
+  --warn-soft: rgba(251, 191, 36, 0.13);
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --dur-fast: 0ms;
     --dur-base: 0ms;
-    --dur-slow: 0ms;
   }
 }

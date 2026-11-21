@@ -1,36 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="vision">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aksh Chauhan | Software Engineer — Backend, Cloud &amp; GenAI</title>
-  <meta name="description" content="Aksh Chauhan — Software Engineer &amp; M.S. Software Engineering graduate (ASU, May 2026) building serverless AWS architectures, distributed systems, and grounded GenAI services.">
+  <title>Aksh Chauhan — Software Engineer (Backend, Cloud &amp; GenAI)</title>
+  <meta name="description" content="Aksh Chauhan — Software Engineer and M.S. Software Engineering graduate (ASU, May 2026). Serverless AWS architectures, distributed systems, and grounded GenAI workflows.">
   <meta name="author" content="Aksh Chauhan">
-  <meta name="theme-color" content="#050810">
+  <meta name="theme-color" content="#f4f1ea">
   <link rel="canonical" href="https://aksh9203.github.io/">
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Open Graph / Twitter Card -->
-  <meta property="og:title" content="Aksh Chauhan | Software Engineer — Backend, Cloud &amp; GenAI">
-  <meta property="og:description" content="Serverless AWS systems, distributed Saga &amp; EventBridge architectures, and grounded GenAI workflows. M.S. Software Engineering, ASU (May 2026).">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Aksh Chauhan — Software Engineer">
+  <meta property="og:description" content="I build the invisible layer everything depends on. Backend, Serverless AWS, Distributed Systems &amp; GenAI.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aksh9203.github.io/">
   <meta property="og:image" content="https://aksh9203.github.io/assets/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Aksh Chauhan | Software Engineer — Backend, Cloud &amp; GenAI">
-  <meta name="twitter:description" content="Serverless AWS systems, distributed architectures, and grounded GenAI services.">
+  <meta name="twitter:title" content="Aksh Chauhan — Software Engineer">
+  <meta name="twitter:description" content="Backend, Serverless AWS, Distributed Systems &amp; GenAI. M.S. Software Engineering, ASU (May 2026).">
   <meta name="twitter:image" content="https://aksh9203.github.io/assets/og-card.png">
 
   <!-- Pre-paint theme sync -->
-  <script>try{if(localStorage.getItem('vq_theme')==='ultron')document.documentElement.dataset.theme='ultron';}catch(e){}</script>
+  <script>try{if(localStorage.getItem('aksh_theme')==='dark')document.documentElement.dataset.theme='dark';}catch(e){}</script>
 
-  <!-- Typography: Chakra Petch (HUD Display) + Space Grotesk (Body) + JetBrains Mono (Telemetry) -->
+  <!-- Editorial Typography: Instrument Serif + Plus Jakarta Sans + IBM Plex Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
@@ -38,505 +38,300 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- First-visit skippable J.A.R.V.I.S. boot sequence (<=1.8s, skipped on reduced-motion) -->
-  <div class="boot-overlay" id="boot-overlay" hidden role="status" aria-live="polite" aria-label="J.A.R.V.I.S. profile initialization">
-    <div class="boot-panel">
-      <div class="boot-kicker">J.A.R.V.I.S. // SYNTHETIC NETWORK INIT</div>
-      <ul class="boot-lines">
-        <li>Linking Vision · F.R.I.D.A.Y. · E.D.I.T.H. · Ultron chambers…</li>
-        <li>Verifying ASU M.S. &amp; MindSpark deployment logs…</li>
-        <li>Good evening. Loading profile: Aksh Chauhan…</li>
-      </ul>
-      <div class="boot-bar" aria-hidden="true"><div class="boot-bar-fill"></div></div>
-      <button type="button" class="btn-hud-ghost" id="boot-skip-btn">Skip Sequence (Esc)</button>
-    </div>
-  </div>
-
-  <!-- Persistent Global HUD Header -->
-  <header class="hud-header">
-    <nav class="hud-nav-inner" aria-label="Primary navigation">
-      <a href="#hero" class="hud-brand" aria-label="Aksh Chauhan — Home">
-        <span class="brand-hex" aria-hidden="true">AC</span>
-        <span class="hud-brand-name">Aksh Chauhan</span>
+  <header class="site-header">
+    <nav class="nav-bar" aria-label="Primary navigation">
+      <a href="#top" class="brand-link">
+        <span class="brand-monogram" aria-hidden="true">AC</span>
+        <span class="brand-name">Aksh Chauhan</span>
       </a>
 
-      <ul class="hud-nav-links">
-        <li><a href="#hero" class="is-active" aria-current="location">Hero</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
+      <ul class="nav-links">
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Toolkit</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <div class="hud-controls">
-        <div class="hud-ai-status" id="hud-ai-status" aria-live="polite" title="Active AI host for current section">
-          <span class="ai-pulse-dot" aria-hidden="true"></span>
-          <span id="hud-ai-status-text">J.A.R.V.I.S. ONLINE</span>
-        </div>
-
-        <button type="button" class="hud-icon-btn hud-stones-btn" id="hud-stones-btn" hidden>
-          <span aria-hidden="true">◆</span>
-          <span id="hud-stones-count">0/6</span>
-          <span class="sr-only"> Infinity Stones collected</span>
-        </button>
-
-        <button type="button" class="hud-icon-btn" data-open-palette aria-label="CMD — Open J.A.R.V.I.S. Command Terminal">
-          <span>CMD</span>
+      <div class="nav-actions">
+        <button type="button" class="btn-nav-subtle" data-open-quick aria-label="Jump — Open quick navigation">
+          <span>Jump</span>
           <kbd aria-hidden="true">⌘K</kbd>
         </button>
 
-        <button type="button" class="hud-icon-btn" id="theme-toggle-btn" aria-pressed="false" aria-label="VISION mode — switch to Ultron mode">
-          <span class="theme-label">VISION</span>
-        </button>
+        <button type="button" class="btn-nav-subtle" id="theme-toggle" aria-pressed="false" aria-label="Dark — switch to dark obsidian theme">Dark</button>
 
-        <a href="assets/Aksh_Chauhan_Resume.pdf" class="hud-resume-btn" target="_blank" rel="noopener noreferrer" download>
-          Resume ↓
-        </a>
+        <a href="assets/Aksh_Chauhan_Resume.pdf" class="btn-nav-resume" target="_blank" rel="noopener noreferrer" download>Resume ↓</a>
 
-        <button type="button" class="hud-icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-nav-drawer" aria-label="Toggle navigation menu">
-          Menu
-        </button>
+        <button type="button" class="btn-nav-subtle mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Menu — toggle navigation">Menu</button>
       </div>
     </nav>
 
-    <div class="mobile-nav-drawer" id="mobile-nav-drawer" hidden>
+    <div class="mobile-drawer" id="mobile-drawer" hidden>
       <ul>
-        <li><a href="#hero">01 // J.A.R.V.I.S.</a></li>
-        <li><a href="#about">02 // VISION</a></li>
-        <li><a href="#experience">03 // F.R.I.D.A.Y.</a></li>
-        <li><a href="#projects">04 // E.D.I.T.H.</a></li>
-        <li><a href="#skills">05 // ULTRON</a></li>
-        <li><a href="#contact">06 // COMMS</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About &amp; Education</a></li>
+        <li><a href="#skills">Technical Toolkit</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="assets/Aksh_Chauhan_Resume.pdf" target="_blank" rel="noopener noreferrer" download>Resume (PDF) ↓</a></li>
       </ul>
-      <div class="mobile-drawer-actions">
-        <a href="assets/Aksh_Chauhan_Resume.pdf" class="hud-resume-btn" target="_blank" rel="noopener noreferrer" download>Download Resume PDF</a>
-        <a href="mailto:akshrajesh9203@gmail.com" class="hud-icon-btn">Email Aksh</a>
-        <button type="button" class="hud-icon-btn" data-open-palette>Open Terminal</button>
-      </div>
     </div>
   </header>
 
-  <!-- Right-Edge Neural Channel Rail (Desktop Telemetry HUD) -->
-  <nav class="mind-rail" aria-label="Synthetic mind channel switcher">
-    <a href="#hero" class="is-active" aria-label="01 J.A.R.V.I.S. Hero"><span class="mind-rail-label">01 J.A.R.V.I.S.</span><span class="mind-rail-pip" aria-hidden="true"></span></a>
-    <a href="#about" aria-label="02 Vision About"><span class="mind-rail-label">02 VISION</span><span class="mind-rail-pip" aria-hidden="true"></span></a>
-    <a href="#experience" aria-label="03 F.R.I.D.A.Y. Experience"><span class="mind-rail-label">03 F.R.I.D.A.Y.</span><span class="mind-rail-pip" aria-hidden="true"></span></a>
-    <a href="#projects" aria-label="04 E.D.I.T.H. Projects"><span class="mind-rail-label">04 E.D.I.T.H.</span><span class="mind-rail-pip" aria-hidden="true"></span></a>
-    <a href="#skills" aria-label="05 Ultron Skills"><span class="mind-rail-label">05 ULTRON</span><span class="mind-rail-pip" aria-hidden="true"></span></a>
-    <a href="#contact" aria-label="06 J.A.R.V.I.S. Comms"><span class="mind-rail-label">06 COMMS</span><span class="mind-rail-pip" aria-hidden="true"></span></a>
-  </nav>
-
   <main id="main-content">
     <!-- ======================================================================
-         CHAMBER 01: HERO — J.A.R.V.I.S. (Holographic Workshop + 3D Neural Orb)
+         HERO — EDITORIAL INTRO + INTERACTIVE SYSTEMS WORKBENCH
          ====================================================================== -->
-    <section id="hero" class="hud-section hero-section" data-ai-host="hero" aria-labelledby="hero-heading">
-      <div class="hud-container">
+    <section id="top" class="hero" aria-labelledby="hero-heading">
+      <div class="wrap">
+        <div class="hero-meta-line">
+          <span class="status-pill">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Open to Full-Time Software Engineer Roles (Backend · Cloud · GenAI)</span>
+          </span>
+          <span>Tempe, AZ · <span id="live-clock">MST</span></span>
+        </div>
+
         <div class="hero-grid">
           <div>
-            <div class="hero-telemetry">
-              <span class="telemetry-chip">
-                <span>33.4255° N · TEMPE, AZ</span>
-                <span aria-hidden="true">·</span>
-                <span class="clock-val" id="live-clock">--:--:-- MST</span>
-              </span>
-              <span class="telemetry-chip">OPEN TO FULL-TIME SWE</span>
-              <button type="button" class="stone-trigger" data-stone="space" aria-pressed="false" aria-label="Inspect anomalous blue energy signature" title="Anomalous signature detected">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 21,8 18,21 6,21 3,8" fill="var(--stone-space)"/></svg>
-              </button>
-            </div>
-
-            <p class="jarvis-greeting" id="jarvis-greeting">Good evening. Loading profile: Aksh Chauhan…</p>
-
-            <h1 class="hero-name" id="hero-heading">Aksh Chauhan</h1>
-            <p class="hero-role">Software Engineer // Backend · Cloud · GenAI Systems</p>
-            <p class="hero-summary">
-              Software engineer and M.S. Software Engineering graduate (ASU, May 2026) building resilient backend systems, serverless AWS architectures, and grounded GenAI services.
+            <p class="hero-kicker">Aksh Chauhan · Backend, Cloud &amp; GenAI Engineer</p>
+            <h1 class="hero-title" id="hero-heading">
+              I build the invisible layer <em>everything depends on.</em>
+            </h1>
+            <p class="hero-intro">
+              Software engineer and M.S. Software Engineering graduate from Arizona State University (May 2026). Currently shipping serverless AWS &amp; grounded GenAI systems at MindSpark—and drawn to backend problems with a hard constraint.
             </p>
 
-            <!-- Recruiter Fast Path -->
-            <div class="hero-cta-row">
-              <a href="assets/Aksh_Chauhan_Resume.pdf" class="btn-hud-primary" target="_blank" rel="noopener noreferrer" download>
-                Download Resume (PDF)
-              </a>
-              <a href="#projects" class="btn-hud-secondary">Target Projects</a>
-              <a href="#contact" class="btn-hud-secondary">Direct Uplink</a>
-              <button type="button" class="btn-hud-ghost" data-open-palette>Terminal (⌘K)</button>
+            <div class="hero-cta-group">
+              <a href="assets/Aksh_Chauhan_Resume.pdf" class="btn-primary" target="_blank" rel="noopener noreferrer" download>Download Resume (PDF)</a>
+              <a href="#projects" class="btn-secondary">Explore Architecture</a>
+              <a href="#contact" class="btn-secondary">Get in Touch</a>
             </div>
 
-            <div class="hero-quick-links">
+            <div class="hero-links-row">
               <a href="mailto:akshrajesh9203@gmail.com">akshrajesh9203@gmail.com</a>
-              <a href="https://www.linkedin.com/in/aksh9/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
               <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a href="https://www.linkedin.com/in/aksh9/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             </div>
           </div>
 
-          <!-- Interactive 3D Geodesic Holographic Mind Canvas + Gimbal Rings -->
-          <div class="jarvis-ring-stage" aria-hidden="true">
-            <span class="jarvis-stage-tag tag-top-left">SYS // J.A.R.V.I.S. CORE</span>
-            <span class="jarvis-stage-tag tag-bottom-right">MINDSPARK · ASU '26</span>
-            <svg class="jarvis-rings-svg" viewBox="0 0 400 400" fill="none">
-              <circle cx="200" cy="200" r="186" stroke="var(--ai-jarvis)" stroke-opacity="0.2" stroke-width="1"/>
-              <circle class="ring-spin-slow" cx="200" cy="200" r="172" stroke="var(--ai-jarvis)" stroke-opacity="0.55" stroke-width="1.8" stroke-dasharray="54 18 12 16 92 26"/>
-              <circle class="ring-spin-reverse" cx="200" cy="200" r="150" stroke="var(--ai-vision-gold)" stroke-opacity="0.42" stroke-width="1.4" stroke-dasharray="14 14 40 18"/>
-              <circle cx="200" cy="200" r="128" stroke="var(--ai-jarvis)" stroke-opacity="0.24" stroke-width="1" stroke-dasharray="3 7"/>
-              <line x1="200" y1="4" x2="200" y2="28" stroke="var(--ai-jarvis)" stroke-width="2"/>
-              <line x1="200" y1="372" x2="200" y2="396" stroke="var(--ai-jarvis)" stroke-width="2"/>
-              <line x1="4" y1="200" x2="28" y2="200" stroke="var(--ai-jarvis)" stroke-width="2"/>
-              <line x1="372" y1="200" x2="396" y2="200" stroke="var(--ai-jarvis)" stroke-width="2"/>
-            </svg>
-            <canvas id="jarvis-canvas" class="jarvis-canvas"></canvas>
-          </div>
-        </div>
+          <!-- Playable Interactive Systems Workbench -->
+          <div class="workbench-card" id="systems-workbench" aria-label="Interactive backend systems playground">
+            <div class="workbench-header">
+              <span class="workbench-title">Live Systems Playground</span>
+              <span>Click to test real patterns I built</span>
+            </div>
 
-        <!-- Chamfered Verified Metrics Strip -->
-        <div class="hero-metrics-strip" aria-label="Verified engineering highlights">
-          <div class="hero-stat-card">
-            <div class="hero-stat-value">100%</div>
-            <div class="hero-stat-label">Cardholder data isolated via 3-Lambda Stripe pipeline at MindSpark</div>
-          </div>
-          <div class="hero-stat-card">
-            <div class="hero-stat-value">&lt;15s</div>
-            <div class="hero-stat-label">Autonomous SEC 10-K research agent on Amazon Bedrock + pgvector</div>
-          </div>
-          <div class="hero-stat-card">
-            <div class="hero-stat-value">O(N) → O(1)</div>
-            <div class="hero-stat-label">Emergency responder matching via Uber H3 (res 9) &amp; pipelined Redis</div>
-          </div>
-          <div class="hero-stat-card">
-            <div class="hero-stat-value">3.73 / 4.00</div>
-            <div class="hero-stat-label">M.S. Software Engineering, Arizona State University (May 2026)</div>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div class="workbench-tabs" role="tablist" aria-label="Choose a system simulation">
+              <button type="button" class="sim-tab is-active" role="tab" aria-selected="true" data-sim-tab="saga">01 Saga Rollback</button>
+              <button type="button" class="sim-tab" role="tab" aria-selected="false" data-sim-tab="eventbridge">02 EventBridge</button>
+              <button type="button" class="sim-tab" role="tab" aria-selected="false" data-sim-tab="h3">03 Uber H3 O(1)</button>
+            </div>
 
-    <!-- ======================================================================
-         CHAMBER 02: ABOUT — VISION (Warm Synthezoid Chamber & Mind Stone Altar)
-         ====================================================================== -->
-    <section id="about" class="hud-section vision-section" data-ai-host="about" aria-labelledby="about-heading">
-      <div class="hud-container">
-        <div class="section-coord-bar" aria-hidden="true">
-          <span>CHAMBER // 02</span>
-          <span class="section-coord-line"></span>
-          <span>SYNTHETIC HUMANITY</span>
-        </div>
-
-        <div class="section-header">
-          <div>
-            <div class="ai-badge">HOST // VISION · SYNTHESIS &amp; CRAFT</div>
-            <h2 class="section-title" id="about-heading">About Me</h2>
-            <p class="section-desc">How I think about backend reliability, hard constraints, and owning systems end to end.</p>
-          </div>
-          <button type="button" class="stone-trigger" data-stone="mind" aria-pressed="false" aria-label="Inspect anomalous gold energy signature" title="Anomalous signature detected">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 20,12 12,22 4,12" fill="var(--stone-mind)"/></svg>
-          </button>
-        </div>
-
-        <div class="vision-layout">
-          <div>
-            <div class="vision-editorial-block">
-              <p class="vision-lead">“The part nobody sees, that everything depends on.”</p>
-              <div id="vision-story">
-                <p class="vision-para">
-                  I'm a software engineer who likes the backend side of things—the part nobody sees, but everything depends on. Right now I'm at MindSpark, where I build serverless systems on AWS.
-                </p>
+            <!-- Sim 1: Distributed Saga Travel Booking -->
+            <div class="sim-panel" role="tabpanel" data-sim-panel="saga">
+              <p class="sim-caption">
+                From my AWS Step Functions Saga project: inject a Payment failure to watch compensating rollbacks cleanly release Hotel &amp; Flight.
+              </p>
+              <div class="sim-controls">
+                <button type="button" class="sim-btn is-accent" id="saga-run-fail">Inject Payment Failure</button>
+                <button type="button" class="sim-btn" id="saga-run-ok">Run Happy Path</button>
+              </div>
+              <div class="saga-track">
+                <div class="sim-node" id="saga-node-flight" data-state="idle">
+                  <span class="sim-node-name">1. Flight</span>
+                  <span class="sim-node-state">IDLE</span>
+                </div>
+                <div class="sim-node" id="saga-node-hotel" data-state="idle">
+                  <span class="sim-node-name">2. Hotel</span>
+                  <span class="sim-node-state">IDLE</span>
+                </div>
+                <div class="sim-node" id="saga-node-payment" data-state="idle">
+                  <span class="sim-node-name">3. Payment</span>
+                  <span class="sim-node-state">IDLE</span>
+                </div>
+              </div>
+              <div class="sim-log" id="saga-log" aria-live="polite">
+                <div class="sim-log-line tone-info">Ready. Click "Inject Payment Failure" to watch automated rollback.</div>
               </div>
             </div>
-            <div class="edu-stack" id="vision-education" aria-label="Education"></div>
-          </div>
 
-          <aside class="vision-altar" aria-label="Vision Mind Stone Altar">
-            <button type="button" class="mind-stone-btn" id="mind-stone-btn" aria-label="Vision Mind Stone core — activate repeatedly to inspect synthesis note">
-              <svg class="mind-stone-svg" viewBox="0 0 120 120" aria-hidden="true">
-                <defs>
-                  <radialGradient id="visionGemGrad" cx="50%" cy="40%" r="60%">
-                    <stop offset="0%" stop-color="#fffbeb"/>
-                    <stop offset="42%" stop-color="#f6c453"/>
-                    <stop offset="100%" stop-color="#92400e"/>
-                  </radialGradient>
-                </defs>
-                <circle cx="60" cy="60" r="55" fill="none" stroke="var(--ai-vision-crimson)" stroke-width="1.3" stroke-dasharray="8 5" opacity="0.78"/>
-                <circle cx="60" cy="60" r="45" fill="none" stroke="var(--ai-vision-emerald)" stroke-width="1.2" opacity="0.68"/>
-                <polygon points="60,12 86,60 60,108 34,60" fill="url(#visionGemGrad)" stroke="#fef9c3" stroke-width="1.8"/>
-                <polygon points="60,26 74,60 60,94 46,60" fill="#fffbeb" opacity="0.52"/>
-                <line x1="60" y1="12" x2="60" y2="108" stroke="#fef9c3" stroke-width="0.9" opacity="0.55"/>
-                <line x1="34" y1="60" x2="86" y2="60" stroke="#fef9c3" stroke-width="0.9" opacity="0.55"/>
-              </svg>
-            </button>
-
-            <div class="mind-resonance-dots" aria-hidden="true">
-              <span class="resonance-pip"></span>
-              <span class="resonance-pip"></span>
-              <span class="resonance-pip"></span>
-              <span class="resonance-pip"></span>
-              <span class="resonance-pip"></span>
+            <!-- Sim 2: MindSpark EventBridge 4-State Reconciler -->
+            <div class="sim-panel" role="tabpanel" data-sim-panel="eventbridge" hidden>
+              <p class="sim-caption">
+                From MindSpark: DynamoDB conditional writes + a 7-day TTL dedupe cache block out-of-order regressions and duplicate Stripe webhooks.
+              </p>
+              <div class="sim-controls">
+                <button type="button" class="sim-btn is-accent" id="eb-advance">Advance State</button>
+                <button type="button" class="sim-btn" id="eb-stale">Send Stale Event</button>
+                <button type="button" class="sim-btn" id="eb-dup">Send Duplicate</button>
+                <button type="button" class="sim-btn" id="eb-reset">Reset</button>
+              </div>
+              <div class="eb-track">
+                <div class="eb-step" data-eb-step="0" data-state="done">CHECKOUT</div>
+                <div class="eb-step" data-eb-step="1" data-state="active">PENDING</div>
+                <div class="eb-step" data-eb-step="2" data-state="idle">ACTIVE</div>
+                <div class="eb-step" data-eb-step="3" data-state="idle">SETTLED</div>
+              </div>
+              <div class="sim-log" id="eb-log" aria-live="polite">
+                <div class="sim-log-line tone-info">State: PENDING · Try sending a stale or duplicate event.</div>
+              </div>
             </div>
 
-            <div class="vision-portrait-wrap">
-              <picture>
-                <source srcset="assets/images/aksh_portrait.webp" type="image/webp">
-                <img src="assets/images/aksh_portrait.jpg" alt="Aksh Chauhan portrait" width="116" height="116" loading="lazy" decoding="async">
-              </picture>
+            <!-- Sim 3: SafeGuard Uber H3 Hexagonal Lookup -->
+            <div class="sim-panel" role="tabpanel" data-sim-panel="h3" hidden>
+              <p class="sim-caption">
+                From SafeGuard SOS: click any hexagon to trigger an SOS and watch O(1) Redis k-ring lookup lock onto the nearest responder (blue dots).
+              </p>
+              <div class="h3-stage">
+                <svg class="h3-svg" id="h3-grid-svg" viewBox="0 0 330 208" aria-label="Interactive Uber H3 hexagonal grid"></svg>
+                <div class="h3-readout" id="h3-readout" aria-live="polite"></div>
+              </div>
             </div>
-
-            <p class="vision-gem-caption">MIND STONE RESONANCE // CLICK TO PROBE</p>
-            <a href="about.html" class="btn-hud-ghost">Read Extended Profile →</a>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         CHAMBER 03: EXPERIENCE — F.R.I.D.A.Y. (Tactical Flight Debrief)
+         SELECTED PROJECTS — EXPANDABLE ARCHITECTURAL LEDGER
          ====================================================================== -->
-    <section id="experience" class="hud-section friday-section" data-ai-host="experience" aria-labelledby="experience-heading">
-      <div class="hud-container">
-        <div class="section-coord-bar" aria-hidden="true">
-          <span>CHAMBER // 03</span>
-          <span class="section-coord-line"></span>
-          <span>FLIGHT TELEMETRY &amp; MISSION LOGS</span>
-        </div>
-
-        <div class="section-header">
+    <section id="projects" class="section" aria-labelledby="projects-heading">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <div class="ai-badge">HOST // F.R.I.D.A.Y. · TACTICAL MISSION LOGS</div>
-            <h2 class="section-title" id="experience-heading">Experience</h2>
-            <p class="section-desc">Production status reports across serverless AWS architecture, full-stack platforms, CI/CD, and computer vision.</p>
+            <p class="section-kicker">01 · Selected Engineering Work</p>
+            <h2 class="section-title" id="projects-heading">Systems built around hard constraints</h2>
           </div>
-          <button type="button" class="stone-trigger" data-stone="time" aria-pressed="false" aria-label="Inspect anomalous green energy signature" title="Anomalous signature detected">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 21,12 12,22 3,12" fill="var(--stone-time)"/></svg>
-          </button>
+          <p class="section-note">
+            Click any row to open its full request flow, architectural trade-offs, and system diagram—or browse the <a href="work.html" style="text-decoration:underline;text-underline-offset:3px;">standalone archive</a>.
+          </p>
         </div>
 
-        <div class="friday-timeline" id="friday-timeline"></div>
+        <div class="filter-row" id="project-filters" role="group" aria-label="Filter projects by domain"></div>
+        <div class="project-ledger" id="project-ledger"></div>
       </div>
     </section>
 
     <!-- ======================================================================
-         CHAMBER 04: PROJECTS — E.D.I.T.H. (AR Visor Interface)
+         EXPERIENCE — CAREER LEDGER
          ====================================================================== -->
-    <section id="projects" class="hud-section edith-section" data-ai-host="projects" aria-labelledby="projects-heading">
-      <div class="hud-container">
-        <div class="section-coord-bar" aria-hidden="true">
-          <span>CHAMBER // 04</span>
-          <span class="section-coord-line"></span>
-          <span>AR OPTICS &amp; SYSTEM TARGETING</span>
-        </div>
-
-        <div class="section-header">
+    <section id="experience" class="section" aria-labelledby="experience-heading">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <div class="ai-badge">HOST // E.D.I.T.H. · AR TARGET ANALYSIS</div>
-            <h2 class="section-title" id="projects-heading">Projects</h2>
-            <p class="section-desc">Move across the AR visor or tap any system card to engage lock-on optics and inspect architecture blueprints.</p>
+            <p class="section-kicker">02 · Work Experience</p>
+            <h2 class="section-title" id="experience-heading">Where I've shipped production code</h2>
           </div>
-          <div style="display:flex;align-items:center;gap:12px;">
-            <a href="work.html" class="btn-hud-ghost">Full Case Studies →</a>
-            <button type="button" class="stone-trigger" data-stone="reality" aria-pressed="false" aria-label="Inspect anomalous crimson energy signature" title="Anomalous signature detected">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,3 20,9 17,21 7,21 4,9" fill="var(--stone-reality)"/></svg>
-            </button>
-          </div>
+          <p class="section-note">
+            From zero-cardholder-data Stripe pipelines and grounded GenAI services on AWS to daily-use Spring Boot &amp; React platforms.
+          </p>
         </div>
 
-        <div class="edith-visor-shell" id="edith-visor-shell">
-          <div class="edith-cursor-reticle" id="edith-cursor-reticle" aria-hidden="true"></div>
-          <div class="edith-visor-topbar" aria-hidden="true">
-            <span>E.D.I.T.H. OPTICAL OVERLAY // v4.2</span>
-            <span>6 VERIFIED TARGETS · CLICK ANY TARGET FOR FULL DATAFLOW</span>
+        <div class="exp-list" id="exp-list"></div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ABOUT & EDUCATION (No Portrait — Pure Story & Credentials)
+         ====================================================================== -->
+    <section id="about" class="section" aria-labelledby="about-heading">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">03 · Background &amp; Education</p>
+            <h2 class="section-title" id="about-heading">A bit about how I work</h2>
           </div>
-          <div class="filter-bar" id="edith-filters" role="group" aria-label="Filter projects by technology domain"></div>
-          <div class="edith-grid" id="edith-grid"></div>
+          <a href="about.html" class="btn-secondary">Standalone About Page →</a>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy" id="about-copy"></div>
+          <aside class="edu-panel" id="edu-panel" aria-label="Education"></aside>
         </div>
       </div>
     </section>
 
     <!-- ======================================================================
-         CHAMBER 05: SKILLS — ULTRON (Vibranium Forge & Neural Constellation)
+         SKILLS — SWISS SPECIFICATION SHEET
          ====================================================================== -->
-    <section id="skills" class="hud-section ultron-section" data-ai-host="skills" aria-labelledby="skills-heading">
-      <div class="hud-container">
-        <div class="section-coord-bar" aria-hidden="true">
-          <span>CHAMBER // 05</span>
-          <span class="section-coord-line"></span>
-          <span>VIBRANIUM UPGRADE LAB</span>
-        </div>
-
-        <div class="section-header">
+    <section id="skills" class="section" aria-labelledby="skills-heading">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <div class="ai-badge">HOST // ULTRON · UPGRADE LAB</div>
-            <h2 class="section-title" id="skills-heading">Skills &amp; Architecture Modules</h2>
-            <p class="section-desc">Select any node in the neural network to isolate its capability blade—proficiency tiers only, zero meaningless percentage bars.</p>
+            <p class="section-kicker">04 · Technical Specification</p>
+            <h2 class="section-title" id="skills-heading">Tools I reach for in production</h2>
           </div>
-          <button type="button" class="stone-trigger" data-stone="power" aria-pressed="false" aria-label="Inspect anomalous violet energy signature" title="Anomalous signature detected">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 22,9 18,22 6,22 2,9" fill="var(--stone-power)"/></svg>
-          </button>
+          <p class="section-note">Organized cleanly by layer—no arbitrary progress bars.</p>
         </div>
 
-        <div class="ultron-network-panel">
-          <div class="ultron-network-bar">
-            <span class="topology-label">ULTRON NEURAL TOPOLOGY // CLICK A NODE OR BUTTON TO ISOLATE</span>
-            <div class="ultron-node-nav" id="ultron-node-nav" role="group" aria-label="Highlight skill module"></div>
-          </div>
-          <div class="ultron-svg-wrap" id="ultron-svg-wrap"></div>
-        </div>
-
-        <div class="ultron-skills-grid" id="ultron-skills-grid"></div>
+        <div class="skills-spec" id="skills-spec"></div>
       </div>
     </section>
   </main>
 
   <!-- ========================================================================
-       CHAMBER 06: CONTACT & FOOTER — J.A.R.V.I.S. UPLINK CONSOLE
+       CONTACT & FOOTER
        ======================================================================== -->
-  <footer id="contact" class="hud-section contact-section" data-ai-host="contact" aria-labelledby="contact-heading">
-    <div class="hud-container">
-      <div class="section-coord-bar" aria-hidden="true">
-        <span>CHAMBER // 06</span>
-        <span class="section-coord-line"></span>
-        <span>ENCRYPTED COMMS UPLINK</span>
-      </div>
-
-      <div class="section-header">
+  <footer id="contact" class="contact-section" aria-labelledby="contact-heading">
+    <div class="wrap">
+      <div class="contact-grid">
         <div>
-          <div class="ai-badge">HOST // J.A.R.V.I.S. · DIRECT COMMS UPLINK</div>
-          <h2 class="section-title" id="contact-heading">Let's Connect</h2>
-        </div>
-        <button type="button" class="stone-trigger" data-stone="soul" aria-pressed="false" aria-label="Inspect anomalous amber energy signature" title="Anomalous signature detected">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 20,10 16,22 8,22 4,10" fill="var(--stone-soul)"/></svg>
-        </button>
-      </div>
-
-      <div class="contact-console">
-        <div>
-          <div class="uplink-wave-row">
-            <div class="signal-bars" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <span class="console-eyebrow">UPLINK@JARVIS:~$ CONNECT --ROLE FULL-TIME-SWE</span>
-          </div>
-          <h3 class="console-title">Ready to own resilient systems end to end.</h3>
-          <p class="console-copy">
-            Finished my M.S. in Software Engineering at ASU (May 2026) and currently shipping serverless AWS &amp; GenAI pipelines at MindSpark. Reach out directly via email or grab my resume below.
+          <p class="section-kicker">05 · Contact</p>
+          <h2 class="contact-headline" id="contact-heading">
+            Building something with a <em>hard constraint?</em> Let's talk.
+          </h2>
+          <p class="contact-lead">
+            I'm looking for a full-time Software Engineer role—backend, cloud, or GenAI—where I can own systems end to end.
           </p>
-
-          <div class="email-console-row">
-            <code>akshrajesh9203@gmail.com</code>
-            <button type="button" class="btn-hud-primary" id="copy-email-btn">Copy Email</button>
-            <a href="mailto:akshrajesh9203@gmail.com" class="btn-hud-secondary" id="direct-email-link">Send Email ↗</a>
+          <div class="email-bar">
+            <span>akshrajesh9203@gmail.com</span>
+            <button type="button" class="btn-primary" id="copy-email-btn" style="padding:7px 14px;font-size:0.8rem;">Copy</button>
+            <a href="mailto:akshrajesh9203@gmail.com" class="btn-secondary" style="padding:7px 14px;font-size:0.8rem;">Email ↗</a>
           </div>
         </div>
 
-        <div class="console-links-grid">
-          <a href="assets/Aksh_Chauhan_Resume.pdf" class="console-link-card" target="_blank" rel="noopener noreferrer" download>
+        <div class="contact-links">
+          <a href="assets/Aksh_Chauhan_Resume.pdf" class="contact-link-row" target="_blank" rel="noopener noreferrer" download>
             <span>Resume (PDF)</span>
-            <span class="console-link-meta">1-Click Download ↓</span>
+            <span class="contact-link-meta">1-Click Download ↓</span>
           </a>
-          <a href="https://www.linkedin.com/in/aksh9/" class="console-link-card" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/aksh9/" class="contact-link-row" target="_blank" rel="noopener noreferrer">
             <span>LinkedIn</span>
-            <span class="console-link-meta">linkedin.com/in/aksh9 ↗</span>
+            <span class="contact-link-meta">linkedin.com/in/aksh9 ↗</span>
           </a>
-          <a href="https://github.com/Aksh9203" class="console-link-card" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Aksh9203" class="contact-link-row" target="_blank" rel="noopener noreferrer">
             <span>GitHub</span>
-            <span class="console-link-meta">github.com/Aksh9203 ↗</span>
+            <span class="contact-link-meta">github.com/Aksh9203 ↗</span>
           </a>
-          <button type="button" class="console-link-card" data-open-palette style="cursor:pointer;text-align:left;">
-            <span>J.A.R.V.I.S. Terminal</span>
-            <span class="console-link-meta">Ctrl / ⌘ + K</span>
-          </button>
         </div>
       </div>
 
-      <!-- Post-Credits Linger Banner (Easter Egg #5) -->
-      <div class="post-credits-banner" id="post-credits-banner" hidden>
-        <span>POST-CREDITS SIGNAL DETECTED // Stayed through the credits?</span>
-        <button type="button" class="hud-chip-btn" onclick="document.getElementById('post-credits-btn').click()">Play Post-Credits Scene</button>
-      </div>
-
-      <div class="hud-footer-meta">
-        <div class="footer-top-row">
-          <span class="anomaly-line" id="anomaly-counter" aria-live="polite">J.A.R.V.I.S. detects 7 anomalies on this site…</span>
-          <button type="button" class="hud-chip-btn" id="post-credits-btn">Stay for the post-credits</button>
-        </div>
-
-        <div class="footer-bottom-row">
-          <span>© 2026 Aksh Chauhan · Fan-inspired design. Not affiliated with Marvel or Disney.</span>
-          <nav class="footer-route-links" aria-label="Secondary pages">
-            <a href="about.html">About Page</a>
-            <a href="work.html">Case Studies</a>
-          </nav>
-        </div>
+      <div class="footer-bar">
+        <span>© 2026 Aksh Chauhan · Tempe, Arizona</span>
+        <nav class="footer-nav" aria-label="Site links">
+          <a href="about.html">About</a>
+          <a href="work.html">Projects Archive</a>
+          <a href="assets/Aksh_Chauhan_Resume.pdf" target="_blank" rel="noopener noreferrer" download>Resume</a>
+        </nav>
       </div>
     </div>
   </footer>
 
-  <!-- MODAL 1: E.D.I.T.H. TARGET ANALYSIS -->
-  <div class="hud-modal-overlay" id="project-modal" hidden role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pm-title">
-    <div class="hud-modal-dialog">
-      <button type="button" class="modal-close-x" id="project-modal-close" aria-label="Close target analysis">✕</button>
-      <div class="modal-kicker" id="pm-code">TGT // TARGET ANALYSIS</div>
-      <h2 class="modal-heading" id="pm-title">Project Title</h2>
-      <div class="target-metric" id="pm-metric">Metric</div>
-
-      <div class="modal-block-label">01 // Problem</div>
-      <p class="modal-text" id="pm-problem"></p>
-
-      <div class="modal-block-label">02 // My Role</div>
-      <p class="modal-text" id="pm-role"></p>
-
-      <div class="modal-block-label">03 // Architecture &amp; Implementation</div>
-      <p class="modal-text" id="pm-solution"></p>
-
-      <div class="modal-block-label">04 // Result</div>
-      <p class="modal-text" id="pm-result"></p>
-
-      <div class="modal-block-label">05 // System Dataflow</div>
-      <pre class="modal-arch-pre" id="pm-arch"></pre>
-
-      <div class="modal-block-label">06 // Technology Stack</div>
-      <div class="tech-tag-row" id="pm-stack"></div>
-
-      <div class="modal-footer-bar">
-        <a href="https://github.com/Aksh9203" target="_blank" rel="noopener noreferrer" class="btn-hud-primary" id="pm-repo-link">View Repository ↗</a>
+  <!-- Quick Jump Dialog (Cmd/Ctrl + K) -->
+  <div class="modal-backdrop" id="quick-modal" hidden role="dialog" aria-modal="true" aria-label="Quick navigation">
+    <div class="quick-dialog">
+      <div class="quick-input-bar">
+        <label for="quick-input" class="sr-only">Jump to section or action</label>
+        <input type="text" id="quick-input" class="quick-input" placeholder="Jump to projects, experience, resume, theme…" autocomplete="off">
+        <button type="button" class="quick-close" id="quick-close">Esc</button>
       </div>
+      <ul class="quick-list" id="quick-list"></ul>
     </div>
   </div>
 
-  <!-- MODAL 2: J.A.R.V.I.S. COMMAND TERMINAL -->
-  <div class="hud-modal-overlay" id="palette-modal" hidden role="dialog" aria-modal="true" aria-hidden="true" aria-label="J.A.R.V.I.S. Command Terminal">
-    <div class="hud-modal-dialog palette-dialog">
-      <button type="button" class="modal-close-x" id="palette-close-btn" aria-label="Close terminal">✕</button>
-      <div class="palette-header">
-        <span>J.A.R.V.I.S. // COMMAND TERMINAL</span>
-        <span>ESC TO CLOSE</span>
-      </div>
-      <div class="palette-input-wrap">
-        <span class="palette-prompt" aria-hidden="true">&gt;</span>
-        <label for="palette-input" class="sr-only">Enter a command</label>
-        <input type="text" id="palette-input" class="palette-input" placeholder="Type a command (whoami, projects, resume, theme, help…)" autocomplete="off" spellcheck="false" data-autofocus>
-      </div>
-      <ul class="palette-list" id="palette-list" role="listbox" aria-label="Available commands"></ul>
-      <div class="palette-output" id="palette-output" hidden aria-live="polite"></div>
-    </div>
-  </div>
-
-  <!-- MODAL 3: CLASSIFIED FILE -->
-  <div class="hud-modal-overlay" id="classified-modal" hidden role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-title">
-    <div class="hud-modal-dialog">
-      <button type="button" class="modal-close-x" id="classified-modal-close" aria-label="Close classified file">✕</button>
-      <div class="modal-kicker" id="cm-class">CLASSIFIED FILE</div>
-      <div class="modal-kicker" id="cm-host" style="color:var(--ai-vision-gold);">HOST // J.A.R.V.I.S.</div>
-      <h2 class="modal-heading" id="cm-title">File Title</h2>
-      <blockquote class="classified-quote" id="cm-quote"></blockquote>
-      <div class="classified-content" id="cm-content"></div>
-      <div class="modal-footer-bar" id="cm-actions" hidden>
-        <a href="assets/Aksh_Chauhan_Resume.pdf" class="btn-hud-primary" target="_blank" rel="noopener noreferrer" download>Download Resume ↓</a>
-        <a href="mailto:akshrajesh9203@gmail.com" class="btn-hud-secondary">Email Aksh ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hud-toast" id="hud-toast" role="status" aria-live="polite"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script type="module" src="js/main.js"></script>
 </body>

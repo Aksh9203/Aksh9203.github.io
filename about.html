@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="vision">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | Aksh Chauhan — VisionQuest Portfolio</title>
+  <title>About — Aksh Chauhan</title>
   <meta name="description" content="Background, engineering perspective, and education of Aksh Chauhan — Backend, Cloud &amp; GenAI Software Engineer.">
-  <meta name="theme-color" content="#070b12">
+  <meta name="theme-color" content="#f4f1ea">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <script>try{if(localStorage.getItem('vq_theme')==='ultron')document.documentElement.dataset.theme='ultron';}catch(e){}</script>
+  <script>try{if(localStorage.getItem('aksh_theme')==='dark')document.documentElement.dataset.theme='dark';}catch(e){}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
@@ -19,92 +19,58 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="hud-header">
-    <nav class="hud-nav-inner" aria-label="Primary navigation">
-      <a href="index.html" class="hud-brand" aria-label="Aksh Chauhan — Home">
-        <span class="brand-hex" aria-hidden="true">AC</span>
-        <span class="hud-brand-name">Aksh Chauhan</span>
+  <header class="site-header">
+    <nav class="nav-bar" aria-label="Primary navigation">
+      <a href="index.html" class="brand-link">
+        <span class="brand-monogram" aria-hidden="true">AC</span>
+        <span class="brand-name">Aksh Chauhan</span>
       </a>
-      <ul class="hud-nav-links">
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Projects</a></li>
         <li><a href="about.html" class="is-active" aria-current="page">About</a></li>
-        <li><a href="work.html">Case Studies</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
-      <div class="hud-controls">
-        <div class="hud-ai-status" style="--host-accent:var(--ai-vision-gold);">
-          <span class="ai-pulse-dot" aria-hidden="true"></span>
-          <span>VISION ONLINE</span>
-        </div>
-        <button type="button" class="hud-icon-btn" id="theme-toggle-btn" aria-pressed="false" aria-label="VISION mode — switch to Ultron mode">
-          <span class="theme-label">VISION</span>
-        </button>
-        <a href="assets/Aksh_Chauhan_Resume.pdf" class="hud-resume-btn" target="_blank" rel="noopener noreferrer" download>Resume ↓</a>
+      <div class="nav-actions">
+        <button type="button" class="btn-nav-subtle" id="theme-toggle" aria-pressed="false" aria-label="Dark — switch to dark obsidian theme">Dark</button>
+        <a href="assets/Aksh_Chauhan_Resume.pdf" class="btn-nav-resume" target="_blank" rel="noopener noreferrer" download>Resume ↓</a>
       </div>
     </nav>
   </header>
 
   <main id="main-content">
-    <section class="hud-section vision-section" aria-labelledby="about-page-heading">
-      <div class="hud-container">
-        <div class="section-header">
+    <section class="section" aria-labelledby="about-heading">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <div class="ai-badge">HOST // VISION · EXTENDED PROFILE</div>
-            <h1 class="section-title" id="about-page-heading">About Aksh Chauhan</h1>
-            <p class="section-desc">Backend, Cloud &amp; GenAI Software Engineer · Tempe, Arizona · M.S. Software Engineering, ASU (May 2026).</p>
+            <p class="section-kicker">About · Tempe, Arizona</p>
+            <h1 class="section-title" id="about-heading">Aksh Chauhan</h1>
           </div>
-          <a href="index.html" class="btn-hud-ghost">← Back to Main HUD</a>
+          <a href="index.html" class="btn-secondary">← Back to Main Page</a>
         </div>
 
-        <div class="vision-layout">
-          <div>
-            <div class="vision-editorial-block">
-              <p class="vision-lead">“The part nobody sees, that everything depends on.”</p>
-              <div id="vision-story"></div>
-            </div>
-            <div class="edu-stack" id="vision-education" aria-label="Education"></div>
-          </div>
-
-          <aside class="vision-altar">
-            <div class="vision-portrait-wrap">
-              <picture>
-                <source srcset="assets/images/aksh_portrait.webp" type="image/webp">
-                <img src="assets/images/aksh_portrait.jpg" alt="Aksh Chauhan portrait" width="116" height="116" loading="eager" decoding="async">
-              </picture>
-            </div>
-            <p class="vision-gem-caption">AKSH CHAUHAN // TEMPE, AZ</p>
-            <a href="assets/Aksh_Chauhan_Resume.pdf" class="btn-hud-primary" target="_blank" rel="noopener noreferrer" download>Download Resume (PDF)</a>
-            <a href="mailto:akshrajesh9203@gmail.com" class="btn-hud-secondary">Email Aksh ↗</a>
-          </aside>
+        <div class="about-grid">
+          <div class="about-copy" id="about-copy"></div>
+          <aside class="edu-panel" id="edu-panel" aria-label="Education"></aside>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="hud-section contact-section">
-    <div class="hud-container">
-      <div class="hud-footer-meta" style="margin-top:0;border-top:none;padding-top:0;">
-        <div class="footer-bottom-row">
-          <span>© 2026 Aksh Chauhan · Fan-inspired design. Not affiliated with Marvel or Disney.</span>
-          <div class="footer-route-links">
-            <a href="index.html">Main HUD</a>
-            <a href="work.html">Case Studies</a>
-          </div>
-        </div>
+  <footer class="contact-section" style="padding-top:32px;">
+    <div class="wrap">
+      <div class="footer-bar" style="padding-top:0;">
+        <span>© 2026 Aksh Chauhan</span>
+        <nav class="footer-nav" aria-label="Site links">
+          <a href="index.html">Home</a>
+          <a href="work.html">Projects</a>
+          <a href="assets/Aksh_Chauhan_Resume.pdf" target="_blank" rel="noopener noreferrer" download>Resume</a>
+        </nav>
       </div>
     </div>
   </footer>
 
-  <div class="hud-toast" id="hud-toast" role="status" aria-live="polite"></div>
-
-  <script type="module">
-    import { initTheme } from './js/hud.js';
-    import { initAboutSection } from './js/sections.js';
-    document.addEventListener('DOMContentLoaded', () => {
-      initTheme();
-      initAboutSection();
-    });
-  </script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
